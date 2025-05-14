@@ -1,0 +1,96 @@
+{
+  "app": {
+    "title": "WFS Data Analyzer Tool",
+    "description": "Analyze, visualize, and download data from Web Feature Services"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "close": "Close",
+    "apply": "Apply",
+    "reset": "Reset",
+    "search": "Search",
+    "filter": "Filter",
+    "download": "Download",
+    "analyze": "Analyze",
+    "visualize": "Visualize",
+    "noData": "No data available"
+  },
+  "wfsAnalyzer": {
+    "inputPlaceholder": "Enter WFS URL (e.g., https://example.com/wfs)",
+    "analyzeButton": "Analyze",
+    "exampleDatasets": "Example Datasets",
+    "features": {
+      "title": "Features",
+      "layerExploration": "Layer Exploration",
+      "attributeAnalysis": "Attribute Analysis",
+      "spatialVisualization": "Spatial Visualization",
+      "dataDownload": "Data Download",
+      "projectionSupport": "Projection Support"
+    }
+  },
+  "layerSelector": {
+    "title": "Available Layers",
+    "selectLayer": "Select a layer",
+    "noLayers": "No layers found",
+    "featureCount": "Feature Count",
+    "loadingLayers": "Loading layers..."
+  },
+  "attributeExplorer": {
+    "title": "Attribute Explorer",
+    "property": "Property",
+    "type": "Type",
+    "value": "Value",
+    "noAttributes": "No attributes found",
+    "loadingAttributes": "Loading attributes..."
+  },
+  "attributeStats": {
+    "title": "Attribute Statistics",
+    "count": "Count",
+    "unique": "Unique Values",
+    "min": "Minimum",
+    "max": "Maximum",
+    "average": "Average",
+    "median": "Median",
+    "mode": "Mode",
+    "histogram": "Histogram",
+    "noStats": "No statistics available"
+  },
+  "mapPreview": {
+    "title": "Map Preview",
+    "zoomToFeature": "Zoom to Feature",
+    "zoomToAll": "Zoom to All",
+    "noGeometry": "No geometry available",
+    "loadingMap": "Loading map..."
+  },
+  "downloadOptions": {
+    "title": "Download Options",
+    "format": "Format",
+    "includeGeometry": "Include Geometry",
+    "selectProperties": "Select Properties",
+    "downloadButton": "Download Data",
+    "processingDownload": "Processing download..."
+  },
+  "attributeFilter": {
+    "title": "Attribute Filter",
+    "property": "Property",
+    "operator": "Operator",
+    "value": "Value",
+    "addFilter": "Add Filter",
+    "removeFilter": "Remove",
+    "applyFilters": "Apply Filters",
+    "resetFilters": "Reset Filters",
+    "noFilters": "No filters applied"
+  },
+  "errors": {
+    "invalidUrl": "Invalid URL format",
+    "connectionFailed": "Connection to WFS service failed",
+    "parsingFailed": "Failed to parse WFS response",
+    "noFeatures": "No features found",
+    "downloadFailed": "Download failed",
+    "projectionFailed": "Projection transformation failed"
+  }
+}
