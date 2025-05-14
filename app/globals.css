@@ -102,7 +102,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    color: rgb(var(--foreground-rgb));
+    color: #1d2c5d;
     background: linear-gradient(
         to bottom,
         transparent,

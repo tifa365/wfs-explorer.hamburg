@@ -629,7 +629,7 @@ export default function WfsAnalyzer() {
         {/* Header with logo and language switcher */}
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center">
-            <div className="w-12 h-12 rounded-full bg-[#1a3a8f] flex items-center justify-center mr-3">
+            {/* <div className="w-12 h-12 rounded-full bg-[#1a3a8f] flex items-center justify-center mr-3">
               <WandSparkles className="h-6 w-6 text-white" />
             </div>
             <div>
@@ -637,7 +637,16 @@ export default function WfsAnalyzer() {
                 {t("appTitle")}
               </h1>
               <p className="text-sm text-gray-600">{t("appSubtitle")}</p>
-            </div>
+            </div> */}
+
+            <a href="https://odis-berlin.de/" target="_blank">
+              <img
+                src={"/logo-odis.svg"}
+                width="200"
+                height="100"
+                alt="Odis logo"
+              />
+            </a>
           </div>
           <LanguageSwitcher />
         </div>
@@ -646,25 +655,27 @@ export default function WfsAnalyzer() {
         <div className="bg-white rounded-xl p-8 mb-8 shadow-lg">
           {/* Description */}
           <div className="mb-10">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-              {t("exploreAndAnalyze")}{" "}
-              <span className="text-[var(--primary-color)]">
-                {t("wfsData")}
-              </span>
-            </h2>
-            <p className="text-gray-600 mb-6">{t("toolDescription")}</p>
+            {/* <h2 className="text-2xl font-semibold text-gray-800 mb-4"> */}
+
+            <h1 className="text-3xl font-bold text-odis-dark">
+              Geo<span className="text-odis-light">Explorer</span>
+              <p className="text-sm pb-2">
+                aka WFS-Zard <span className="text-2xl">🧙</span>
+              </p>
+            </h1>
+
+            {/* </h2> */}
+            <p className=" mb-6">{t("toolDescription")}</p>
 
             {/* Feature overview with icons only by default */}
-            <div className="mb-6">
-              <div className="flex flex-col space-y-4">
+            <div className="mb-2">
+              <div className="flex flex-col">
                 <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-medium text-gray-700">
-                    {t("keyFeatures")}
-                  </h3>
+                  <p className="text-lg font-medium ">{t("keyFeatures")}</p>
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-[var(--primary-color)] hover:opacity-90 hover:bg-[var(--primary-light)] p-2 h-auto flex items-center text-sm"
+                    className="text-odis-light  hover:text-odis-dark  hover:bg-[var(--primary-light)] p-2 h-auto flex items-center text-sm"
                     onClick={() => setShowFeatures(!showFeatures)}
                   >
                     {showFeatures ? t("showLess") : t("showMore")}
@@ -672,49 +683,42 @@ export default function WfsAnalyzer() {
                 </div>
 
                 {!showFeatures ? (
-                  <div className="flex flex-wrap gap-2">
-                    <div className="flex items-center gap-2 px-3 py-2">
-                      <div className="bg-[#f0f4ff] p-2 rounded-md">
-                        <Info className="h-5 w-5 text-[#1a3a8f]" />
-                      </div>
-                      <span className="text-sm">{t("metadataInfo")}</span>
+                  <div className="flex flex-wrap">
+                    <div className="flex items-center gap-2 pr-3">
+                      <Info className="h-5 w-5 text-odis-light" />
+                      <span className="text-sm mt-1">{t("metadataInfo")}</span>
                     </div>
                     <div className="flex items-center gap-2 px-3 py-2">
-                      <div className="bg-[#f0f4ff] p-2 rounded-md">
-                        <Map className="h-5 w-5 text-[#1a3a8f]" />
-                      </div>
-                      <span className="text-sm">{t("mapVisualization")}</span>
+                      <Map className="h-5 w-5 text-odis-light" />
+                      <span className="text-sm  mt-1">
+                        {t("mapVisualization")}
+                      </span>
                     </div>
                     <div className="flex items-center gap-2 px-3 py-2">
-                      <div className="bg-[#f0f4ff] p-2 rounded-md">
-                        <BarChart3 className="h-5 w-5 text-[#1a3a8f]" />
-                      </div>{" "}
-                      <span className="text-sm">{t("statistics")}</span>
+                      <BarChart3 className="h-5 w-5 text-odis-light" />
+                      <span className="text-sm  mt-1">{t("statistics")}</span>
                     </div>
                     <div className="flex items-center gap-2 px-3 py-2">
-                      <div className="bg-[#f0f4ff] p-2 rounded-md">
-                        <Filter className="h-5 w-5 text-[#1a3a8f]" />
-                      </div>{" "}
-                      <span className="text-sm">{t("filtering")}</span>
+                      <Filter className="h-5 w-5 text-odis-light" />
+                      <span className="text-sm  mt-1">{t("filtering")}</span>
                     </div>
                     <div className="flex items-center gap-2 px-3 py-2">
-                      <div className="bg-[#f0f4ff] p-2 rounded-md">
-                        <Globe className="h-5 w-5 text-[#1a3a8f]" />
-                      </div>{" "}
-                      <span className="text-sm">{t("wgs84Conversion")}</span>
+                      <Globe className="h-5 w-5 text-odis-light" />
+                      <span className="text-sm  mt-1">
+                        {t("wgs84Conversion")}
+                      </span>
                     </div>
                     <div className="flex items-center gap-2 px-3 py-2">
-                      <div className="bg-[#f0f4ff] p-2 rounded-md">
-                        <Download className="h-5 w-5 text-[#1a3a8f]" />
-                      </div>{" "}
-                      <span className="text-sm">{t("dataDownload")}</span>
+                      <Download className="h-5 w-5 text-odis-light" />
+
+                      <span className="text-sm mt-1">{t("dataDownload")}</span>
                     </div>
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="flex items-start gap-3">
-                      <div className="bg-[#f0f4ff] p-2 rounded-md">
-                        <Info className="h-5 w-5 text-[#1a3a8f]" />
+                      <div className="p-2">
+                        <Info className="h-5 w-5 text-odis-light" />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
@@ -726,8 +730,8 @@ export default function WfsAnalyzer() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <div className="bg-[#f0f4ff] p-2 rounded-md">
-                        <Map className="h-5 w-5 text-[#1a3a8f]" />
+                      <div className="p-2">
+                        <Map className="h-5 w-5 text-odis-light" />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
@@ -740,8 +744,8 @@ export default function WfsAnalyzer() {
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <div className="bg-[#f0f4ff] p-2 rounded-md">
-                        <BarChart3 className="h-5 w-5 text-[#1a3a8f]" />
+                      <div className="p-2">
+                        <BarChart3 className="h-5 w-5 text-odis-light" />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
@@ -754,8 +758,8 @@ export default function WfsAnalyzer() {
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <div className="bg-[#f0f4ff] p-2 rounded-md">
-                        <Filter className="h-5 w-5 text-[#1a3a8f]" />
+                      <div className="p-2">
+                        <Filter className="h-5 w-5 text-odis-light" />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
@@ -768,8 +772,8 @@ export default function WfsAnalyzer() {
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <div className="bg-[#f0f4ff] p-2 rounded-md">
-                        <Globe className="h-5 w-5 text-[#1a3a8f]" />
+                      <div className="p-2">
+                        <Globe className="h-5 w-5 text-odis-light" />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
@@ -782,8 +786,8 @@ export default function WfsAnalyzer() {
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <div className="bg-[#f0f4ff] p-2 rounded-md">
-                        <Download className="h-5 w-5 text-[#1a3a8f]" />
+                      <div className="p-2">
+                        <Download className="h-5 w-5 text-odis-light" />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
@@ -959,10 +963,10 @@ export default function WfsAnalyzer() {
           {selectedLayer && !error ? (
             <div className="space-y-4 mb-6">
               <Card className="bg-odis-extra-light border-odis-light">
-                <CardHeader className="">
-                  <CardTitle className="flex items-center text-lg font-medium">
+                <CardHeader>
+                  <CardTitle className="tracking-tight flex items-center text-lg font-medium">
                     <AlertCircle className="h-5 w-5 mr-2 text-[var(--primary-color)]" />
-                    {t("currentLayer")}:{" "}
+                    {t("currentLayer")}
                   </CardTitle>
                   <CardDescription>
                     {t("mapPreviewDescription")}
@@ -977,7 +981,7 @@ export default function WfsAnalyzer() {
                         {availableLayers.length > 1 && (
                           <Button
                             variant="link"
-                            className="p-0 h-auto ml-2 text-[#1a3a8f]"
+                            className="p-0 h-auto ml-2 text-odis-light"
                             onClick={() => setSelectedLayer(null)}
                           >
                             {t("changeLayer")}
@@ -1039,7 +1043,7 @@ export default function WfsAnalyzer() {
                           href={selectedLayer.metadataUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[#1a3a8f] hover:underline ml-1 inline-flex items-center"
+                          className="text-odis-light hover:underline ml-1 inline-flex items-center"
                         >
                           {t("viewFullMetadata")}
                           <ExternalLink className="h-3 w-3 ml-1" />
@@ -1059,19 +1063,21 @@ export default function WfsAnalyzer() {
                         </p>
                       </div>
                     )}
-                    <div className="flex items-center gap-2 text-sm">
+
+                    <div>
                       <span className="font-medium">
                         {t("displayProjection")}
                       </span>
-                      <span className="text-gray-600">WGS84 (EPSG:4326)</span>
+                      <p className="text-gray-600">WGS84 (EPSG:4326)</p>
                     </div>
-                    <div className="flex items-center gap-2 text-sm">
+                    <div>
                       <span className="font-medium">
-                        {t("sourceProjection")}
+                        {t("flex items-center text-lg font-medium")}
                       </span>
-                      <span className="text-gray-600">{sourceProjection}</span>
+                      <p className="text-gray-600">{sourceProjection}</p>
                     </div>
-                    {selectedLayer.projections.length > 0 && (
+
+                    {/* {selectedLayer.projections.length > 0 && (
                       <div className="flex items-center gap-2 text-sm">
                         <span className="font-medium">
                           {t("availableProjections")}
@@ -1080,18 +1086,18 @@ export default function WfsAnalyzer() {
                           {selectedLayer.projections.join(", ")}
                         </span>
                       </div>
-                    )}
+                    )} */}
 
                     {/* WFS Summary Information */}
                     {filteredData && (
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-2">
                         <div className="bg-white p-3 rounded-md border border-[#d0d8ff]">
-                          <p className="text-sm font-medium text-[#1a3a8f] mb-1">
+                          <p className="text-sm font-medium text-odis-light mb-1">
                             {t("featuresLoaded")}
                           </p>
                           {isMaxFeaturesUpdating ? (
                             <div className="flex items-center gap-2">
-                              <Loader2 className="h-4 w-4 animate-spin text-[#1a3a8f]" />
+                              <Loader2 className="h-4 w-4 animate-spin text-odis-light" />
                               <span>{t("loading")}</span>
                             </div>
                           ) : (
@@ -1108,7 +1114,7 @@ export default function WfsAnalyzer() {
                           )}
                         </div>
                         <div className="bg-white p-3 rounded-md border border-[#d0d8ff]">
-                          <p className="text-sm font-medium text-[#1a3a8f] mb-1">
+                          <p className="text-sm font-medium text-odis-light mb-1">
                             {t("attributes")}
                           </p>
                           <p className="text-lg font-bold">
@@ -1116,7 +1122,7 @@ export default function WfsAnalyzer() {
                           </p>
                         </div>
                         <div className="bg-white p-3 rounded-md border border-[#d0d8ff]">
-                          <p className="text-sm font-medium text-[#1a3a8f] mb-1">
+                          <p className="text-sm font-medium text-odis-light mb-1">
                             {t("geometryType")}
                           </p>
                           <p className="text-lg font-bold">
@@ -1144,7 +1150,7 @@ export default function WfsAnalyzer() {
           {(isLoading || isMaxFeaturesUpdating) && (
             <div className="flex justify-center items-center py-12">
               <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center">
-                <Loader2 className="h-10 w-10 animate-spin text-[#1a3a8f] mb-4" />
+                <Loader2 className="h-10 w-10 animate-spin text-odis-light mb-4" />
                 <p className="text-gray-700 font-medium">
                   {isMaxFeaturesUpdating
                     ? t("updatingFeatures").replace(
@@ -1167,7 +1173,7 @@ export default function WfsAnalyzer() {
                 <div ref={mapContainerRef} data-map-container className="mb-6">
                   <Card>
                     <CardHeader>
-                      <CardTitle className="flex items-center text-lg font-medium">
+                      <CardTitle className="tracking-tight flex items-center text-lg font-medium">
                         <Map className="h-5 w-5 mr-2 text-[var(--primary-color)]" />
                         {t("mapPreview")}
                       </CardTitle>
@@ -1192,7 +1198,7 @@ export default function WfsAnalyzer() {
               <div className="mb-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="flex items-center text-lg font-medium">
+                    <CardTitle className="tracking-tight flex items-center text-lg font-medium">
                       <Filter className="h-5 w-5 mr-2 text-[var(--primary-color)]" />
                       {t("filterOptions")}
                     </CardTitle>
@@ -1214,7 +1220,7 @@ export default function WfsAnalyzer() {
               <div className="mb-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="flex items-center text-lg font-medium">
+                    <CardTitle className="tracking-tight flex items-center text-lg font-medium">
                       <BarChart3 className="h-5 w-5 mr-2 text-[var(--primary-color)]" />
                       {t("dataExplorer")}
                     </CardTitle>
@@ -1264,7 +1270,7 @@ export default function WfsAnalyzer() {
               <div>
                 <Card>
                   <CardHeader>
-                    <CardTitle className="flex items-center text-lg font-medium">
+                    <CardTitle className="tracking-tight flex items-center text-lg font-medium">
                       <Download className="h-5 w-5 mr-2 text-[var(--primary-color)]" />
                       {t("downloadOptions")}
                     </CardTitle>
