@@ -1,18 +1,24 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Download, Loader2, Filter } from "lucide-react"
-import { useLanguage } from "@/lib/language-context"
-import { Badge } from "@/components/ui/badge"
+import { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Download, Loader2, Filter } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
+import { Badge } from "@/components/ui/badge";
 
 interface DownloadFilteredOptionsProps {
-  filteredData: any
-  layerId: string
-  isFiltered: boolean
-  projectionIssue?: boolean
-  filterCount?: number
+  filteredData: any;
+  layerId: string;
+  isFiltered: boolean;
+  projectionIssue?: boolean;
+  filterCount?: number;
 }
 
 export function DownloadFilteredOptions({
@@ -22,41 +28,46 @@ export function DownloadFilteredOptions({
   projectionIssue = false,
   filterCount = 0,
 }: DownloadFilteredOptionsProps) {
-  const { t } = useLanguage()
-  const [isDownloading, setIsDownloading] = useState(false)
+  const { t } = useLanguage();
+  const [isDownloading, setIsDownloading] = useState(false);
 
   // Get the actual feature count from the filtered data
-  const featureCount = filteredData?.features?.length || 0
+  const featureCount = filteredData?.features?.length || 0;
 
   const handleDownload = async () => {
     try {
-      setIsDownloading(true)
+      setIsDownloading(true);
 
       // Create a blob from the filtered data
-      const blob = new Blob([JSON.stringify(filteredData, null, 2)], { type: "application/json" })
+      const blob = new Blob([JSON.stringify(filteredData, null, 2)], {
+        type: "application/json",
+      });
 
       // Create a download link
-      const downloadUrl = URL.createObjectURL(blob)
-      const projectionLabel = projectionIssue ? "Native" : "WGS84"
-      const filename = `${layerId.replace(/:/g, "_")}_filtered_${projectionLabel}.geojson`
-      const link = document.createElement("a")
-      link.href = downloadUrl
-      link.download = filename
+      const downloadUrl = URL.createObjectURL(blob);
+      const projectionLabel = projectionIssue ? "Native" : "WGS84";
+      const filename = `${layerId.replace(
+        /:/g,
+        "_"
+      )}_filtered_${projectionLabel}.geojson`;
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = filename;
 
       // Trigger the download
-      document.body.appendChild(link)
-      link.click()
+      document.body.appendChild(link);
+      link.click();
 
       // Clean up
-      document.body.removeChild(link)
-      URL.revokeObjectURL(downloadUrl)
+      document.body.removeChild(link);
+      URL.revokeObjectURL(downloadUrl);
     } catch (error) {
-      console.error("Error downloading filtered data:", error)
-      alert("Failed to download filtered data. Please try again.")
+      console.error("Error downloading filtered data:", error);
+      alert("Failed to download filtered data. Please try again.");
     } finally {
-      setIsDownloading(false)
+      setIsDownloading(false);
     }
-  }
+  };
 
   return (
     <Card>
@@ -83,17 +94,20 @@ export function DownloadFilteredOptions({
           {isFiltered ? (
             <div className="text-sm">
               <p className="mb-2">
-                {featureCount.toLocaleString()} {t("features")} {t("matchYourFilters")}
+                {featureCount.toLocaleString()} {t("features")}{" "}
+                {t("matchYourFilters")}
               </p>
               <p className="text-muted-foreground">{t("projectionNote")}</p>
             </div>
           ) : (
-            <div className="text-sm text-muted-foreground">{t("applyFiltersFirst")}</div>
+            <div className="text-sm text-muted-foreground">
+              {t("applyFiltersFirst")}
+            </div>
           )}
 
           <Button
             onClick={handleDownload}
-            className="w-full bg-[var(--primary-color)] hover:bg-[var(--primary-color)]/90"
+            className="w-full bg-odis-light hover:bg-active hover:!text-odis-dark text-white"
             disabled={isDownloading || !isFiltered}
             size="lg"
           >
@@ -105,12 +119,13 @@ export function DownloadFilteredOptions({
             ) : (
               <>
                 <Download className="mr-2 h-4 w-4" />
-                {t("downloadFilteredGeoJSON")} {projectionIssue ? `(${t("nativeProjection")})` : "(WGS84)"}
+                {t("downloadFilteredGeoJSON")}{" "}
+                {projectionIssue ? `(${t("nativeProjection")})` : "(WGS84)"}
               </>
             )}
           </Button>
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

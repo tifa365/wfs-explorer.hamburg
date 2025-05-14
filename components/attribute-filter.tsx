@@ -640,6 +640,7 @@ export function AttributeFilter({
           size="sm"
           onClick={addFilterCondition}
           disabled={attributes.length === 0}
+          className="bg-odis-light hover:bg-active hover:!text-odis-dark text-white"
         >
           <Plus className="h-4 w-4 mr-1" />
           Add Filter
@@ -650,7 +651,12 @@ export function AttributeFilter({
             <Button variant="outline" size="sm" onClick={clearFilters}>
               Clear
             </Button>
-            <Button variant="default" size="sm" onClick={applyFilters}>
+            <Button
+              variant="default"
+              size="sm"
+              className="bg-odis-light hover:bg-active hover:!text-odis-dark text-white"
+              onClick={applyFilters}
+            >
               Apply Filters
             </Button>
           </div>
