@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-white py-8 border-t border-gray-200 mt-12">
+    <footer className="bg-white py-8 border-t border-gray-200 ">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="space-y-8">
           {/* Project information section - using flex instead of grid for more consistent rendering */}

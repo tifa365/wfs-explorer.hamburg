@@ -914,10 +914,8 @@ export default function WfsAnalyzer() {
             </div>
 
             {/* Example datasets - collapsible */}
-            <div className="mt-4">
-              <Button
-                variant="ghost"
-                size="sm"
+            <div className="mt-1">
+              <button
                 className="text-odis-light  hover:text-odis-dark  hover:bg-white p-2 h-auto flex items-center text-sm"
                 onClick={() => setShowExamples(!showExamples)}
               >
@@ -929,8 +927,7 @@ export default function WfsAnalyzer() {
                 {showExamples
                   ? t("hideExampleDatasets")
                   : t("showExampleDatasets")}
-              </Button>
-
+              </button>
               {showExamples && (
                 <div className="mt-2 p-3 bg-odis-extra-light rounded-md">
                   <p className="text-sm mb-2">
