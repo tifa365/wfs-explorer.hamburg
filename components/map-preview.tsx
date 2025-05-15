@@ -452,17 +452,17 @@ export function MapPreview({
       // Add GeoJSON data to the map
       const geoJsonLayer = window.L.geoJSON(processedGeoJson, {
         style: () => ({
-          color: "#3b82f6",
+          color: "#4c68c7",
           weight: 2,
           opacity: 1,
-          fillColor: "#3b82f6",
+          fillColor: "#4c68c7",
           fillOpacity: 0.5,
         }),
         pointToLayer: (feature, latlng) =>
           window.L.circleMarker(latlng, {
             radius: 5,
-            fillColor: "#3b82f6",
-            color: "#1d4ed8",
+            fillColor: "#4c68c7",
+            color: "#4c68c7",
             weight: 1,
             opacity: 1,
             fillOpacity: 0.8,
@@ -471,7 +471,10 @@ export function MapPreview({
           // Add a popup with feature properties
           if (feature.properties) {
             const popupContent = Object.entries(feature.properties)
-              .map(([key, value]) => `<strong>${key}:</strong> ${value}`)
+              .map(
+                ([key, value]) =>
+                  `<strong>${key}:</strong><span class="font-light pl-2">${value}</span>`
+              )
               .join("<br>");
 
             layer.bindPopup(popupContent, {
@@ -801,7 +804,7 @@ export function MapPreview({
       {error && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100 bg-opacity-80 z-10">
           <div className="bg-white p-4 rounded shadow text-center">
-            <p className="text-red-500 font-medium">{error}</p>
+            <p className="warning-300 font-medium">{error}</p>
             <p className="text-sm text-gray-600 mt-1">{t("checkConsole")}</p>
           </div>
         </div>

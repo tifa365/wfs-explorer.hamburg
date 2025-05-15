@@ -72,11 +72,11 @@ export function DownloadFilteredOptions({
   return (
     <Card>
       <CardHeader className="pb-3">
-        <CardTitle className="text-lg flex items-center gap-2">
+        <h3 className="text-md flex items-center gap-2">
           <Filter className="h-5 w-5" />
           {t("filteredData")}
-        </CardTitle>
-        <CardDescription>
+        </h3>
+        {/* <CardDescription>
           {isFiltered ? (
             <div className="flex items-center gap-2">
               <span>{t("currentFilters")}</span>
@@ -87,7 +87,7 @@ export function DownloadFilteredOptions({
           ) : (
             t("noFiltersApplied")
           )}
-        </CardDescription>
+        </CardDescription> */}
       </CardHeader>
       <CardContent>
         <div className="space-y-4">

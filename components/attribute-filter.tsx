@@ -14,6 +14,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { X, Plus, Trash2 } from "lucide-react";
 import { calculateAttributeStats } from "@/lib/stats-utils";
+import { useLanguage } from "@/lib/language-context";
 
 // Define filter operators based on data type
 const STRING_OPERATORS = [
@@ -85,6 +86,8 @@ export function AttributeFilter({
   const [attributeValueSuggestions, setAttributeValueSuggestions] = useState<
     Record<string, string[]>
   >({});
+
+  const { t } = useLanguage();
 
   // Reset filters when data changes completely (new layer loaded)
   useEffect(() => {
@@ -643,13 +646,13 @@ export function AttributeFilter({
           className="bg-odis-light hover:bg-active hover:!text-odis-dark text-white"
         >
           <Plus className="h-4 w-4 mr-1" />
-          Add Filter
+          {t("addFilter")}
         </Button>
 
         {filterConditions.length > 0 && (
           <div className="space-x-2">
             <Button variant="outline" size="sm" onClick={clearFilters}>
-              Clear
+              {t("clear")}
             </Button>
             <Button
               variant="default"
@@ -657,7 +660,7 @@ export function AttributeFilter({
               className="bg-odis-light hover:bg-active hover:!text-odis-dark text-white"
               onClick={applyFilters}
             >
-              Apply Filters
+              {t("applyFilters")}
             </Button>
           </div>
         )}

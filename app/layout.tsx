@@ -5,7 +5,7 @@ import { LanguageProvider } from "@/lib/language-context";
 import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "WFS Data Analyzer Tool",
+  title: "WFSExplorer",
   description:
     "Analyze, visualize, and download data from Web Feature Services",
 };

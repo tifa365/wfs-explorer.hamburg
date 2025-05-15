@@ -652,68 +652,96 @@ export default function WfsAnalyzer() {
         </div>
 
         {/* Main content area with white background */}
-        <div className="bg-white rounded-xl p-8 mb-8 shadow-lg">
+        <div className="bg-white rounded-xl p-8 md:p-12 mb-8 shadow-lg">
           {/* Description */}
-          <div className="mb-10">
+          <div className="mb-10 relative">
             {/* <h2 className="text-2xl font-semibold text-gray-800 mb-4"> */}
 
-            <h1 className="text-3xl font-bold text-odis-dark">
-              Geo<span className="text-odis-light">Explorer</span>
-              <p className="text-sm pb-2">
-                aka WFS-Zard <span className="text-2xl">🧙</span>
-              </p>
+            <h1 className="text-3xl font-bold text-odis-dark mb-2">
+              WFS<span className="text-odis-light">Explorer</span>
+              <p className="text-sm pb-2">aka WFS-Zard</p>
             </h1>
 
+            <img
+              className="w-20"
+              style={{
+                position: "absolute",
+                right: "0px",
+                top: "-15px",
+                width: "65px",
+                // transform: "rotateY(180deg)",
+              }}
+              src="./magicglobe3.svg"
+              alt=""
+            />
+
             {/* </h2> */}
-            <p className=" mb-6">{t("toolDescription")}</p>
+            <p className=" mb-6">
+              {t("toolDescription")}{" "}
+              <button
+                // size="sm"
+                className="text-odis-light hover:text-odis-dark  hover:bg-white !justify-start"
+                onClick={() => setShowFeatures(!showFeatures)}
+              >
+                {showFeatures ? t("showLess") : t("showMore")}
+              </button>
+            </p>
 
             {/* Feature overview with icons only by default */}
             <div className="mb-2">
               <div className="flex flex-col">
-                <div className="flex justify-between items-center">
-                  <p className="text-lg font-medium ">{t("keyFeatures")}</p>
+                {/* <div className="flex  items-center">
+                  <button className="text-lg font-medium flex justify-center">
+                    {t("keyFeatures")}
+                  </button>
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-odis-light  hover:text-odis-dark  hover:bg-[var(--primary-light)] p-2 h-auto flex items-center text-sm"
+                    className="text-odis-light  hover:text-odis-dark  hover:bg-white p-2 h-auto flex items-center text-sm"
                     onClick={() => setShowFeatures(!showFeatures)}
                   >
                     {showFeatures ? t("showLess") : t("showMore")}
                   </Button>
-                </div>
+                </div> */}
 
                 {!showFeatures ? (
-                  <div className="flex flex-wrap">
-                    <div className="flex items-center gap-2 pr-3">
-                      <Info className="h-5 w-5 text-odis-light" />
-                      <span className="text-sm mt-1">{t("metadataInfo")}</span>
-                    </div>
-                    <div className="flex items-center gap-2 px-3 py-2">
-                      <Map className="h-5 w-5 text-odis-light" />
-                      <span className="text-sm  mt-1">
-                        {t("mapVisualization")}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2 px-3 py-2">
-                      <BarChart3 className="h-5 w-5 text-odis-light" />
-                      <span className="text-sm  mt-1">{t("statistics")}</span>
-                    </div>
-                    <div className="flex items-center gap-2 px-3 py-2">
-                      <Filter className="h-5 w-5 text-odis-light" />
-                      <span className="text-sm  mt-1">{t("filtering")}</span>
-                    </div>
-                    <div className="flex items-center gap-2 px-3 py-2">
-                      <Globe className="h-5 w-5 text-odis-light" />
-                      <span className="text-sm  mt-1">
-                        {t("wgs84Conversion")}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2 px-3 py-2">
-                      <Download className="h-5 w-5 text-odis-light" />
+                  <>
+                    <div className="flex flex-wrap">
+                      <div className="flex items-center gap-2 px-3 pl-3 lg:pl-0 py-2">
+                        <Info className="h-5 w-5 text-odis-light" />
+                        <span className="text-sm mt-1">
+                          {t("metadataInfo")}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-2">
+                        <Map className="h-5 w-5 text-odis-light" />
+                        <span className="text-sm  mt-1">
+                          {t("mapVisualization")}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-2">
+                        <BarChart3 className="h-5 w-5 text-odis-light" />
+                        <span className="text-sm  mt-1">{t("statistics")}</span>
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-2">
+                        <Filter className="h-5 w-5 text-odis-light" />
+                        <span className="text-sm  mt-1">{t("filtering")}</span>
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-2">
+                        <Globe className="h-5 w-5 text-odis-light" />
+                        <span className="text-sm  mt-1">
+                          {t("wgs84Conversion")}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-2">
+                        <Download className="h-5 w-5 text-odis-light" />
 
-                      <span className="text-sm mt-1">{t("dataDownload")}</span>
+                        <span className="text-sm mt-1">
+                          {t("dataDownload")}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  </>
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="flex items-start gap-3">
@@ -868,28 +896,19 @@ export default function WfsAnalyzer() {
 
               {wfsData && wfsUrl && !error && (
                 <div className="absolute right-0 top-full mt-2">
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="flex items-center gap-1"
-                          onClick={copyUrlToClipboard}
-                        >
-                          {isCopied ? (
-                            <Check className="h-4 w-4" />
-                          ) : (
-                            <Share2 className="h-4 w-4" />
-                          )}
-                          {isCopied ? t("copied") : t("shareWfs")}
-                        </Button>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        {isCopied ? t("copied") : t("shareWfs")}
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-1 hover:bg-active-light"
+                    onClick={copyUrlToClipboard}
+                  >
+                    {isCopied ? (
+                      <Check className="h-4 w-4" />
+                    ) : (
+                      <Share2 className="h-4 w-4" />
+                    )}
+                    {isCopied ? t("copied") : t("shareWfs")}
+                  </Button>
                 </div>
               )}
             </div>
@@ -899,7 +918,7 @@ export default function WfsAnalyzer() {
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-[var(--primary-color)] hover:opacity-90 hover:bg-[var(--primary-light)] p-2 h-auto flex items-center text-sm"
+                className="text-odis-light  hover:text-odis-dark  hover:bg-white p-2 h-auto flex items-center text-sm"
                 onClick={() => setShowExamples(!showExamples)}
               >
                 {showExamples ? (
@@ -913,8 +932,8 @@ export default function WfsAnalyzer() {
               </Button>
 
               {showExamples && (
-                <div className="mt-2 p-3 bg-[#f0f4ff] rounded-md">
-                  <p className="text-sm text-gray-600 mb-2">
+                <div className="mt-2 p-3 bg-odis-extra-light rounded-md">
+                  <p className="text-sm mb-2">
                     {t("exampleDatasetsDescription")}
                   </p>
                   <ExampleDatasets
@@ -962,139 +981,263 @@ export default function WfsAnalyzer() {
           {/* Only show layer information if there's no error */}
           {selectedLayer && !error ? (
             <div className="space-y-4 mb-6">
-              <Card className="bg-odis-extra-light border-odis-light">
+              <Card>
                 <CardHeader>
                   <CardTitle className="tracking-tight flex items-center text-lg font-medium">
                     <AlertCircle className="h-5 w-5 mr-2 text-[var(--primary-color)]" />
                     {t("currentLayer")}
+                    {availableLayers.length > 1 && (
+                      <button
+                        className="p-0 h-auto ml-2 text-odis-light text-sm line-base"
+                        onClick={() => setSelectedLayer(null)}
+                      >
+                        {t("changeLayer")}
+                      </button>
+                    )}
                   </CardTitle>
-                  <CardDescription>
-                    {t("mapPreviewDescription")}
-                  </CardDescription>
+                  <CardDescription>{t("layerInfoDescription")}</CardDescription>
                 </CardHeader>
-                <CardContent className="">
-                  <div className="flex flex-col gap-3 pt-4">
-                    <div className="flex flex-col gap-1">
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium">{t("layer")}</span>
-                        <span>{selectedLayer.title || selectedLayer.id}</span>
-                        {availableLayers.length > 1 && (
-                          <Button
-                            variant="link"
-                            className="p-0 h-auto ml-2 text-odis-light"
-                            onClick={() => setSelectedLayer(null)}
-                          >
-                            {t("changeLayer")}
-                          </Button>
-                        )}
-                      </div>
-                      {selectedLayer.abstract && (
-                        <div className="text-sm text-gray-600 mt-1">
-                          {selectedLayer.abstract}
-                        </div>
-                      )}
-                    </div>
+                <CardContent className="bg-odis-extra-light pt-4 border-t text-sm rounded-b-lg">
+                  <div className="flex flex-col gap-3">
+                    <>
+                      {/* Desktop/Table Layout (shown on md and up) */}
+                      <table className="hidden md:table table-auto w-full text-left border-collapse">
+                        <tbody>
+                          <tr>
+                            <th className="pr-4 align-top pb-2 font-normal">
+                              {t("layerName")}
+                            </th>
+                            <td className="font-bold align-top text-gray-600 ">
+                              {selectedLayer.title || selectedLayer.id}
+                            </td>
+                          </tr>
 
-                    {/* Metadata Information - Always shown without requiring a button click */}
-                    {selectedLayer.keywords &&
-                      selectedLayer.keywords.length > 0 && (
+                          {selectedLayer.abstract && (
+                            <tr>
+                              <th className="pr-4 align-top pb-2 font-normal">
+                                {t("layerDescription")}
+                              </th>
+                              <td className="text-gray-600 align-top font-light">
+                                {selectedLayer.abstract}
+                              </td>
+                            </tr>
+                          )}
+
+                          {selectedLayer.keywords?.length > 0 && (
+                            <tr>
+                              <th className="pr-4 align-top pb-2 font-normal">
+                                {t("keywords")}
+                              </th>
+                              <td className="text-gray-600 align-top font-light">
+                                {selectedLayer.keywords.join(", ")}
+                              </td>
+                            </tr>
+                          )}
+
+                          {(selectedLayer.contactPerson ||
+                            selectedLayer.contactOrganization ||
+                            selectedLayer.contactEmail) && (
+                            <tr>
+                              <th className="pr-4 align-top pb-2 font-normal">
+                                {t("contact")}
+                              </th>
+                              <td className="text-gray-600 align-top font-light">
+                                {selectedLayer.contactPerson &&
+                                  `${selectedLayer.contactPerson}, `}
+                                {selectedLayer.contactOrganization &&
+                                  `${selectedLayer.contactOrganization}, `}
+                                {selectedLayer.contactEmail}
+                              </td>
+                            </tr>
+                          )}
+
+                          {selectedLayer.fees && (
+                            <tr>
+                              <th className="pr-4 align-top pb-2 font-normal">
+                                {t("fees")}
+                              </th>
+                              <td className="text-gray-600 align-top font-light">
+                                {selectedLayer.fees}
+                              </td>
+                            </tr>
+                          )}
+
+                          {selectedLayer.accessConstraints && (
+                            <tr>
+                              <th className="pr-4 align-top pb-2 font-normal">
+                                {t("accessConstraints")}
+                              </th>
+                              <td className="text-gray-600 align-top font-light">
+                                {selectedLayer.accessConstraints}
+                              </td>
+                            </tr>
+                          )}
+
+                          {selectedLayer.metadataUrl && (
+                            <tr>
+                              <th className="pr-4 align-top pb-2 font-normal">
+                                {t("metadataUrl")}
+                              </th>
+                              <td>
+                                <a
+                                  href={selectedLayer.metadataUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-odis-light hover:underline inline-flex items-center"
+                                >
+                                  {t("viewFullMetadata")}
+                                  <ExternalLink className="h-3 w-3 ml-1" />
+                                </a>
+                              </td>
+                            </tr>
+                          )}
+
+                          {selectedLayer.bounds && (
+                            <tr>
+                              <th className="pr-4 align-top pb-2 font-normal">
+                                {t("bounds")}
+                              </th>
+                              <td className="text-gray-600 align-top font-light">
+                                minX: {selectedLayer.bounds.minx}, minY:{" "}
+                                {selectedLayer.bounds.miny}, maxX:{" "}
+                                {selectedLayer.bounds.maxx}, maxY:{" "}
+                                {selectedLayer.bounds.maxy}
+                                {selectedLayer.bounds.crs &&
+                                  ` (${selectedLayer.bounds.crs})`}
+                              </td>
+                            </tr>
+                          )}
+
+                          <tr>
+                            <th className="pr-4 align-top pb-2 font-normal">
+                              {t("displayProjection")}
+                            </th>
+                            <td className="text-gray-600 align-top font-light">
+                              WGS84 (EPSG:4326)
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <th className="pr-4 align-top pb-2 font-normal">
+                              {t("sourceProjection")}
+                            </th>
+                            <td className="text-gray-600 align-top font-light">
+                              {sourceProjection}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      {/* Mobile/Fallback Layout (shown below md) */}
+                      <div className="md:hidden space-y-4">
                         <div>
-                          <span className="font-medium">{t("keywords")}</span>
-                          <p className="text-gray-600">
-                            {selectedLayer.keywords.join(", ")}
+                          <span>{t("layerName")}</span>
+                          <p className="text-gray-900 font-light">
+                            {selectedLayer.title || selectedLayer.id}
                           </p>
                         </div>
-                      )}
-                    {(selectedLayer.contactPerson ||
-                      selectedLayer.contactOrganization ||
-                      selectedLayer.contactEmail) && (
-                      <div>
-                        <span className="font-medium">{t("contact")}</span>
-                        <p className="text-gray-600">
-                          {selectedLayer.contactPerson &&
-                            `${selectedLayer.contactPerson}, `}
-                          {selectedLayer.contactOrganization &&
-                            `${selectedLayer.contactOrganization}, `}
-                          {selectedLayer.contactEmail &&
-                            `${selectedLayer.contactEmail}`}
-                        </p>
-                      </div>
-                    )}
-                    {selectedLayer.fees && (
-                      <div>
-                        <span className="font-medium">{t("fees")}</span>
-                        <p className="text-gray-600">{selectedLayer.fees}</p>
-                      </div>
-                    )}
-                    {selectedLayer.accessConstraints && (
-                      <div>
-                        <span className="font-medium">
-                          {t("accessConstraints")}
-                        </span>
-                        <p className="text-gray-600">
-                          {selectedLayer.accessConstraints}
-                        </p>
-                      </div>
-                    )}
-                    {selectedLayer.metadataUrl && (
-                      <div>
-                        <span className="font-medium">{t("metadataUrl")}</span>
-                        <a
-                          href={selectedLayer.metadataUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-odis-light hover:underline ml-1 inline-flex items-center"
-                        >
-                          {t("viewFullMetadata")}
-                          <ExternalLink className="h-3 w-3 ml-1" />
-                        </a>
-                      </div>
-                    )}
-                    {selectedLayer.bounds && (
-                      <div>
-                        <span className="font-medium">{t("bounds")}</span>
-                        <p className="text-gray-600">
-                          minX: {selectedLayer.bounds.minx}, minY:{" "}
-                          {selectedLayer.bounds.miny}, maxX:{" "}
-                          {selectedLayer.bounds.maxx}, maxY:{" "}
-                          {selectedLayer.bounds.maxy}
-                          {selectedLayer.bounds.crs &&
-                            ` (${selectedLayer.bounds.crs})`}
-                        </p>
-                      </div>
-                    )}
 
-                    <div>
-                      <span className="font-medium">
-                        {t("displayProjection")}
-                      </span>
-                      <p className="text-gray-600">WGS84 (EPSG:4326)</p>
-                    </div>
-                    <div>
-                      <span className="font-medium">
-                        {t("flex items-center text-lg font-medium")}
-                      </span>
-                      <p className="text-gray-600">{sourceProjection}</p>
-                    </div>
+                        {selectedLayer.abstract && (
+                          <div>
+                            <span>{t("layerDescription")}</span>
+                            <p className="text-gray-900 font-light">
+                              {selectedLayer.abstract}
+                            </p>
+                          </div>
+                        )}
 
-                    {/* {selectedLayer.projections.length > 0 && (
-                      <div className="flex items-center gap-2 text-sm">
-                        <span className="font-medium">
-                          {t("availableProjections")}
-                        </span>
-                        <span className="text-gray-600">
-                          {selectedLayer.projections.join(", ")}
-                        </span>
+                        {selectedLayer.keywords?.length > 0 && (
+                          <div>
+                            <span>{t("keywords")}</span>
+                            <p className="text-gray-900 font-light">
+                              {selectedLayer.keywords.join(", ")}
+                            </p>
+                          </div>
+                        )}
+
+                        {(selectedLayer.contactPerson ||
+                          selectedLayer.contactOrganization ||
+                          selectedLayer.contactEmail) && (
+                          <div>
+                            <span>{t("contact")}</span>
+                            <p className="text-gray-900 font-light">
+                              {selectedLayer.contactPerson &&
+                                `${selectedLayer.contactPerson}, `}
+                              {selectedLayer.contactOrganization &&
+                                `${selectedLayer.contactOrganization}, `}
+                              {selectedLayer.contactEmail}
+                            </p>
+                          </div>
+                        )}
+
+                        {selectedLayer.fees && (
+                          <div>
+                            <span>{t("fees")}</span>
+                            <p className="text-gray-900 font-light">
+                              {selectedLayer.fees}
+                            </p>
+                          </div>
+                        )}
+
+                        {selectedLayer.accessConstraints && (
+                          <div>
+                            <span>{t("accessConstraints")}</span>
+                            <p className="text-gray-900 font-light">
+                              {selectedLayer.accessConstraints}
+                            </p>
+                          </div>
+                        )}
+
+                        {selectedLayer.metadataUrl && (
+                          <div>
+                            <span>{t("metadataUrl")}</span>
+                            <a
+                              href={selectedLayer.metadataUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-odis-light hover:underline inline-flex items-center"
+                            >
+                              {t("viewFullMetadata")}
+                              <ExternalLink className="h-3 w-3 ml-1" />
+                            </a>
+                          </div>
+                        )}
+
+                        {selectedLayer.bounds && (
+                          <div>
+                            <span>{t("bounds")}</span>
+                            <p className="text-gray-900 font-light">
+                              minX: {selectedLayer.bounds.minx}, minY:{" "}
+                              {selectedLayer.bounds.miny}, maxX:{" "}
+                              {selectedLayer.bounds.maxx}, maxY:{" "}
+                              {selectedLayer.bounds.maxy}
+                              {selectedLayer.bounds.crs &&
+                                ` (${selectedLayer.bounds.crs})`}
+                            </p>
+                          </div>
+                        )}
+
+                        <div>
+                          <span>{t("displayProjection")}</span>
+                          <p className="text-gray-900 font-light">
+                            WGS84 (EPSG:4326)
+                          </p>
+                        </div>
+
+                        <div>
+                          <span>{t("sourceProjection")}</span>
+                          <p className="text-gray-900 font-light">
+                            {sourceProjection}
+                          </p>
+                        </div>
                       </div>
-                    )} */}
+                    </>
 
                     {/* WFS Summary Information */}
                     {filteredData && (
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-2">
-                        <div className="bg-white p-3 rounded-md border border-[#d0d8ff]">
-                          <p className="text-sm font-medium text-odis-light mb-1">
-                            {t("featuresLoaded")}
-                          </p>
+                        <div className="bg-white p-3 rounded-md border ">
+                          <p className="text-sm mb-1">{t("featuresLoaded")}</p>
                           {isMaxFeaturesUpdating ? (
                             <div className="flex items-center gap-2">
                               <Loader2 className="h-4 w-4 animate-spin text-odis-light" />
@@ -1113,18 +1256,14 @@ export default function WfsAnalyzer() {
                             </p>
                           )}
                         </div>
-                        <div className="bg-white p-3 rounded-md border border-[#d0d8ff]">
-                          <p className="text-sm font-medium text-odis-light mb-1">
-                            {t("attributes")}
-                          </p>
+                        <div className="bg-white p-3 rounded-md border ">
+                          <p className="text-sm mb-1">{t("attributes")}</p>
                           <p className="text-lg font-bold">
                             {attributes.length}
                           </p>
                         </div>
-                        <div className="bg-white p-3 rounded-md border border-[#d0d8ff]">
-                          <p className="text-sm font-medium text-odis-light mb-1">
-                            {t("geometryType")}
-                          </p>
+                        <div className="bg-white p-3 rounded-md border ">
+                          <p className="text-sm  mb-1">{t("geometryType")}</p>
                           <p className="text-lg font-bold">
                             {hasGeometry
                               ? filteredData.features[0]?.geometry?.type ||

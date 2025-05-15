@@ -16,9 +16,13 @@ export type TranslationKey =
   | "corsOption2"
   | "corsOption3"
   | "availableLayers"
+  | "layers"
   | "layersDescription"
   | "currentLayer"
+  | "layerInfoDescription"
   | "layer"
+  | "layerName"
+  | "layerDescription"
   | "changeLayer"
   | "displayProjection"
   | "sourceProjection"
@@ -271,21 +275,25 @@ export const enTranslations: Record<TranslationKey, string> = {
   corsOption2: "Using a proxy server to bypass CORS restrictions",
   corsOption3: "Running this application on the same domain as the WFS service",
   availableLayers: "Available Layers",
+  layers: "layers",
   layersDescription:
     "This WFS service contains multiple layers. Please select one to analyze.",
-  currentLayer: "Current Layer",
+  currentLayer: "About the Data",
+  layerInfoDescription: "Metadata from the loaded WFS layer",
   layer: "Layer:",
+  layerName: "Name",
+  layerDescription: "Description",
   changeLayer: "Change Layer",
-  displayProjection: "Display Projection:",
-  sourceProjection: "Native Source Projection:",
+  displayProjection: "Display Projection",
+  sourceProjection: "Native Projection",
   availableProjections: "Available Projections:",
   loadFullMetadata: "Show more Metadata",
   loadingMetadata: "Loading Metadata...",
   additionalMetadata: "Additional Metadata",
-  keywords: "Keywords:",
-  contact: "Contact:",
-  fees: "Fees:",
-  accessConstraints: "Access Constraints:",
+  keywords: "Keywords",
+  contact: "Contact",
+  fees: "Fees",
+  accessConstraints: "Access Constraints",
   metadataUrl: "Metadata URL:",
   viewFullMetadata: "View Full Metadata",
   maxFeatures: "Maximum Features to Load",
@@ -346,15 +354,15 @@ export const enTranslations: Record<TranslationKey, string> = {
   maxLength: "Max Length",
   avgLength: "Avg Length",
   topValues: "Top Values",
-  showMore: "Show More",
-  showLess: "Show Less",
+  showMore: "Read more about the features.",
+  showLess: "Show less.",
   valueDistribution: "Value Distribution",
   true: "True",
   false: "False",
   missingValues: "Missing Values",
   exampleDatasets: "Example services",
   exampleDatasetsDescription:
-    "Try these example WFS services to explore the analyzer",
+    "Try these example WFS services from Berlins Geoportal",
   berlinCemeteries: "Berlin Cemeteries",
   berlinCemeteriesDesc: "Cemetery locations and information in Berlin",
   berlinBlocks: "Berlin Blocks",
@@ -441,7 +449,7 @@ export const enTranslations: Record<TranslationKey, string> = {
 
   // New download section translations
   downloadOptions: "Download Options",
-  dataFormats: "Data in various formats",
+  dataFormats: "Download dataset in GeoJSON format",
   completeData: "Complete Data",
   filteredData: "Filtered Data",
   availableFormats: "Available in multiple formats",
@@ -515,9 +523,8 @@ export const enTranslations: Record<TranslationKey, string> = {
   projectionFormat: "Coordinate System",
   totalAvailable: "Total available",
   downloadGeoJSON: "Download GeoJSON",
-  filteredFeatureCount: "{count} features match your filters",
-  projectionNote:
-    "Filtered data is exported in the same projection as displayed on the map",
+  filteredFeatureCount: "{count} feature(s) match your filters",
+  projectionNote: "Filtered data is exported in the WGS84 projection",
   applyFiltersFirst: "Apply filters to enable filtered data download",
   filters: "filters",
   downloadFilteredGeoJSON: "Download Filtered GeoJSON",
@@ -556,22 +563,26 @@ export const deTranslations: Record<TranslationKey, string> = {
   corsOption3:
     "Diese Anwendung auf derselben Domain wie den WFS-Dienst auszuführen",
   availableLayers: "Verfügbare Layer",
+  layers: "Layer",
   layersDescription:
     "Dieser WFS-Dienst enthält mehrere Layer. Bitte wählen Sie einen zur Analyse aus.",
-  currentLayer: "Aktueller Layer",
+  currentLayer: "Informationen",
+  layerInfoDescription: "Metadaten von der geladene Layer",
   layer: "Layer:",
+  layerName: "Name",
+  layerDescription: "Beschreibung",
   changeLayer: "Layer ändern",
-  displayProjection: "Anzeige-Projektion:",
-  sourceProjection: "Native-Projektion:",
+  displayProjection: "Anzeige-Projektion",
+  sourceProjection: "Native-Projektion",
   availableProjections: "Verfügbare Projektionen:",
   loadFullMetadata: "Mehr Metadaten laden",
   loadingMetadata: "Lade Metadaten...",
   additionalMetadata: "Zusätzliche Metadaten",
-  keywords: "Schlüsselwörter:",
-  contact: "Kontakt:",
-  fees: "Gebühren:",
-  accessConstraints: "Zugriffsbeschränkungen:",
-  metadataUrl: "Metadaten-URL:",
+  keywords: "Schlüsselwörter",
+  contact: "Kontakt",
+  fees: "Gebühren",
+  accessConstraints: "Zugriffsbeschränkungen",
+  metadataUrl: "Metadaten-URL",
   viewFullMetadata: "Vollständige Metadaten anzeigen",
   maxFeatures: "Maximale Anzahl zu ladender Features",
   totalFeatures: "Gesamtzahl verfügbarer Features",
@@ -632,15 +643,15 @@ export const deTranslations: Record<TranslationKey, string> = {
   maxLength: "Max. Länge",
   avgLength: "Durchschn. Länge",
   topValues: "Häufigste Werte",
-  showMore: "Mehr anzeigen",
-  showLess: "Weniger anzeigen",
+  showMore: "Mehr über die Funktionen erfahren.",
+  showLess: "Weniger anzeigen.",
   valueDistribution: "Werteverteilung",
   true: "Wahr",
   false: "Falsch",
   missingValues: "Fehlende Werte",
   exampleDatasets: "Beispiel Dienste",
   exampleDatasetsDescription:
-    "Probieren Sie diese Beispiel-WFS-Dienste aus, um den Analyzer zu erkunden",
+    "Probieren Sie diese Beispiel-WFS-Dienste aus dem Geoportal Berlins aus.",
   berlinCemeteries: "Berliner Friedhöfe",
   berlinCemeteriesDesc: "Friedhofsstandorte und -informationen in Berlin",
   berlinBlocks: "Berliner Blöcke",
@@ -726,7 +737,7 @@ export const deTranslations: Record<TranslationKey, string> = {
 
   // New download section translations
   downloadOptions: "Download-Optionen",
-  dataFormats: "Daten in verschiedenen Formaten",
+  dataFormats: "Daten im GeoJSON format herunterladen",
   completeData: "Vollständige Daten",
   filteredData: "Gefilterte Daten",
   availableFormats: "In mehreren Formaten verfügbar",
@@ -808,8 +819,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   totalAvailable: "Insgesamt verfügbar",
   downloadGeoJSON: "GeoJSON herunterladen",
   filteredFeatureCount: "{count} Features entsprechen Ihren Filtern",
-  projectionNote:
-    "Gefilterte Daten werden in der gleichen Projektion exportiert, die auf der Karte angezeigt wird",
+  projectionNote: "Gefilterte Daten werden in der WGS84 Projektion exportiert",
   applyFiltersFirst:
     "Wenden Sie Filter an, um den Download gefilterter Daten zu aktivieren",
   filters: "Filter",

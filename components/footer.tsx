@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import type React from "react"
-import Link from "next/link"
-import { useLanguage } from "@/lib/language-context"
+import type React from "react";
+import Link from "next/link";
+import { useLanguage } from "@/lib/language-context";
 
 export const Footer: React.FC = () => {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
 
   return (
     <footer className="bg-white py-8 border-t border-gray-200 mt-12">
@@ -37,7 +37,12 @@ export const Footer: React.FC = () => {
               <p className="text-[var(--primary-color)] text-sm font-medium mb-2">
                 {t("conductedBy") || "Durchgeführt von der"}
               </p>
-              <a href="https://odis-berlin.de" target="_blank" rel="noopener noreferrer" className="inline-block">
+              <a
+                href="https://odis-berlin.de"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block"
+              >
                 <img
                   src="https://logos.citylab-berlin.org/logo-odis-berlin-coloured.svg"
                   alt="Open Data Informationsstelle Berlin"
@@ -51,7 +56,12 @@ export const Footer: React.FC = () => {
               <p className="text-[var(--primary-color)] text-sm font-medium mb-2">
                 {t("inCollaborationWith") || "in Zusammenarbeit mit"}
               </p>
-              <a href="https://citylab-berlin.org" target="_blank" rel="noopener noreferrer" className="inline-block">
+              <a
+                href="https://citylab-berlin.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block"
+              >
                 <img
                   src="https://logos.citylab-berlin.org/logo-citylab-berlin.svg"
                   alt="CityLAB Berlin"
@@ -62,7 +72,9 @@ export const Footer: React.FC = () => {
 
             {/* Berlin Senate */}
             <div className="w-1/2 sm:w-1/2 lg:w-1/4 px-2 mb-6">
-              <p className="text-[var(--primary-color)] text-sm font-medium mb-2">{t("fundedBy") || "Gefördert von"}</p>
+              <p className="text-[var(--primary-color)] text-sm font-medium mb-2">
+                {t("fundedBy") || "Gefördert von"}
+              </p>
               <a
                 href="https://www.berlin.de/rbmskzl/"
                 target="_blank"
@@ -86,8 +98,18 @@ export const Footer: React.FC = () => {
             >
               {t("privacyPolicy") || "Datenschutz"}
             </Link>
-            <Link href="/feedback" className="text-[var(--primary-color)] hover:opacity-80 text-sm">
-              {t("feedback") || "Feedback"}
+            <Link
+              href="https://citylabberlin.typeform.com/to/g2c062v8"
+              className="text-[var(--primary-color)] hover:opacity-80 text-sm"
+            >
+              {t("feedback") + " (de)" || "Feedback (en)"}
+            </Link>
+
+            <Link
+              href="https://citylabberlin.typeform.com/to/fzugGwnn"
+              className="text-[var(--primary-color)] hover:opacity-80 text-sm"
+            >
+              {t("feedback") + " (en)" || "Feedback (de)"}
             </Link>
             <a
               href="https://github.com/technologiestiftung/wfs-explorer"
@@ -113,7 +135,7 @@ export const Footer: React.FC = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

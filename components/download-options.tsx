@@ -98,18 +98,15 @@ export function DownloadOptions({
   return (
     <Card>
       <CardHeader className="pb-3">
-        <CardTitle className="text-lg flex items-center gap-2">
+        <h3 className="text-md flex items-center gap-2">
           <Database className="h-5 w-5" />
           {t("completeData")}
-        </CardTitle>
-        <CardDescription>{t("downloadFullDataset")}</CardDescription>
+        </h3>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           <div className="space-y-2">
-            <h3 className="text-base font-medium mb-2">
-              {t("projectionFormat")}
-            </h3>
+            <p className="text-sm mb-2">{t("projectionFormat")}</p>
             {!projectionIssue ? (
               <Tabs
                 defaultValue="wgs84"
