@@ -120,7 +120,7 @@ export function DownloadFilteredOptions({
               <>
                 <Download className="mr-2 h-4 w-4" />
                 {t("downloadFilteredGeoJSON")}{" "}
-                {projectionIssue ? `(${t("nativeProjection")})` : "(WGS84)"}
+                {projectionIssue ? `(${t("nativeProjection")})` : "(EPSG:4326)"}
               </>
             )}
           </Button>

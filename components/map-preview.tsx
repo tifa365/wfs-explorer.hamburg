@@ -155,22 +155,21 @@ export function MapPreview({
     if (!mapContainer.current) return;
 
     const proj4Script = document.createElement("script");
-    proj4Script.src =
-      "https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.8.0/proj4.min.js";
+    proj4Script.src = "./libs/proj4.min.js";
     proj4Script.onload = loadLeafletCSS;
     document.head.appendChild(proj4Script);
 
     function loadLeafletCSS() {
       const linkEl = document.createElement("link");
       linkEl.rel = "stylesheet";
-      linkEl.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+      linkEl.href = "./libs/leaflet.css";
       linkEl.onload = loadLeafletJS;
       document.head.appendChild(linkEl);
     }
 
     function loadLeafletJS() {
       const script = document.createElement("script");
-      script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+      script.src = "./libs/leaflet.js";
       script.onload = initializeMap;
       document.head.appendChild(script);
     }
