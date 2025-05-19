@@ -1477,6 +1477,8 @@ export async function fetchWfsDataForDownload(
       url.pathname
     }?${searchParams.toString()}`;
 
+    console.log("ÄÄÄÄÄÄÄSss", url.origin);
+
     console.log("Fetching WFS data from:", requestUrl);
 
     // Try multiple approaches to fetch the data
@@ -1511,7 +1513,10 @@ export async function fetchWfsDataForDownload(
       altParams.delete("typeName");
       altParams.set("typeNames", layerId);
 
-      const alternativeUrl = `${url.origin}${altParams.toString()}`;
+      const alternativeUrl = `${url.origin}${
+        url.pathname
+      }?${altParams.toString()}`;
+      console.log("url.origin ", url.origin);
       console.log("Trying alternative URL:", alternativeUrl);
 
       try {

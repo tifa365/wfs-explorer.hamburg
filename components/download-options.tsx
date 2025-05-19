@@ -105,7 +105,7 @@ export function DownloadOptions({
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          <div className="space-y-2">
+          {/* <div className="space-y-2">
             <p className="text-sm mb-2">{t("projectionFormat")}</p>
             {!projectionIssue ? (
               <Tabs
@@ -141,10 +141,12 @@ export function DownloadOptions({
                 {layer.defaultProjection || t("unknown")})
               </div>
             )}
+          </div> */}
+          <div className="text-sm text-muted-foreground">
+            {t("downloadCompleteDataText")}
           </div>
-
           {showDownloadAllOption && maxFeatures < totalFeatureCount && (
-            <div className="flex items-start space-x-2 border-t pt-3">
+            <div className="flex items-start space-x-2  pt-3">
               <Checkbox
                 id="download-all"
                 checked={downloadAll}
@@ -169,7 +171,7 @@ export function DownloadOptions({
             </div>
           )}
 
-          <Button
+          {/* <Button
             onClick={handleDownload}
             className="w-full bg-odis-light hover:bg-active hover:!text-odis-dark text-white"
             disabled={isDownloading}
@@ -187,6 +189,25 @@ export function DownloadOptions({
                 {projectionIssue || downloadType === "native"
                   ? `(${layer.defaultProjection || t("nativeProjection")})`
                   : "(EPSG:4326)"}
+              </>
+            )}
+          </Button> */}
+          <Button
+            onClick={handleDownload}
+            className="w-full bg-odis-light hover:bg-active hover:!text-odis-dark text-white"
+            disabled={isDownloading}
+            size="lg"
+          >
+            {isDownloading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                {t("downloading")}
+              </>
+            ) : (
+              <>
+                <Download className="mr-2 h-4 w-4" />
+                {t("downloadGeoJSON")}
+                {" (EPSG:4326)"}
               </>
             )}
           </Button>

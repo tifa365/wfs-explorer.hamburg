@@ -48,6 +48,7 @@ export type TranslationKey =
   | "downloadFilteredData"
   | "downloadFilteredDescription"
   | "downloadFilteredGeoJSON"
+  | "downloadCompleteDataText"
   | "loadingLayerData"
   | "wfsSummary"
   | "wfsSummaryDescription"
@@ -308,6 +309,7 @@ export const enTranslations: Record<TranslationKey, string> = {
   downloadFilteredData: "Download Filtered Data",
   downloadFilteredDescription: "Download the filtered WFS data as GeoJSON",
   downloadFilteredGeoJSON: "Download Filtered GeoJSON",
+  downloadCompleteDataText: "Download complete dataset",
   loadingLayerData: "Loading layer data...",
   wfsSummary: "WFS Summary",
   wfsSummaryDescription: "Overview of the analyzed WFS data",
@@ -527,7 +529,6 @@ export const enTranslations: Record<TranslationKey, string> = {
   projectionNote: "Filtered data is exported in the WGS84 projection",
   applyFiltersFirst: "Apply filters to enable filtered data download",
   filters: "filters",
-  downloadFilteredGeoJSON: "Download Filtered GeoJSON",
   matchYourFilters: "match your filters",
   // Footer translations
   projectBy: "A project of",
@@ -597,6 +598,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   downloadFilteredDescription:
     "Laden Sie die gefilterten WFS-Daten als GeoJSON herunter",
   downloadFilteredGeoJSON: "Gefiltertes GeoJSON herunterladen",
+  downloadCompleteDataText: "Ganzen Datensatz herunterladen",
   loadingLayerData: "Lade Layer-Daten...",
   wfsSummary: "WFS-Zusammenfassung",
   wfsSummaryDescription: "Überblick über die analysierten WFS-Daten",
