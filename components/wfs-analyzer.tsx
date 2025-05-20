@@ -659,7 +659,7 @@ export default function WfsAnalyzer() {
 
             <h1 className="text-3xl font-bold text-odis-dark mb-2">
               WFS<span className="text-odis-light">Explorer</span>
-              <p className="text-sm pb-2">aka WFS-Zard</p>
+              <p className="text-sm pb-2 italic">aka WFS-Zard</p>
             </h1>
 
             <img
@@ -676,7 +676,7 @@ export default function WfsAnalyzer() {
             />
 
             {/* </h2> */}
-            <p className=" mb-6">
+            <p className="mb-4">
               {t("toolDescription")}{" "}
               <button
                 // size="sm"
@@ -688,7 +688,7 @@ export default function WfsAnalyzer() {
             </p>
 
             {/* Feature overview with icons only by default */}
-            <div className="mb-2">
+            <div className="mb-4">
               <div className="flex flex-col">
                 {/* <div className="flex  items-center">
                   <button className="text-lg font-medium flex justify-center">
@@ -707,34 +707,34 @@ export default function WfsAnalyzer() {
                 {!showFeatures ? (
                   <>
                     <div className="flex flex-wrap">
-                      <div className="flex items-center gap-2 px-3 pl-3 lg:pl-0 py-2">
-                        <Info className="h-5 w-5 text-odis-light" />
+                      <div className="flex items-center gap-2 px-3 pl-3 lg:pl-0 py-2 font-light">
+                        <Info className="h-5 w-5 " />
                         <span className="text-sm mt-1">
                           {t("metadataInfo")}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2">
-                        <Map className="h-5 w-5 text-odis-light" />
+                      <div className="flex items-center gap-2 px-3 py-2 font-light">
+                        <Map className="h-5 w-5 " />
                         <span className="text-sm  mt-1">
                           {t("mapVisualization")}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2">
-                        <BarChart3 className="h-5 w-5 text-odis-light" />
+                      <div className="flex items-center gap-2 px-3 py-2 font-light">
+                        <BarChart3 className="h-5 w-5 " />
                         <span className="text-sm  mt-1">{t("statistics")}</span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2">
-                        <Filter className="h-5 w-5 text-odis-light" />
+                      <div className="flex items-center gap-2 px-3 py-2 font-light">
+                        <Filter className="h-5 w-5 " />
                         <span className="text-sm  mt-1">{t("filtering")}</span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2">
-                        <Globe className="h-5 w-5 text-odis-light" />
+                      <div className="flex items-center gap-2 px-3 py-2 font-light">
+                        <Globe className="h-5 w-5 " />
                         <span className="text-sm  mt-1">
                           {t("wgs84Conversion")}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2">
-                        <Download className="h-5 w-5 text-odis-light" />
+                      <div className="flex items-center gap-2 px-3 py-2 font-light">
+                        <Download className="h-5 w-5 " />
 
                         <span className="text-sm mt-1">
                           {t("dataDownload")}
@@ -746,7 +746,7 @@ export default function WfsAnalyzer() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="flex items-start gap-3">
                       <div className="p-2">
-                        <Info className="h-5 w-5 text-odis-light" />
+                        <Info className="h-5 w-5 " />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
@@ -759,7 +759,7 @@ export default function WfsAnalyzer() {
                     </div>
                     <div className="flex items-start gap-3">
                       <div className="p-2">
-                        <Map className="h-5 w-5 text-odis-light" />
+                        <Map className="h-5 w-5 " />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
@@ -773,7 +773,7 @@ export default function WfsAnalyzer() {
 
                     <div className="flex items-start gap-3">
                       <div className="p-2">
-                        <BarChart3 className="h-5 w-5 text-odis-light" />
+                        <BarChart3 className="h-5 w-5 " />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
@@ -787,7 +787,7 @@ export default function WfsAnalyzer() {
 
                     <div className="flex items-start gap-3">
                       <div className="p-2">
-                        <Filter className="h-5 w-5 text-odis-light" />
+                        <Filter className="h-5 w-5 " />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
@@ -801,7 +801,7 @@ export default function WfsAnalyzer() {
 
                     <div className="flex items-start gap-3">
                       <div className="p-2">
-                        <Globe className="h-5 w-5 text-odis-light" />
+                        <Globe className="h-5 w-5 " />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
@@ -815,7 +815,7 @@ export default function WfsAnalyzer() {
 
                     <div className="flex items-start gap-3">
                       <div className="p-2">
-                        <Download className="h-5 w-5 text-odis-light" />
+                        <Download className="h-5 w-5 " />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
