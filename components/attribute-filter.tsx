@@ -468,7 +468,7 @@ export function AttributeFilter({
         <div key={condition.id} className="grid gap-3 p-3 border rounded-md">
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium">
-              Filter Condition {index + 1}
+              {t("filter")} {index + 1}
             </span>
             <Button
               variant="ghost"

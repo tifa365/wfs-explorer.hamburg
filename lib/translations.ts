@@ -472,8 +472,7 @@ export const enTranslations: Record<TranslationKey, string> = {
   keyFeatures: "Key Features",
   metadataInfo: "Explore Metadata",
   interactiveMetadataInfo: "Explore Metadata",
-  interactiveMetadataInfoDescription:
-    "Get your data description and other information",
+  interactiveMetadataInfoDescription: "Data description and other information",
   mapVisualization: "Map Preview",
   statistics: "Statistics",
   filtering: "Filtering",
@@ -764,10 +763,10 @@ export const deTranslations: Record<TranslationKey, string> = {
   metadataInfo: "Metadaten explorieren",
   interactiveMetadataInfo: "Metadaten explorieren",
   interactiveMetadataInfoDescription:
-    "Holen Sie sich Ihre Datenbeschreibung und andere Informationen",
+    "Datenbeschreibung und andere Informationen",
   mapVisualization: "Kartenvorschau",
   statistics: "Statistiken",
-  filtering: "Filterung",
+  filtering: "Filtern",
   wgs84Conversion: "WGS84-Konvertierung",
   dataDownload: "GeoJSON-Download",
   interactiveMapVisualization: "Kartenvorschau",

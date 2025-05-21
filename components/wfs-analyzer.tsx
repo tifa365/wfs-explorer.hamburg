@@ -1003,7 +1003,7 @@ export default function WfsAnalyzer() {
                 <CardHeader>
                   <CardTitle className="tracking-tight flex items-center text-lg font-medium">
                     <AlertCircle className="h-5 w-5 mr-2 text-odis-light" />
-                    {t("currentLayer")}
+                    {t("metadataInfo")}
                     {availableLayers.length > 1 && (
                       <button
                         className="p-0 h-auto ml-2 text-odis-light text-sm line-base"
@@ -1013,7 +1013,9 @@ export default function WfsAnalyzer() {
                       </button>
                     )}
                   </CardTitle>
-                  <CardDescription>{t("layerInfoDescription")}</CardDescription>
+                  <CardDescription>
+                    {t("interactiveMetadataInfoDescription")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="bg-odis-extra-light pt-4 border-t text-sm rounded-b-lg">
                   <div className="flex flex-col gap-3">
@@ -1332,7 +1334,7 @@ export default function WfsAnalyzer() {
                     <CardHeader>
                       <CardTitle className="tracking-tight flex items-center text-lg font-medium">
                         <Map className="h-5 w-5 mr-2 text-[var(--primary-color)]" />
-                        {t("mapPreview")}
+                        {t("mapVisualization")}
                       </CardTitle>
                       <CardDescription>
                         {t("mapPreviewDescription")}
@@ -1357,9 +1359,11 @@ export default function WfsAnalyzer() {
                   <CardHeader>
                     <CardTitle className="tracking-tight flex items-center text-lg font-medium">
                       <Filter className="h-5 w-5 mr-2 text-[var(--primary-color)]" />
-                      {t("filterOptions")}
+                      {t("filtering")}
                     </CardTitle>
-                    <CardDescription>{t("filterDescription")}</CardDescription>
+                    <CardDescription>
+                      {t("advancedFilteringDescription")}
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <AttributeFilter
@@ -1379,7 +1383,7 @@ export default function WfsAnalyzer() {
                   <CardHeader>
                     <CardTitle className="tracking-tight flex items-center text-lg font-medium">
                       <BarChart3 className="h-5 w-5 mr-2 text-[var(--primary-color)]" />
-                      {t("dataExplorer")}
+                      {t("statistics")}
                     </CardTitle>
                     <CardDescription>
                       {t("dataExplorerDescription")}
@@ -1429,9 +1433,11 @@ export default function WfsAnalyzer() {
                   <CardHeader>
                     <CardTitle className="tracking-tight flex items-center text-lg font-medium">
                       <Download className="h-5 w-5 mr-2 text-[var(--primary-color)]" />
-                      {t("downloadOptions")}
+                      {t("dataDownload")}
                     </CardTitle>
-                    <CardDescription>{t("dataFormats")}</CardDescription>
+                    <CardDescription>
+                      {t("dataDownloadDescription")}
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
