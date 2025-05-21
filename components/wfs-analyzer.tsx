@@ -694,18 +694,18 @@ export default function WfsAnalyzer() {
                 className="text-odis-light hover:text-odis-dark"
               >
                 {t("wfsData")}
-              </span>
-              <Tooltip
-                id="url-tooltip"
-                style={{
-                  width: "150px",
-                  backgroundColor: "#4c68c7",
-                  color: "white",
-                  zIndex: 30,
-                }}
-              />{" "}
+              </span>{" "}
               {t("toolDescription2")}
             </p>
+            <Tooltip
+              id="url-tooltip"
+              style={{
+                width: "150px",
+                backgroundColor: "#4c68c7",
+                color: "white",
+                zIndex: 30,
+              }}
+            />
 
             {/* Feature overview with icons only by default */}
             <div className="mb-4">
