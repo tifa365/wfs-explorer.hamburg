@@ -186,7 +186,9 @@ export type TranslationKey =
   // New UI translations
   | "exploreAndAnalyze"
   | "wfsData"
-  | "toolDescription"
+  | "toolDescription1"
+  | "toolDescription2"
+  | "wfsDataInfo"
   | "keyFeatures"
   | "mapVisualization"
   | "statistics"
@@ -439,7 +441,7 @@ export const enTranslations: Record<TranslationKey, string> = {
   map: "Map",
   loaded: "Loaded",
   share: "Share",
-  shareWfs: "Share this WFS",
+  shareWfs: "Share this Link",
   copied: "Copied!",
   minimumValue: "Minimum Value",
   maximumValue: "Maximum Value",
@@ -462,19 +464,22 @@ export const enTranslations: Record<TranslationKey, string> = {
   // New UI translations
   exploreAndAnalyze: "Explore and Analyze",
   wfsData: "WFS Data",
-  toolDescription:
-    "This tool helps you explore and analyze WFS (Web Feature Service) data with powerful features for visualization, analysis, and conversion. Simply enter a WFS URL below or select an example dataset to get started.",
+  wfsDataInfo:
+    "A WFS (Web Feature Service) is an online service that makes it possible to retrieve geographical data via the Internet.",
+  toolDescription1: "Visualize, analyze and export",
+  toolDescription2:
+    "directly in the browser. Insert a WFS URL or select a sample data set.",
   keyFeatures: "Key Features",
   metadataInfo: "Explore Metadata",
   interactiveMetadataInfo: "Explore Metadata",
   interactiveMetadataInfoDescription:
     "Get your data description and other information",
-  mapVisualization: "Map Visualization",
+  mapVisualization: "Map Preview",
   statistics: "Statistics",
   filtering: "Filtering",
   wgs84Conversion: "WGS84 Conversion",
   dataDownload: "GeoJSON Download",
-  interactiveMapVisualization: "Interactive Map Visualization",
+  interactiveMapVisualization: "Interactive Map Preview",
   interactiveMapDescription:
     "View WFS data spatially with interactive features",
   attributeStatisticsDescription: "Analyze data patterns and distributions",
@@ -547,7 +552,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   appTitle: "WFS Explorer",
   appSubtitle: "Web Feature Service Datenanalyse-Tool",
   wfsUrlLabel: "WFS URL",
-  wfsUrlPlaceholder: "WFS URL eingeben",
+  wfsUrlPlaceholder: "WFS-URL hier einfügen …",
   analyzeButton: "Laden",
   discoveringLayers: "Entdecke Layer...",
   wfsDescription:
@@ -567,8 +572,8 @@ export const deTranslations: Record<TranslationKey, string> = {
   layers: "Layer",
   layersDescription:
     "Dieser WFS-Dienst enthält mehrere Layer. Bitte wählen Sie einen zur Analyse aus.",
-  currentLayer: "Informationen",
-  layerInfoDescription: "Metadaten von der geladene Layer",
+  currentLayer: "Metadaten explorieren",
+  layerInfoDescription: "Metadaten aus der geladene Layer",
   layer: "Layer:",
   layerName: "Name",
   layerDescription: "Beschreibung",
@@ -598,7 +603,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   downloadFilteredDescription:
     "Laden Sie die gefilterten WFS-Daten als GeoJSON herunter",
   downloadFilteredGeoJSON: "Gefiltertes GeoJSON herunterladen",
-  downloadCompleteDataText: "Ganzen Datensatz herunterladen",
+  downloadCompleteDataText: "Vollständigen Datensatz herunterladen",
   loadingLayerData: "Lade Layer-Daten...",
   wfsSummary: "WFS-Zusammenfassung",
   wfsSummaryDescription: "Überblick über die analysierten WFS-Daten",
@@ -633,7 +638,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   id: "ID",
   noResults: "Keine Ergebnisse gefunden",
   showing: "Zeige",
-  entries: "Einträge",
+  entries: "Einträgen",
   filteredFromTotal: "gefiltert aus",
   dataType: "Datentyp",
   count: "Anzahl",
@@ -653,7 +658,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   missingValues: "Fehlende Werte",
   exampleDatasets: "Beispiel Dienste",
   exampleDatasetsDescription:
-    "Probieren Sie diese Beispiel-WFS-Dienste aus dem Geoportal Berlins aus.",
+    "Probieren Sie diese Beispiel-WFS-Dienste aus dem Geoportal Berlin aus.",
   berlinCemeteries: "Berliner Friedhöfe",
   berlinCemeteriesDesc: "Friedhofsstandorte und -informationen in Berlin",
   berlinBlocks: "Berliner Blöcke",
@@ -727,7 +732,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   map: "Karte",
   loaded: "Geladen",
   share: "Teilen",
-  shareWfs: "Diesen WFS teilen",
+  shareWfs: "Diesen Link teilen",
   copied: "Kopiert!",
   minimumValue: "Minimalwert",
   maximumValue: "Maximalwert",
@@ -739,7 +744,7 @@ export const deTranslations: Record<TranslationKey, string> = {
 
   // New download section translations
   downloadOptions: "Download-Optionen",
-  dataFormats: "Daten im GeoJSON format herunterladen",
+  dataFormats: "Daten im GeoJSON-Format herunterladen",
   completeData: "Vollständige Daten",
   filteredData: "Gefilterte Daten",
   availableFormats: "In mehreren Formaten verfügbar",
@@ -750,18 +755,22 @@ export const deTranslations: Record<TranslationKey, string> = {
   // New UI translations
   exploreAndAnalyze: "Erkunden und Analysieren",
   wfsData: "WFS-Daten",
-  toolDescription:
-    "Dieses Tool hilft Ihnen, WFS-Daten (Web Feature Service) mit leistungsstarken Funktionen zur Visualisierung, Analyse und Konvertierung zu erkunden. Geben Sie einfach eine WFS-URL ein oder wählen Sie einen Beispieldatensatz aus.",
+  wfsDataInfo:
+    "Ein WFS (Web Feature Service) ist ein Online-Dienst, der es ermöglicht, geografische Daten über das Internet abzurufen.",
+  toolDescription1: "Visualisieren, analysieren und exportieren Sie",
+  toolDescription2:
+    "direkt im Browser. Fügen Sie eine WFS-URL ein oder wählen Sie einen Beispieldatensatz.",
   keyFeatures: "Hauptfunktionen",
   metadataInfo: "Metadaten explorieren",
   interactiveMetadataInfo: "Metadaten explorieren",
-  interactiveMetadataInfoDescription: "Metadaten explorieren",
-  mapVisualization: "Kartenvisualisierung",
+  interactiveMetadataInfoDescription:
+    "Holen Sie sich Ihre Datenbeschreibung und andere Informationen",
+  mapVisualization: "Kartenvorschau",
   statistics: "Statistiken",
   filtering: "Filterung",
   wgs84Conversion: "WGS84-Konvertierung",
   dataDownload: "GeoJSON-Download",
-  interactiveMapVisualization: "Interaktive Kartenvisualisierung",
+  interactiveMapVisualization: "Kartenvorschau",
   interactiveMapDescription:
     "WFS-Daten räumlich mit interaktiven Funktionen anzeigen",
   attributeStatisticsDescription: "Datenmuster und -verteilungen analysieren",

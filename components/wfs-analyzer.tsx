@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/lib/language-context";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Tooltip } from "react-tooltip";
 import {
   Card,
   CardContent,
@@ -47,12 +48,12 @@ import { DownloadFilteredOptions } from "@/components/download-filtered-options"
 import dynamic from "next/dynamic";
 import { ExampleDatasets } from "@/components/example-datasets";
 import { LanguageSwitcher } from "@/components/language-switcher";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+// import {
+//   Tooltip,
+//   TooltipContent,
+//   TooltipProvider,
+//   TooltipTrigger,
+// } from "@/components/ui/tooltip";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // Use dynamic import with no SSR for the MapPreview component
@@ -636,7 +637,7 @@ export default function WfsAnalyzer() {
               <h1 className="text-xl font-semibold text-[var(--primary-color)]">
                 {t("appTitle")}
               </h1>
-              <p className="text-sm text-gray-600">{t("appSubtitle")}</p>
+              <p className="text-sm text-gray-600 font-light">{t("appSubtitle")}</p>
             </div> */}
 
             <a href="https://odis-berlin.de/" target="_blank">
@@ -677,14 +678,33 @@ export default function WfsAnalyzer() {
 
             {/* </h2> */}
             <p className="mb-4">
-              {t("toolDescription")}{" "}
-              <button
-                // size="sm"
-                className="text-odis-light hover:text-odis-dark  hover:bg-white !justify-start"
-                onClick={() => setShowFeatures(!showFeatures)}
+              {t("toolDescription1")}{" "}
+              {/* {
+                <button
+                  // size="sm"
+                  className="text-odis-light hover:text-odis-dark  hover:bg-white !justify-start"
+                  onClick={() => setShowFeatures(!showFeatures)}
+                >
+                  {t("wfsData")}
+                </button>
+              } */}
+              <span
+                data-tooltip-id="url-tooltip"
+                data-tooltip-content={t("wfsDataInfo")}
+                className="text-odis-light hover:text-odis-dark"
               >
-                {showFeatures ? t("showLess") : t("showMore")}
-              </button>
+                {t("wfsData")}
+              </span>
+              <Tooltip
+                id="url-tooltip"
+                style={{
+                  width: "150px",
+                  backgroundColor: "#4c68c7",
+                  color: "white",
+                  zIndex: 30,
+                }}
+              />{" "}
+              {t("toolDescription2")}
             </p>
 
             {/* Feature overview with icons only by default */}
@@ -706,35 +726,36 @@ export default function WfsAnalyzer() {
 
                 {!showFeatures ? (
                   <>
-                    <div className="flex flex-wrap">
-                      <div className="flex items-center gap-2 px-3 pl-3 lg:pl-0 py-2 font-light">
-                        <Info className="h-5 w-5 " />
+                    <div className="flex flex-wrap md:justify-evenly">
+                      {" "}
+                      <div className="flex items-center gap-2 px-3 pl-3 lg:pl-0 py-2">
+                        <Info className="h-5 w-5  text-odis-light" />
                         <span className="text-sm mt-1">
                           {t("metadataInfo")}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2 font-light">
-                        <Map className="h-5 w-5 " />
+                      <div className="flex items-center gap-2 px-3 py-2">
+                        <Map className="h-5 w-5  text-odis-light" />
                         <span className="text-sm  mt-1">
                           {t("mapVisualization")}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2 font-light">
-                        <BarChart3 className="h-5 w-5 " />
-                        <span className="text-sm  mt-1">{t("statistics")}</span>
-                      </div>
-                      <div className="flex items-center gap-2 px-3 py-2 font-light">
-                        <Filter className="h-5 w-5 " />
+                      <div className="flex items-center gap-2 px-3 py-2">
+                        <Filter className="h-5 w-5  text-odis-light" />
                         <span className="text-sm  mt-1">{t("filtering")}</span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2 font-light">
-                        <Globe className="h-5 w-5 " />
+                      <div className="flex items-center gap-2 px-3 py-2">
+                        <BarChart3 className="h-5 w-5  text-odis-light" />
+                        <span className="text-sm  mt-1">{t("statistics")}</span>
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-2">
+                        <Globe className="h-5 w-5  text-odis-light" />
                         <span className="text-sm  mt-1">
                           {t("wgs84Conversion")}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2 font-light">
-                        <Download className="h-5 w-5 " />
+                      <div className="flex items-center gap-2 px-3 py-2">
+                        <Download className="h-5 w-5  text-odis-light" />
 
                         <span className="text-sm mt-1">
                           {t("dataDownload")}
@@ -746,26 +767,26 @@ export default function WfsAnalyzer() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="flex items-start gap-3">
                       <div className="p-2">
-                        <Info className="h-5 w-5 " />
+                        <Info className="h-5 w-5  text-odis-light" />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
                           {t("interactiveMetadataInfo")}
                         </h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 font-light">
                           {t("interactiveMetadataInfoDescription")}
                         </p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <div className="p-2">
-                        <Map className="h-5 w-5 " />
+                        <Map className="h-5 w-5  text-odis-light" />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
                           {t("interactiveMapVisualization")}
                         </h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 font-light">
                           {t("interactiveMapDescription")}
                         </p>
                       </div>
@@ -773,27 +794,13 @@ export default function WfsAnalyzer() {
 
                     <div className="flex items-start gap-3">
                       <div className="p-2">
-                        <BarChart3 className="h-5 w-5 " />
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-gray-800">
-                          {t("attributeStatistics")}
-                        </h4>
-                        <p className="text-sm text-gray-600">
-                          {t("attributeStatisticsDescription")}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="p-2">
-                        <Filter className="h-5 w-5 " />
+                        <Filter className="h-5 w-5  text-odis-light" />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
                           {t("advancedFiltering")}
                         </h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 font-light">
                           {t("advancedFilteringDescription")}
                         </p>
                       </div>
@@ -801,13 +808,27 @@ export default function WfsAnalyzer() {
 
                     <div className="flex items-start gap-3">
                       <div className="p-2">
-                        <Globe className="h-5 w-5 " />
+                        <BarChart3 className="h-5 w-5  text-odis-light" />
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-gray-800">
+                          {t("attributeStatistics")}
+                        </h4>
+                        <p className="text-sm text-gray-600 font-light">
+                          {t("attributeStatisticsDescription")}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="p-2">
+                        <Globe className="h-5 w-5  text-odis-light" />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
                           {t("projectionConversion")}
                         </h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 font-light">
                           {t("projectionConversionDescription")}
                         </p>
                       </div>
@@ -815,13 +836,13 @@ export default function WfsAnalyzer() {
 
                     <div className="flex items-start gap-3">
                       <div className="p-2">
-                        <Download className="h-5 w-5 " />
+                        <Download className="h-5 w-5  text-odis-light" />
                       </div>
                       <div>
                         <h4 className="font-medium text-gray-800">
                           {t("dataDownload")}
                         </h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 font-light">
                           {t("dataDownloadDescription")}
                         </p>
                       </div>
@@ -981,7 +1002,7 @@ export default function WfsAnalyzer() {
               <Card>
                 <CardHeader>
                   <CardTitle className="tracking-tight flex items-center text-lg font-medium">
-                    <AlertCircle className="h-5 w-5 mr-2 text-[var(--primary-color)]" />
+                    <AlertCircle className="h-5 w-5 mr-2 text-odis-light" />
                     {t("currentLayer")}
                     {availableLayers.length > 1 && (
                       <button
