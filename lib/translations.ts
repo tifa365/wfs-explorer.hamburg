@@ -470,7 +470,7 @@ export const enTranslations: Record<TranslationKey, string> = {
   toolDescription2:
     "directly in the browser. Insert a WFS URL or select a sample data set.",
   keyFeatures: "Key Features",
-  metadataInfo: "Explore Metadata",
+  metadataInfo: "View Metadata",
   interactiveMetadataInfo: "Explore Metadata",
   interactiveMetadataInfoDescription: "Data description and other information",
   mapVisualization: "Map Preview",
@@ -760,7 +760,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   toolDescription2:
     "direkt im Browser. Fügen Sie eine WFS-URL ein oder wählen Sie einen Beispieldatensatz.",
   keyFeatures: "Hauptfunktionen",
-  metadataInfo: "Metadaten explorieren",
+  metadataInfo: "Metadaten einsehen",
   interactiveMetadataInfo: "Metadaten explorieren",
   interactiveMetadataInfoDescription:
     "Datenbeschreibung und andere Informationen",
