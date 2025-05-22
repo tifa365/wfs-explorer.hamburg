@@ -192,6 +192,7 @@ export type TranslationKey =
   | "keyFeatures"
   | "mapVisualization"
   | "statistics"
+  | "statisticsTitle"
   | "filtering"
   | "wgs84Conversion"
   | "dataDownload"
@@ -257,7 +258,9 @@ export type TranslationKey =
   | "feedback"
   | "github"
   | "contact"
-  | "imprint";
+  | "imprint"
+  | "previous"
+  | "next";
 
 // English translations
 export const enTranslations: Record<TranslationKey, string> = {
@@ -340,7 +343,7 @@ export const enTranslations: Record<TranslationKey, string> = {
   addFilter: "Add Filter",
   clear: "Clear",
   applyFilters: "Apply Filters",
-  attributeExplorer: "Attribute Explorer",
+  attributeExplorer: "Table",
   attributeStatistics: "Attribute Statistics",
   noDataAvailable: "No data available",
   id: "ID",
@@ -358,8 +361,8 @@ export const enTranslations: Record<TranslationKey, string> = {
   maxLength: "Max Length",
   avgLength: "Avg Length",
   topValues: "Top Values",
-  showMore: "Read more about the features.",
-  showLess: "Show less.",
+  showMore: "show more",
+  showLess: "show less",
   valueDistribution: "Value Distribution",
   true: "True",
   false: "False",
@@ -419,7 +422,7 @@ export const enTranslations: Record<TranslationKey, string> = {
   featureProperties: "Feature Properties",
   bounds: "Bounds",
   checkConsole: "Check the console for more details",
-  statisticsFor: "Statistics for",
+  statisticsFor: "Summary for",
   featuresOf: "features of",
   empty: "(empty)",
   statCard: "Statistics Card",
@@ -441,7 +444,7 @@ export const enTranslations: Record<TranslationKey, string> = {
   map: "Map",
   loaded: "Loaded",
   share: "Share",
-  shareWfs: "Share this Link",
+  shareWfs: "Share this Dataset",
   copied: "Copied!",
   minimumValue: "Minimum Value",
   maximumValue: "Maximum Value",
@@ -474,7 +477,8 @@ export const enTranslations: Record<TranslationKey, string> = {
   interactiveMetadataInfo: "Explore Metadata",
   interactiveMetadataInfoDescription: "Data description and other information",
   mapVisualization: "Map Preview",
-  statistics: "Statistics",
+  statistics: "Summary",
+  statisticsTitle: "Explore Attributes",
   filtering: "Filtering",
   wgs84Conversion: "WGS84 Conversion",
   dataDownload: "GeoJSON Download",
@@ -491,7 +495,8 @@ export const enTranslations: Record<TranslationKey, string> = {
   formatConversion: "Format Conversion",
   formatConversionDescription:
     "GML to GeoJSON conversion for better compatibility",
-  dataDownloadDescription: "Download filtered or complete datasets as GeoJSON",
+  dataDownloadDescription:
+    "Download datasets as GeoJSON in the WGS84 (EPSG:4326) projection.",
   hideExampleDatasets: "Hide example datasets",
   showExampleDatasets: "Show example datasets",
   jsonFormatNotSupported: "JSON Format Not Supported",
@@ -510,7 +515,7 @@ export const enTranslations: Record<TranslationKey, string> = {
   filterOptions: "Filter Options",
   filterDescription: "Filter data by attribute values",
   dataExplorer: "Data Explorer",
-  dataExplorerDescription: "Explore and analyze data attributes",
+  dataExplorerDescription: "Explore attribute data from the WFS",
   invalidWfsUrl: "Invalid WFS URL (400 Bad Request)",
   wfsServiceNotFound: "WFS Service Not Found (404)",
   authenticationRequired: "Authentication Required",
@@ -542,8 +547,9 @@ export const enTranslations: Record<TranslationKey, string> = {
   privacyPolicy: "Privacy Policy",
   feedback: "Feedback",
   github: "GitHub",
-  contact: "Contact",
   imprint: "Imprint",
+  previous: "Previous",
+  next: "Next",
 };
 
 // German translations
@@ -631,7 +637,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   addFilter: "Filter hinzufügen",
   clear: "Löschen",
   applyFilters: "Filter anwenden",
-  attributeExplorer: "Attribut-Explorer",
+  attributeExplorer: "Tabelle",
   attributeStatistics: "Attribut-Statistiken",
   noDataAvailable: "Keine Daten verfügbar",
   id: "ID",
@@ -649,8 +655,8 @@ export const deTranslations: Record<TranslationKey, string> = {
   maxLength: "Max. Länge",
   avgLength: "Durchschn. Länge",
   topValues: "Häufigste Werte",
-  showMore: "Mehr über die Funktionen erfahren.",
-  showLess: "Weniger anzeigen.",
+  showMore: "mehr anzeigen",
+  showLess: "weniger anzeigen",
   valueDistribution: "Werteverteilung",
   true: "Wahr",
   false: "Falsch",
@@ -667,7 +673,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   berlinEnergyDesc: "Energieverbrauchsdaten auf PLZ, Block und Bezirksebene",
   berlinEnergy: "Energieverbrauch in Berlin",
   filter: "Filter",
-  features: "Features",
+  features: "Feature",
   of: "von",
   language: "Sprache",
   english: "Englisch",
@@ -709,7 +715,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   featureProperties: "Feature-Eigenschaften",
   bounds: "Grenzen",
   checkConsole: "Überprüfen Sie die Konsole für weitere Details",
-  statisticsFor: "Statistiken für",
+  statisticsFor: "Zusammenfassung für",
   featuresOf: "Features von",
   empty: "(leer)",
   statCard: "Statistik-Karte",
@@ -720,7 +726,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   missingValuesTitle: "Fehlende Werte",
   availableLayersTitle: "Verfügbare Layer",
   availableLayersDescription:
-    "Dieser WFS-Dienst enthält Layer. Bitte wählen Sie einen zur Analyse aus.",
+    "Dieser WFS-Dienst enthält mehrere Layer. Bitte wählen Sie einen aus.",
   customValue: "Benutzerdefiniert...",
   features500: "500 Features",
   features1000: "1.000 Features",
@@ -731,7 +737,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   map: "Karte",
   loaded: "Geladen",
   share: "Teilen",
-  shareWfs: "Diesen Link teilen",
+  shareWfs: "Diesen Datensatz teilen",
   copied: "Kopiert!",
   minimumValue: "Minimalwert",
   maximumValue: "Maximalwert",
@@ -765,7 +771,8 @@ export const deTranslations: Record<TranslationKey, string> = {
   interactiveMetadataInfoDescription:
     "Datenbeschreibung und andere Informationen",
   mapVisualization: "Kartenvorschau",
-  statistics: "Statistiken",
+  statistics: "Zusammenfassung",
+  statisticsTitle: "Attribute erkunden",
   filtering: "Filtern",
   wgs84Conversion: "WGS84-Konvertierung",
   dataDownload: "GeoJSON-Download",
@@ -783,7 +790,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   formatConversionDescription:
     "GML zu GeoJSON-Konvertierung für bessere Kompatibilität",
   dataDownloadDescription:
-    "Gefilterte oder vollständige Datensätze als GeoJSON herunterladen",
+    "Datensätze als GeoJSON in der Projektion WGS84 (EPSG:4326) herunterladen.",
   hideExampleDatasets: "Beispieldatensätze ausblenden",
   showExampleDatasets: "Beispieldatensätze anzeigen",
   jsonFormatNotSupported: "JSON-Format nicht unterstützt",
@@ -802,7 +809,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   filterOptions: "Filteroptionen",
   filterDescription: "Daten nach Attributwerten filtern",
   dataExplorer: "Daten-Explorer",
-  dataExplorerDescription: "Datenattribute erkunden und analysieren",
+  dataExplorerDescription: "Sachdaten aus dem WFS erkunden",
   invalidWfsUrl: "Ungültige WFS-URL (400 Bad Request)",
   wfsServiceNotFound: "WFS-Dienst nicht gefunden (404)",
   authenticationRequired: "Authentifizierung erforderlich",
@@ -828,13 +835,13 @@ export const deTranslations: Record<TranslationKey, string> = {
   projectionFormat: "Koordinatensystem",
   totalAvailable: "Insgesamt verfügbar",
   downloadGeoJSON: "GeoJSON herunterladen",
-  filteredFeatureCount: "{count} Features entsprechen Ihren Filtern",
+  filteredFeatureCount: "{count} Features entsprechen Ihrer Filterung",
   projectionNote: "Gefilterte Daten werden in der WGS84 Projektion exportiert",
   applyFiltersFirst:
     "Wenden Sie Filter an, um den Download gefilterter Daten zu aktivieren",
   filters: "Filter",
   downloadFilteredGeoJSON: "Gefiltertes GeoJSON herunterladen",
-  matchYourFilters: "entsprechen Ihren Filtern",
+  matchYourFilters: "entsprechen Ihrer Filterung",
   // Footer translations
   projectBy: "Ein Projekt der",
   conductedBy: "Durchgeführt von der",
@@ -843,6 +850,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   privacyPolicy: "Datenschutz",
   feedback: "Feedback",
   github: "GitHub",
-  contact: "Kontakt",
   imprint: "Impressum",
+  previous: "Zurück",
+  next: "Nächstes",
 };

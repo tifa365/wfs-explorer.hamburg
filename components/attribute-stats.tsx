@@ -146,9 +146,7 @@ export function AttributeStats({
             stats.topValues &&
             stats.topValues.length > 0 && (
               <div className="space-y-3">
-                <h3 className="text-base font-medium">
-                  {t("topValuesTitle")} ({t("mostFrequent")})
-                </h3>
+                <h3 className="text-base font-medium">{t("topValuesTitle")}</h3>
                 <div className="space-y-3">
                   {stats.topValues
                     .slice(0, topValuesLimit)
@@ -178,7 +176,7 @@ export function AttributeStats({
                         onClick={handleShowMore}
                         className="text-xs flex items-center gap-1"
                       >
-                        Show More <ChevronDown className="h-3 w-3" />
+                        {t("showMore")} <ChevronDown className="h-3 w-3" />
                       </Button>
                     ) : (
                       <Button
@@ -187,7 +185,7 @@ export function AttributeStats({
                         onClick={handleShowLess}
                         className="text-xs flex items-center gap-1"
                       >
-                        Show Less <ChevronUp className="h-3 w-3" />
+                        {t("showLess")} <ChevronUp className="h-3 w-3" />
                       </Button>
                     )}
                   </div>

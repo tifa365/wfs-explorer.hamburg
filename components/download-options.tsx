@@ -142,9 +142,9 @@ export function DownloadOptions({
               </div>
             )}
           </div> */}
-          <div className="text-sm text-muted-foreground">
+          {/* <div className="text-sm text-muted-foreground">
             {t("downloadCompleteDataText")}
-          </div>
+          </div> */}
           {showDownloadAllOption && maxFeatures < totalFeatureCount && (
             <div className="flex items-start space-x-2  pt-3">
               <Checkbox
@@ -207,7 +207,6 @@ export function DownloadOptions({
               <>
                 <Download className="mr-2 h-4 w-4" />
                 {t("downloadGeoJSON")}
-                {" (EPSG:4326)"}
               </>
             )}
           </Button>

@@ -1,12 +1,17 @@
-"use client"
+"use client";
 
-import { useLanguage } from "@/lib/language-context"
-import { Button } from "@/components/ui/button"
-import { Globe } from "lucide-react"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { useLanguage } from "@/lib/language-context";
+import { Button } from "@/components/ui/button";
+import { Globe } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function LanguageSwitcher() {
-  const { language, setLanguage, t } = useLanguage()
+  const { language, setLanguage, t } = useLanguage();
 
   return (
     <DropdownMenu>
@@ -17,13 +22,19 @@ export function LanguageSwitcher() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setLanguage("en")} className={language === "en" ? "bg-muted" : ""}>
+        <DropdownMenuItem
+          onClick={() => setLanguage("en")}
+          className={language === "en" ? "bg-muted" : ""}
+        >
           {t("english")}
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setLanguage("de")} className={language === "de" ? "bg-muted" : ""}>
+        <DropdownMenuItem
+          onClick={() => setLanguage("de")}
+          className={language === "de" ? "bg-muted" : ""}
+        >
           {t("german")}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

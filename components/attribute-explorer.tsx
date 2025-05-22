@@ -401,7 +401,7 @@ export function AttributeExplorer({
                         feature.geometry ? t("viewOnMap") : t("noGeometry")
                       }
                     >
-                      <MapPin className="h-4 w-4" />
+                      <MapPin className="h-4 w-4 text-odis-light  hover:bg-accent" />
                     </Button>
                   </TableCell>
                 )}

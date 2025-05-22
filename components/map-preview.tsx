@@ -224,13 +224,13 @@ export default function MapPreview({
       className="h-full w-full relative"
       style={{ minHeight: "400px", zIndex: 500 }}
     >
-      {focusFeature && (
+      {/* {focusFeature && (
         <div className="absolute bottom-4 right-4 z-[1000]">
           <Button onClick={handleClearSelection} variant="outline" size="sm">
             <X className="h-4 w-4" /> {t("clearSelection")}
           </Button>
         </div>
-      )}
+      )} */}
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100 bg-opacity-80 z-10">
           <div className="flex flex-col items-center">

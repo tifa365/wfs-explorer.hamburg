@@ -31,6 +31,8 @@ import {
   ExternalLink,
   AlertTriangle,
   WandSparkles,
+  TableOfContents,
+  Sigma,
 } from "lucide-react";
 import {
   fetchWfsCapabilities,
@@ -746,7 +748,9 @@ export default function WfsAnalyzer() {
                       </div>
                       <div className="flex items-center gap-2 px-3 py-2">
                         <BarChart3 className="h-5 w-5  text-odis-light" />
-                        <span className="text-sm  mt-1">{t("statistics")}</span>
+                        <span className="text-sm  mt-1">
+                          {t("statisticsTitle")}
+                        </span>
                       </div>
                       <div className="flex items-center gap-2 px-3 py-2">
                         <Globe className="h-5 w-5  text-odis-light" />
@@ -1256,7 +1260,7 @@ export default function WfsAnalyzer() {
                     {/* WFS Summary Information */}
                     {filteredData && (
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-2">
-                        <div className="bg-white p-3 rounded-md border ">
+                        <div className="bg-white p-3 border ">
                           <p className="text-sm mb-1">{t("featuresLoaded")}</p>
                           {isMaxFeaturesUpdating ? (
                             <div className="flex items-center gap-2">
@@ -1276,13 +1280,13 @@ export default function WfsAnalyzer() {
                             </p>
                           )}
                         </div>
-                        <div className="bg-white p-3 rounded-md border ">
+                        <div className="bg-white p-3 border ">
                           <p className="text-sm mb-1">{t("attributes")}</p>
                           <p className="text-lg font-bold">
                             {attributes.length}
                           </p>
                         </div>
-                        <div className="bg-white p-3 rounded-md border ">
+                        <div className="bg-white p-3 border ">
                           <p className="text-sm  mb-1">{t("geometryType")}</p>
                           <p className="text-lg font-bold">
                             {hasGeometry
@@ -1383,7 +1387,7 @@ export default function WfsAnalyzer() {
                   <CardHeader>
                     <CardTitle className="tracking-tight flex items-center text-lg font-medium">
                       <BarChart3 className="h-5 w-5 mr-2 text-[var(--primary-color)]" />
-                      {t("statistics")}
+                      {t("statisticsTitle")}
                     </CardTitle>
                     <CardDescription>
                       {t("dataExplorerDescription")}
@@ -1393,11 +1397,11 @@ export default function WfsAnalyzer() {
                     <Tabs defaultValue="explorer" className="w-full">
                       <TabsList className="mb-4">
                         <TabsTrigger value="explorer" className="text-sm">
-                          <Search className="h-4 w-4 mr-2" />
+                          <TableOfContents className="h-4 w-4 mr-2" />
                           {t("attributeExplorer")}
                         </TabsTrigger>
                         <TabsTrigger value="statistics" className="text-sm">
-                          <BarChart3 className="h-4 w-4 mr-2" />
+                          <Sigma className="h-4 w-4 mr-2" />
                           {t("statistics")}
                         </TabsTrigger>
                       </TabsList>

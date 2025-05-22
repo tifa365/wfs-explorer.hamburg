@@ -91,20 +91,6 @@ export function DownloadFilteredOptions({
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          {isFiltered ? (
-            <div className="text-sm">
-              <p className="mb-2">
-                {featureCount.toLocaleString()} {t("features")}{" "}
-                {t("matchYourFilters")}
-              </p>
-              <p className="text-muted-foreground">{t("projectionNote")}</p>
-            </div>
-          ) : (
-            <div className="text-sm text-muted-foreground">
-              {t("applyFiltersFirst")}
-            </div>
-          )}
-
           <Button
             onClick={handleDownload}
             className="w-full bg-odis-light hover:bg-active hover:!text-odis-dark text-white"
@@ -119,11 +105,16 @@ export function DownloadFilteredOptions({
             ) : (
               <>
                 <Download className="mr-2 h-4 w-4" />
-                {t("downloadFilteredGeoJSON")}{" "}
-                {projectionIssue ? `(${t("nativeProjection")})` : "(EPSG:4326)"}
+                {t("downloadGeoJSON")}{" "}
               </>
             )}
           </Button>
+          <div className="text-sm">
+            <p className="mb-2 font-light">
+              {featureCount.toLocaleString()} {t("features")}{" "}
+              {t("matchYourFilters")}
+            </p>
+          </div>
         </div>
       </CardContent>
     </Card>

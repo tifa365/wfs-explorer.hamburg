@@ -41,7 +41,7 @@ export function LayerSelector({
             <Button
               key={layer.id}
               variant="outline"
-              className="justify-start h-auto py-3 px-4 text-left"
+              className="justify-start h-auto py-3 px-4 text-left hover:bg-active-light"
               onClick={() => onSelectLayer(layer)}
               disabled={isLoading}
             >

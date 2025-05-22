@@ -431,7 +431,7 @@ export function AttributeFilter({
       {activeFilters.length > 0 && (
         <div className="flex justify-end">
           <Badge variant="secondary">
-            {filteredCount} of {data.features.length} features
+            {filteredCount} {t("of")} {data.features.length} {t("features")}
           </Badge>
         </div>
       )}
@@ -439,7 +439,7 @@ export function AttributeFilter({
       {/* Active filters */}
       {activeFilters.length > 0 && (
         <div className="bg-muted p-3 rounded-md">
-          <div className="text-sm font-medium mb-2">Active Filters:</div>
+          <div className="text-sm font-medium mb-2">{t("activeFilters")}</div>
           <div className="flex flex-wrap gap-2">
             {activeFilters.map((filter) => (
               <Badge
@@ -457,7 +457,7 @@ export function AttributeFilter({
               onClick={clearFilters}
             >
               <Trash2 className="h-3 w-3 mr-1" />
-              Clear All
+              {t("clearAll")}
             </Button>
           </div>
         </div>
@@ -484,7 +484,7 @@ export function AttributeFilter({
             {/* Attribute selector */}
             <div className="space-y-1">
               <Label htmlFor={`attribute-${condition.id}`} className="text-xs">
-                Attribute
+                {t("attribute")}
               </Label>
               <Select
                 value={condition.attribute}
@@ -508,7 +508,7 @@ export function AttributeFilter({
             {/* Operator selector */}
             <div className="space-y-1">
               <Label htmlFor={`operator-${condition.id}`} className="text-xs">
-                Operator
+                {t("operator")}
               </Label>
               <Select
                 value={condition.operator}
