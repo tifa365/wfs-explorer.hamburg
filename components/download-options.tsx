@@ -145,31 +145,6 @@ export function DownloadOptions({
           {/* <div className="text-sm text-muted-foreground">
             {t("downloadCompleteDataText")}
           </div> */}
-          {showDownloadAllOption && maxFeatures < totalFeatureCount && (
-            <div className="flex items-start space-x-2  pt-3">
-              <Checkbox
-                id="download-all"
-                checked={downloadAll}
-                onCheckedChange={(checked) =>
-                  setDownloadAll(checked as boolean)
-                }
-              />
-              <div className="grid gap-1.5 leading-none">
-                <Label
-                  htmlFor="download-all"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  {t("downloadAllFeatures")}
-                </Label>
-                {totalFeatureCount && (
-                  <p className="text-xs text-muted-foreground">
-                    {t("totalAvailable")}: {totalFeatureCount.toLocaleString()}{" "}
-                    {t("features")}
-                  </p>
-                )}
-              </div>
-            </div>
-          )}
 
           {/* <Button
             onClick={handleDownload}
@@ -210,6 +185,32 @@ export function DownloadOptions({
               </>
             )}
           </Button>
+
+          {showDownloadAllOption && maxFeatures < totalFeatureCount && (
+            <div className="flex items-start space-x-2  pt-3">
+              <Checkbox
+                id="download-all"
+                checked={downloadAll}
+                onCheckedChange={(checked) =>
+                  setDownloadAll(checked as boolean)
+                }
+              />
+              <div className="grid gap-1.5 leading-none">
+                <Label
+                  htmlFor="download-all"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  {t("downloadAllFeatures")}
+                </Label>
+                {totalFeatureCount && (
+                  <p className="text-xs text-muted-foreground">
+                    {t("totalAvailable")}: {totalFeatureCount.toLocaleString()}{" "}
+                    {t("features")}
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>

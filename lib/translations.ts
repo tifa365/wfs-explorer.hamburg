@@ -102,6 +102,7 @@ export type TranslationKey =
   | "missingValues"
   | "exampleDatasets"
   | "exampleDatasetsDescription"
+  | "ausprobieren"
   | "berlinCemeteries"
   | "berlinCemeteriesDesc"
   | "berlinBlocks"
@@ -368,6 +369,7 @@ export const enTranslations: Record<TranslationKey, string> = {
   missingValues: "Missing Values",
   exampleDatasets: "Example services",
   exampleDatasetsDescription: "Try these example WFS services from",
+  ausprobieren: ".",
   berlinCemeteries: "Berlin Cemeteries",
   berlinCemeteriesDesc: "Cemetery locations and information in Berlin",
   berlinBlocks: "Berlin Blocks",
@@ -659,8 +661,8 @@ export const deTranslations: Record<TranslationKey, string> = {
   false: "Falsch",
   missingValues: "Fehlende Werte",
   exampleDatasets: "Beispiel Dienste",
-  exampleDatasetsDescription:
-    "Probieren Sie diese Beispiel-WFS-Dienste aus dem",
+  exampleDatasetsDescription: "Beispiel-WFS-Dienste aus dem",
+  ausprobieren: "ausprobieren.",
   berlinCemeteries: "Berliner Friedhöfe",
   berlinCemeteriesDesc: "Friedhofsstandorte und -informationen in Berlin",
   berlinBlocks: "Berliner Blöcke",
@@ -759,9 +761,9 @@ export const deTranslations: Record<TranslationKey, string> = {
   wfsData: "WFS-Daten",
   wfsDataInfo:
     "Ein WFS (Web Feature Service) ist ein Online-Dienst, der es ermöglicht, geografische Daten über das Internet abzurufen.",
-  toolDescription1: "Visualisieren, analysieren und exportieren Sie",
+  toolDescription1: "Visualisiere, analysiere und exportiere ",
   toolDescription2:
-    "direkt im Browser. Fügen Sie eine WFS-URL ein oder wählen Sie einen Beispieldatensatz.",
+    "direkt im Browser. Füge eine WFS-URL ein oder wähle einen Beispieldatensatz.",
   keyFeatures: "Hauptfunktionen",
   metadataInfo: "Metadaten einsehen",
   interactiveMetadataInfo: "Metadaten explorieren",
