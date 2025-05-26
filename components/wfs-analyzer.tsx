@@ -658,57 +658,63 @@ export default function WfsAnalyzer() {
         <div className="bg-white rounded-xl p-8 md:p-12 mb-8 shadow-lg">
           {/* Description */}
           <div className="mb-10 relative">
-            {/* <h2 className="text-2xl font-semibold text-gray-800 mb-4"> */}
+            <div>
+              <div className="w-full md:w-1/2">
+                <h1 className="text-3xl font-bold text-odis-dark mb-2">
+                  WFS<span className="text-odis-light">Explorer</span>
+                  <p className="text-sm pb-2 italic">aka WFS-Zard</p>
+                </h1>
 
-            <h1 className="text-3xl font-bold text-odis-dark mb-2">
-              WFS<span className="text-odis-light">Explorer</span>
-              <p className="text-sm pb-2 italic">aka WFS-Zard</p>
-            </h1>
+                <img
+                  className="w-8 sm:w-12 md:w-20"
+                  style={{
+                    position: "absolute",
+                    right: "0px",
+                    top: "-5px",
+                    // width: "85px",
+                    // transform: "rotateY(180deg)",
+                  }}
+                  src="./magicglobe3.svg"
+                  alt=""
+                />
 
-            <img
-              className="w-20"
-              style={{
-                position: "absolute",
-                right: "0px",
-                top: "-15px",
-                width: "65px",
-                // transform: "rotateY(180deg)",
-              }}
-              src="./magicglobe3.svg"
-              alt=""
-            />
-
-            {/* </h2> */}
-            <p className="mb-4">
-              {t("toolDescription1")}{" "}
-              {/* {
-                <button
-                  // size="sm"
-                  className="text-odis-light hover:text-odis-dark  hover:bg-white !justify-start"
-                  onClick={() => setShowFeatures(!showFeatures)}
-                >
-                  {t("wfsData")}
-                </button>
-              } */}
-              <span
-                data-tooltip-id="url-tooltip"
-                data-tooltip-content={t("wfsDataInfo")}
-                className="text-odis-light hover:text-odis-dark"
-              >
-                {t("wfsData")}
-              </span>{" "}
-              {t("toolDescription2")}
-            </p>
-            <Tooltip
-              id="url-tooltip"
-              style={{
-                width: "150px",
-                backgroundColor: "#4c68c7",
-                color: "white",
-                zIndex: 30,
-              }}
-            />
-
+                {/* </h2> */}
+                <p className="mb-4">
+                  {t("toolDescription1")}{" "}
+                  <span
+                    data-tooltip-id="url-tooltip"
+                    data-tooltip-content={t("wfsDataInfo")}
+                    className="text-odis-light hover:text-odis-dark"
+                  >
+                    {t("wfsData")}
+                  </span>{" "}
+                  {t("toolDescription2")}
+                </p>
+                <Tooltip
+                  id="url-tooltip"
+                  style={{
+                    width: "150px",
+                    backgroundColor: "#4c68c7",
+                    color: "white",
+                    zIndex: 30,
+                  }}
+                />
+              </div>
+              {/* <div className="w-full md:w-1/2">
+                <img
+                  className="w-20"
+                  style={{
+                    // position: "absolute",
+                    // right: "0px",
+                    // top: "-15px",
+                    width: "65px",
+                    // transform: "rotateY(180deg)",
+                  }}
+                  src="./magicglobe3.svg"
+                  alt=""
+                />
+              </div> */}
+            </div>
             {/* Feature overview with icons only by default */}
             <div className="mb-4">
               <div className="flex flex-col">
@@ -728,40 +734,41 @@ export default function WfsAnalyzer() {
 
                 {!showFeatures ? (
                   <>
-                    <div className="flex flex-wrap md:justify-evenly">
-                      {" "}
-                      <div className="flex items-center gap-2 px-3 pl-3 lg:pl-0 py-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      <div className="flex items-start px-3">
                         <Info className="h-5 w-5  text-odis-light" />
-                        <span className="text-sm mt-1">
+                        <span className="text-sm mt-1 pl-2">
                           {t("metadataInfo")}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2">
+                      <div className="flex items-start px-3">
                         <Map className="h-5 w-5  text-odis-light" />
-                        <span className="text-sm  mt-1">
+                        <span className="text-sm mt-1 pl-2">
                           {t("mapVisualization")}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2">
+                      <div className="flex items-start px-3">
                         <Filter className="h-5 w-5  text-odis-light" />
-                        <span className="text-sm  mt-1">{t("filtering")}</span>
+                        <span className="text-sm mt-1 pl-2">
+                          {t("filtering")}
+                        </span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2">
+
+                      <div className="flex items-start px-3">
                         <BarChart3 className="h-5 w-5  text-odis-light" />
-                        <span className="text-sm  mt-1">
+                        <span className="text-sm mt-1 pl-2">
                           {t("statisticsTitle")}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2">
+                      <div className="flex items-start px-3">
                         <Globe className="h-5 w-5  text-odis-light" />
-                        <span className="text-sm  mt-1">
+                        <span className="text-sm mt-1 pl-2">
                           {t("wgs84Conversion")}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2">
+                      <div className="flex items-start px-3">
                         <Download className="h-5 w-5  text-odis-light" />
-
-                        <span className="text-sm mt-1">
+                        <span className="text-sm mt-1 pl-2">
                           {t("dataDownload")}
                         </span>
                       </div>
