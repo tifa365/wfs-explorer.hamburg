@@ -63,7 +63,7 @@ export const Footer: React.FC = () => {
                 className="inline-block"
               >
                 <img
-                  src="https://logos.citylab-berlin.org/logo-citylab-berlin.svg"
+                  src="./img/citylab.svg"
                   alt="CityLAB Berlin"
                   className="h-10 w-auto"
                 />
@@ -82,7 +82,7 @@ export const Footer: React.FC = () => {
                 className="inline-block"
               >
                 <img
-                  src="https://logos.citylab-berlin.org/logo-senatskanzlei-buergermeister-vertikal-schwarz.svg"
+                  src="./img/berlin.svg"
                   alt="Der Regierende Bürgermeister von Berlin Senatskanzlei"
                   className="h-14 w-auto border border-gray-300"
                 />
