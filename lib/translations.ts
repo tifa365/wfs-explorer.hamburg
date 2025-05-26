@@ -325,8 +325,7 @@ export const enTranslations: Record<TranslationKey, string> = {
   geometryType: "Geometry Type",
   usingWGS84: "Using WGS84 (EPSG:4326) projection",
   mapPreview: "Map Preview",
-  mapPreviewDescription:
-    "Spatial visualization of the WFS data in WGS84 projection",
+  mapPreviewDescription: "Spatial visualization of the WFS data",
   loadingMap: "Loading map...",
   attributeFilters: "Attribute Filters",
   activeFilters: "Active Filters:",
@@ -368,8 +367,7 @@ export const enTranslations: Record<TranslationKey, string> = {
   false: "False",
   missingValues: "Missing Values",
   exampleDatasets: "Example services",
-  exampleDatasetsDescription:
-    "Try these example WFS services from Berlins Geoportal",
+  exampleDatasetsDescription: "Try these example WFS services from",
   berlinCemeteries: "Berlin Cemeteries",
   berlinCemeteriesDesc: "Cemetery locations and information in Berlin",
   berlinBlocks: "Berlin Blocks",
@@ -619,8 +617,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   geometryType: "Geometrietyp",
   usingWGS84: "Verwendung von WGS84 (EPSG:4326) Projektion",
   mapPreview: "Kartenvorschau",
-  mapPreviewDescription:
-    "Räumliche Visualisierung der WFS-Daten in WGS84-Projektion",
+  mapPreviewDescription: "Räumliche Visualisierung der WFS-Daten",
   loadingMap: "Lade Karte...",
   attributeFilters: "Attributfilter",
   activeFilters: "Aktive Filter:",
@@ -663,7 +660,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   missingValues: "Fehlende Werte",
   exampleDatasets: "Beispiel Dienste",
   exampleDatasetsDescription:
-    "Probieren Sie diese Beispiel-WFS-Dienste aus dem Geoportal Berlin aus.",
+    "Probieren Sie diese Beispiel-WFS-Dienste aus dem",
   berlinCemeteries: "Berliner Friedhöfe",
   berlinCemeteriesDesc: "Friedhofsstandorte und -informationen in Berlin",
   berlinBlocks: "Berliner Blöcke",

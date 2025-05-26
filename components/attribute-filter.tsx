@@ -536,7 +536,9 @@ export function AttributeFilter({
               ) && (
                 <>
                   <Label htmlFor={`value-${condition.id}`} className="text-xs">
-                    {condition.operator === "between" ? "Min Value" : "Value"}
+                    {condition.operator === "between"
+                      ? t("minValue")
+                      : t("value")}
                   </Label>
                   <div className="relative">
                     <Input

@@ -956,7 +956,16 @@ export default function WfsAnalyzer() {
               {showExamples && (
                 <div className="mt-2 p-3 bg-odis-extra-light rounded-md">
                   <p className="text-sm mb-2">
-                    {t("exampleDatasetsDescription")}
+                    {t("exampleDatasetsDescription")}{" "}
+                    <a
+                      href="https://gdi.berlin.de/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-odis-light"
+                    >
+                      Geoportal Berlin
+                    </a>
+                    .
                   </p>
                   <ExampleDatasets
                     onSelectDataset={handleSelectExampleDataset}
