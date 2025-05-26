@@ -561,9 +561,9 @@ export const deTranslations: Record<TranslationKey, string> = {
   analyzeButton: "Laden",
   discoveringLayers: "Entdecke Layer...",
   wfsDescription:
-    "Geben Sie eine gültige WFS-URL ein, um ihre Layer und Daten zu analysieren",
+    "Gebe eine gültige WFS-URL ein, um deine Layer und Daten zu analysieren",
   errorTitle: "Fehler",
-  enterWfsUrl: "Bitte geben Sie eine WFS-URL ein",
+  enterWfsUrl: "Bitte gebe eine WFS-URL ein",
   noLayersFound: "Keine Layer im WFS-Dienst gefunden",
   corsIssueDetected: "CORS-Problem erkannt",
   corsDescription:
@@ -576,7 +576,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   availableLayers: "Verfügbare Layer",
   layers: "Layer",
   layersDescription:
-    "Dieser WFS-Dienst enthält mehrere Layer. Bitte wählen Sie einen zur Analyse aus.",
+    "Dieser WFS-Dienst enthält mehrere Layer. Wählen eine zur Analyse aus.",
   currentLayer: "Metadaten explorieren",
   layerInfoDescription: "Metadaten aus der geladene Layer",
   layer: "Layer:",
@@ -601,12 +601,12 @@ export const deTranslations: Record<TranslationKey, string> = {
   unknown: "Unbekannt",
   countNotSupported: "Zählung nicht unterstützt",
   downloadData: "Daten herunterladen",
-  downloadDescription: "Laden Sie die WFS-Daten als GeoJSON herunter",
+  downloadDescription: "Lade die WFS-Daten als GeoJSON herunter",
   downloading: "Wird heruntergeladen...",
   downloadGeoJSON: "GeoJSON herunterladen",
   downloadFilteredData: "Gefilterte Daten herunterladen",
   downloadFilteredDescription:
-    "Laden Sie die gefilterten WFS-Daten als GeoJSON herunter",
+    "Lade die gefilterten WFS-Daten als GeoJSON herunter",
   downloadFilteredGeoJSON: "Gefiltertes GeoJSON herunterladen",
   downloadCompleteDataText: "Vollständigen Datensatz herunterladen",
   loadingLayerData: "Lade Layer-Daten...",
@@ -683,14 +683,14 @@ export const deTranslations: Record<TranslationKey, string> = {
   // Projection related translations
   projectionError: "Projektionsfehler",
   projectionErrorDesc:
-    "Kartenvorschau ist nicht verfügbar. Verwenden Sie stattdessen die Download-Option mit nativer Projektion.",
+    "Kartenvorschau ist nicht verfügbar. Verwende stattdessen die Download-Option mit nativer Projektion.",
   projectionWarning: "Projektionswarnung",
   nativeProjection: "Native",
   nativeProjectionOnly:
     "Nur native Projektion - WGS84-Konvertierung nicht verfügbar",
   mapNotAvailable:
     "Kartenvorschau aufgrund nicht unterstütztem Projektionssystem nicht verfügbar",
-  useNativeProjection: "Verwenden Sie stattdessen native Projektion",
+  useNativeProjection: "Verwende native Projektion",
   downloadAllFeatures: "Alle Features herunterladen",
 
   // Add these translations to the deTranslations object
@@ -698,14 +698,14 @@ export const deTranslations: Record<TranslationKey, string> = {
     "Das Laden vieler Features kann die Browser-Leistung verlangsamen",
   allFeatures: "Alle Features",
   downloadAllNote:
-    "Sie können alle Features über die Download-Optionen unten herunterladen, unabhängig davon, wie viele zum Anzeigen geladen sind",
+    "Alle Features können über die Download-Optionen unten herunterladen werden, unabhängig davon, wie viele zum Anzeigen geladen sind",
 
   // New translations
   clearSelection: "Auswahl aufheben",
   viewOnMap: "Auf Karte anzeigen",
   noGeometry: "Keine Geometrie verfügbar",
   attributeStatisticsTitle: "Attribut-Statistiken",
-  selectAttributeFirst: "Wählen Sie zuerst ein Attribut",
+  selectAttributeFirst: "Wähle zuerst ein Attribut",
   filterByAttribute: "Nach Attribut filtern",
   apply: "Anwenden",
   coordinates: "Koordinaten",
@@ -713,7 +713,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   lng: "Länge",
   featureProperties: "Feature-Eigenschaften",
   bounds: "Grenzen",
-  checkConsole: "Überprüfen Sie die Konsole für weitere Details",
+  checkConsole: "Überprüfe die Konsole für weitere Details",
   statisticsFor: "Zusammenfassung für",
   featuresOf: "Features von",
   empty: "(leer)",
@@ -725,7 +725,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   missingValuesTitle: "Fehlende Werte",
   availableLayersTitle: "Verfügbare Layer",
   availableLayersDescription:
-    "Dieser WFS-Dienst enthält mehrere Layer. Bitte wählen Sie einen aus.",
+    "Dieser WFS-Dienst enthält mehrere Layer. Bitte wähle eine aus.",
   customValue: "Benutzerdefiniert...",
   features500: "500 Features",
   features1000: "1.000 Features",
@@ -799,7 +799,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   dataDownloadUnavailable: "Daten-Download",
   attributeStatisticsUnavailable: "Attribut-Statistiken",
   limitedFunctionality:
-    "Sie können die Attributdaten weiterhin erkunden, aber räumliche Visualisierung und erweiterte Funktionen sind eingeschränkt.",
+    "Die Attributdaten können weiterhin erkundet werden, aber räumliche Visualisierung und erweiterte Funktionen sind eingeschränkt.",
   showLessDetails: "Weniger Details anzeigen",
   showMoreDetails: "Mehr Details anzeigen",
   loading: "Wird geladen...",
@@ -815,29 +815,28 @@ export const deTranslations: Record<TranslationKey, string> = {
   networkError: "Netzwerkfehler",
   serverError: "Serverfehler",
   troubleshootingSuggestions: "Fehlerbehebungsvorschläge:",
-  checkUrlTypos: "Überprüfen Sie die URL auf Tippfehler",
+  checkUrlTypos: "Überprüfe die URL auf Tippfehler",
   verifyValidWfs:
-    "Stellen Sie sicher, dass die URL auf einen gültigen WFS-Dienst verweist",
-  checkServerOnline:
-    "Stellen Sie sicher, dass der Server online und zugänglich ist",
+    "Stelle sicher, dass die URL auf einen gültigen WFS-Dienst verweist",
+  checkServerOnline: "Stelle sicher, dass der Server online und zugänglich ist",
   tryAddingWfs:
     'Versuchen Sie, "/wfs" am Ende der URL hinzuzufügen, falls es fehlt',
   tryExampleDatasets:
-    "Probieren Sie stattdessen einen unserer Beispieldatensätze aus",
+    "Probiere stattdessen einen unserer Beispieldatensätze aus",
   unknownError:
     "Fehler beim Abrufen der WFS-Funktionen aufgrund eines unbekannten Fehlers",
   fetchDataError: "Fehler beim Abrufen der WFS-Daten",
   maxFeaturesUpdateError:
     "Fehler beim Aktualisieren der Daten mit neuer maximaler Feature-Anzahl",
   downloadFullDataset:
-    "Laden Sie den vollständigen Datensatz im GeoJSON-Format herunter",
+    "Lade den vollständigen Datensatz im GeoJSON-Format herunter",
   projectionFormat: "Koordinatensystem",
   totalAvailable: "Insgesamt verfügbar",
   downloadGeoJSON: "GeoJSON herunterladen",
   filteredFeatureCount: "{count} Features entsprechen Ihrer Filterung",
   projectionNote: "Gefilterte Daten werden in der WGS84 Projektion exportiert",
   applyFiltersFirst:
-    "Wenden Sie Filter an, um den Download gefilterter Daten zu aktivieren",
+    "Wende einen Filter an, um den Download gefilterter Daten zu aktivieren",
   filters: "Filter",
   downloadFilteredGeoJSON: "Gefiltertes GeoJSON herunterladen",
   matchYourFilters: "entsprechen Ihrer Filterung",
