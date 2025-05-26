@@ -1,70 +1,94 @@
-"use client"
+"use client";
 
-import { useLanguage } from "@/lib/language-context"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Button } from "@/components/ui/button"
-import { Loader2, AlertTriangle } from "lucide-react"
-import { useState, useEffect } from "react"
+import { useLanguage } from "@/lib/language-context";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import { Loader2, AlertTriangle } from "lucide-react";
+import { useState, useEffect } from "react";
 
 interface FeatureCountSelectorProps {
-  maxFeatures: number
-  onMaxFeaturesChange: (maxFeatures: number) => void
-  totalFeatureCount: number | null
-  isLoadingCount: boolean
+  maxFeatures: number;
+  onMaxFeaturesChange: (maxFeatures: number) => void;
+  totalFeatureCount: number | null;
+  isLoadingCount: boolean;
 }
 
 export function FeatureCountSelector(props: FeatureCountSelectorProps) {
-  const { maxFeatures, onMaxFeaturesChange, totalFeatureCount, isLoadingCount } = props
-  const { t } = useLanguage()
-  const [isCustom, setIsCustom] = useState(false)
-  const [customValue, setCustomValue] = useState(maxFeatures.toString())
-  const [shouldShowSelector, setShouldShowSelector] = useState(true)
+  const {
+    maxFeatures,
+    onMaxFeaturesChange,
+    totalFeatureCount,
+    isLoadingCount,
+  } = props;
+  const { t } = useLanguage();
+  const [isCustom, setIsCustom] = useState(false);
+  const [customValue, setCustomValue] = useState(maxFeatures.toString());
+  const [shouldShowSelector, setShouldShowSelector] = useState(true);
 
   useEffect(() => {
-    if (totalFeatureCount !== null && totalFeatureCount < 500 && !isLoadingCount) {
-      setShouldShowSelector(false)
+    if (
+      totalFeatureCount !== null &&
+      totalFeatureCount < 500 &&
+      !isLoadingCount
+    ) {
+      setShouldShowSelector(false);
     } else {
-      setShouldShowSelector(true)
+      setShouldShowSelector(true);
     }
-  }, [totalFeatureCount, isLoadingCount])
+  }, [totalFeatureCount, isLoadingCount]);
 
   // Update custom value when maxFeatures changes
   useEffect(() => {
-    const predefinedOptions = [500, 1000, 5000, 10000]
-    setIsCustom(!predefinedOptions.includes(maxFeatures) && maxFeatures !== totalFeatureCount)
-    setCustomValue(maxFeatures.toString())
-  }, [maxFeatures, totalFeatureCount])
+    const predefinedOptions = [500, 1000, 5000, 10000];
+    setIsCustom(
+      !predefinedOptions.includes(maxFeatures) &&
+        maxFeatures !== totalFeatureCount
+    );
+    setCustomValue(maxFeatures.toString());
+  }, [maxFeatures, totalFeatureCount]);
 
   // Handle select change
   const handleSelectChange = (value: string) => {
     if (value === "custom") {
-      setIsCustom(true)
+      setIsCustom(true);
     } else if (value === "all") {
-      setIsCustom(false)
-      onMaxFeaturesChange(totalFeatureCount || 100000)
+      setIsCustom(false);
+      onMaxFeaturesChange(totalFeatureCount || 100000);
     } else {
-      setIsCustom(false)
-      onMaxFeaturesChange(Number.parseInt(value, 10))
+      setIsCustom(false);
+      onMaxFeaturesChange(Number.parseInt(value, 10));
     }
-  }
+  };
 
   // Handle custom value apply
   const handleCustomApply = () => {
-    const value = Number.parseInt(customValue, 10)
+    const value = Number.parseInt(customValue, 10);
     if (!isNaN(value) && value > 0) {
       // Ensure we don't exceed the total feature count if known
       if (totalFeatureCount !== null && value > totalFeatureCount) {
-        onMaxFeaturesChange(totalFeatureCount)
+        onMaxFeaturesChange(totalFeatureCount);
       } else {
-        onMaxFeaturesChange(value)
+        onMaxFeaturesChange(value);
       }
     }
-  }
+  };
 
   if (!shouldShowSelector) {
-    return null
+    return null;
   }
 
   return (
@@ -79,21 +103,15 @@ export function FeatureCountSelector(props: FeatureCountSelectorProps) {
       <CardContent>
         <div className="space-y-2">
           <div className="flex justify-between">
-            <Label htmlFor="max-features">{t("maxFeatures")}</Label>
-            {isLoadingCount ? (
-              <span className="text-sm text-muted-foreground flex items-center">
-                <Loader2 className="h-3 w-3 animate-spin mr-1" />
-                {t("counting")}
-              </span>
-            ) : (
-              <span className="text-sm text-muted-foreground">
-                {totalFeatureCount === null
-                  ? t("unknown")
-                  : totalFeatureCount === -1
-                    ? t("countNotSupported")
-                    : `${t("totalFeatures")}: ${totalFeatureCount.toLocaleString()}`}
-              </span>
-            )}
+            <Label htmlFor="max-features">
+              {t("maxFeatures")}
+              {totalFeatureCount !== null && totalFeatureCount !== -1 && (
+                <>
+                  {" "}
+                  ({t("ofTotal")} {totalFeatureCount?.toLocaleString()})
+                </>
+              )}
+            </Label>
           </div>
 
           <div className="flex gap-2">
@@ -101,9 +119,10 @@ export function FeatureCountSelector(props: FeatureCountSelectorProps) {
               value={
                 isCustom
                   ? "custom"
-                  : maxFeatures === totalFeatureCount && totalFeatureCount !== null
-                    ? "all"
-                    : maxFeatures.toString()
+                  : maxFeatures === totalFeatureCount &&
+                    totalFeatureCount !== null
+                  ? "all"
+                  : maxFeatures.toString()
               }
               onValueChange={handleSelectChange}
             >
@@ -116,13 +135,15 @@ export function FeatureCountSelector(props: FeatureCountSelectorProps) {
                     <SelectItem key={count} value={count.toString()}>
                       {t(`features${count}`)}
                     </SelectItem>
-                  ) : null,
+                  ) : null
                 )}
-                {totalFeatureCount !== null && totalFeatureCount > 0 && maxFeatures < totalFeatureCount && (
-                  <SelectItem value="all">
-                    {t("allFeatures")} ({totalFeatureCount.toLocaleString()})
-                  </SelectItem>
-                )}
+                {totalFeatureCount !== null &&
+                  totalFeatureCount > 0 &&
+                  maxFeatures < totalFeatureCount && (
+                    <SelectItem value="all">
+                      {t("allFeatures")} ({totalFeatureCount.toLocaleString()})
+                    </SelectItem>
+                  )}
                 <SelectItem value="custom">{t("customValue")}</SelectItem>
               </SelectContent>
             </Select>
@@ -133,17 +154,23 @@ export function FeatureCountSelector(props: FeatureCountSelectorProps) {
                   type="number"
                   value={customValue}
                   onChange={(e) => {
-                    const value = Number.parseInt(e.target.value, 10)
+                    const value = Number.parseInt(e.target.value, 10);
                     // Don't allow values greater than total feature count if known
-                    if (totalFeatureCount !== null && !isNaN(value) && value > totalFeatureCount) {
-                      setCustomValue(totalFeatureCount.toString())
+                    if (
+                      totalFeatureCount !== null &&
+                      !isNaN(value) &&
+                      value > totalFeatureCount
+                    ) {
+                      setCustomValue(totalFeatureCount.toString());
                     } else {
-                      setCustomValue(e.target.value)
+                      setCustomValue(e.target.value);
                     }
                   }}
                   className="w-24 px-3 py-2 border rounded-md"
                   min="1"
-                  max={totalFeatureCount !== null ? totalFeatureCount : undefined}
+                  max={
+                    totalFeatureCount !== null ? totalFeatureCount : undefined
+                  }
                 />
                 <Button size="sm" onClick={handleCustomApply}>
                   {t("apply")}
@@ -152,9 +179,11 @@ export function FeatureCountSelector(props: FeatureCountSelectorProps) {
             )}
           </div>
 
-          <p className="text-xs text-muted-foreground mt-1">{t("downloadAllNote")}</p>
+          <p className="text-xs text-muted-foreground mt-1">
+            {t("downloadAllNote")}
+          </p>
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
