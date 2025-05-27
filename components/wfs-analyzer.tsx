@@ -779,6 +779,25 @@ export default function WfsAnalyzer() {
                   )}
                 </Button>
               </div>
+
+              {wfsData && wfsUrl && !error && (
+                <div className="absolute right-0 top-full mt-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-1 hover:bg-active-light"
+                    onClick={copyUrlToClipboard}
+                    title={t("shareWfs")}
+                  >
+                    {isCopied ? (
+                      <Check className="h-4 w-4" />
+                    ) : (
+                      <Share2 className="h-4 w-4" />
+                    )}
+                    {/* {isCopied ? t("copied") : t("shareWfs")} */}
+                  </Button>
+                </div>
+              )}
             </div>
 
             {/* Example datasets - collapsible */}
@@ -1465,23 +1484,6 @@ export default function WfsAnalyzer() {
                     </div>
                   </CardContent>
                 </Card>
-                {wfsData && wfsUrl && !error && (
-                  <div className="top-full mt-2 relative">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex items-center hover:bg-active-light right-0 absolute"
-                      onClick={copyUrlToClipboard}
-                    >
-                      {isCopied ? (
-                        <Check className="h-4 w-4 mr-2" />
-                      ) : (
-                        <Share2 className="h-4 w-4 mr-2" />
-                      )}
-                      {isCopied ? t("copied") : t("shareWfs")}
-                    </Button>
-                  </div>
-                )}
               </div>
             </div>
           )}
