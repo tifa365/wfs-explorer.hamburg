@@ -684,7 +684,7 @@ export default function WfsAnalyzer() {
                   <span
                     data-tooltip-id="url-tooltip"
                     data-tooltip-content={t("wfsDataInfo")}
-                    className="text-odis-light hover:text-odis-dark"
+                    className="decoration-odis-light decoration-dotted underline decoration-2 underline-offset-2"
                   >
                     {t("wfsData")}
                   </span>{" "}
@@ -693,7 +693,7 @@ export default function WfsAnalyzer() {
                 <Tooltip
                   id="url-tooltip"
                   style={{
-                    width: "150px",
+                    maxWidth: "250px",
                     backgroundColor: "#4c68c7",
                     color: "white",
                     zIndex: 30,
