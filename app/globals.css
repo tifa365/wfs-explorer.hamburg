@@ -308,3 +308,15 @@ body > div > main > main > div {
   background-repeat: no-repeat; /* Prevents tiling */
   background-attachment: fixed; /* Makes background fixed during scroll */
 }
+
+.leaflet-control-zoom {
+  display: none;
+}
+
+.leaflet-control-attribution a {
+  display: none;
+}
+
+.leaflet-control-attribution span {
+  display: none;
+}

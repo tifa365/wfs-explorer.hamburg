@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/lib/language-context";
 import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
+import { X, SquarePlus, SquareMinus } from "lucide-react";
 import { projectionDefs } from "@/lib/projection-defs";
 import { useLeafletWithProj4 } from "../hooks/projection-defs";
 import { normalizeProjectionCode, reprojectGeometry } from "@/lib/geo-utils";
@@ -231,6 +231,30 @@ export default function MapPreview({
           </Button>
         </div>
       )} */}
+
+      <div
+        className="rounded-md absolute m-2 right-0 z-10 inline-grid bg-white p-2 "
+        style={{ zIndex: 1000 }}
+      >
+        <button
+          className="mb-2"
+          onClick={() => {
+            mapInstance.current?.zoomIn();
+          }}
+          title="zoom in"
+        >
+          <SquarePlus></SquarePlus>
+        </button>
+
+        <button
+          onClick={() => {
+            mapInstance.current?.zoomOut();
+          }}
+          title="zoom out"
+        >
+          <SquareMinus></SquareMinus>
+        </button>
+      </div>
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100 bg-opacity-80 z-10">
           <div className="flex flex-col items-center">
