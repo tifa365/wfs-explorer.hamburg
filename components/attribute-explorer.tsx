@@ -304,7 +304,7 @@ export function AttributeExplorer({
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="attribute-select">{t("selectAttribute")}</Label>
           <Select
@@ -349,7 +349,7 @@ export function AttributeExplorer({
             </datalist>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div
         className="border rounded-md overflow-auto"
