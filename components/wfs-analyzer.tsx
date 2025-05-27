@@ -33,6 +33,7 @@ import {
   WandSparkles,
   TableOfContents,
   Sigma,
+  X,
 } from "lucide-react";
 import {
   fetchWfsCapabilities,
@@ -720,39 +721,68 @@ export default function WfsAnalyzer() {
             {/* Search input */}
             <div className="relative">
               <div className="flex border rounded-lg overflow-hidden">
-                <Input
-                  id="wfs-url"
-                  placeholder={t("wfsUrlPlaceholder")}
-                  value={wfsUrl}
-                  onChange={(e) => {
-                    setWfsUrl(e.target.value);
-                    updateUrlParameter("");
+                <div className="relative flex-grow">
+                  <Input
+                    id="wfs-url"
+                    placeholder={t("wfsUrlPlaceholder")}
+                    value={wfsUrl}
+                    onChange={(e) => {
+                      setWfsUrl(e.target.value);
+                      updateUrlParameter("");
 
-                    // If URL changes significantly, clear all previous data
-                    if (e.target.value.trim() !== analyzedUrl) {
-                      // Clear all data states when URL changes
-                      setSelectedLayer(null);
-                      setAvailableLayers([]);
-                      setWfsData(null);
-                      setFilteredData(null);
-                      setAttributes([]);
-                      setTotalFeatureCount(null);
-                      setHasGeometry(false);
-                      setSourceProjection("EPSG:4326");
-                      setIsFiltered(false);
-                      setHasProjectionIssue(false);
-                      setFocusedFeature(null);
-                      setError(null);
-                      setErrorType(null);
-                    }
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      handleAnalyze();
-                    }
-                  }}
-                  className="py-6 px-4 text-lg border-0 focus-visible:ring-1 focus-visible:ring-[#1a3a8f] focus-visible:ring-offset-0 flex-grow rounded-l-md !rounded-r-none"
-                />
+                      // If URL changes significantly, clear all previous data
+                      if (e.target.value.trim() !== analyzedUrl) {
+                        // Clear all data states when URL changes
+                        setSelectedLayer(null);
+                        setAvailableLayers([]);
+                        setWfsData(null);
+                        setFilteredData(null);
+                        setAttributes([]);
+                        setTotalFeatureCount(null);
+                        setHasGeometry(false);
+                        setSourceProjection("EPSG:4326");
+                        setIsFiltered(false);
+                        setHasProjectionIssue(false);
+                        setFocusedFeature(null);
+                        setError(null);
+                        setErrorType(null);
+                      }
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        handleAnalyze();
+                      }
+                    }}
+                    className="py-6 px-4 pr-10 text-lg border-0 focus-visible:ring-1 focus-visible:ring-[#1a3a8f] focus-visible:ring-offset-0 rounded-l-md !rounded-r-none"
+                  />
+                  {wfsUrl && (
+                    <button
+                      variant="ghost"
+                      size="sm"
+                      className="absolute right-2 top-1/2 transform -translate-y-1/2 h-6 w-6 p-0"
+                      onClick={() => {
+                        setWfsUrl("");
+                        // Clear all data when input is cleared
+                        setSelectedLayer(null);
+                        setAvailableLayers([]);
+                        setWfsData(null);
+                        setFilteredData(null);
+                        setAttributes([]);
+                        setTotalFeatureCount(null);
+                        setHasGeometry(false);
+                        setSourceProjection("EPSG:4326");
+                        setIsFiltered(false);
+                        setHasProjectionIssue(false);
+                        setFocusedFeature(null);
+                        setError(null);
+                        setErrorType(null);
+                        setAnalyzedUrl("");
+                      }}
+                    >
+                      <X className="h-4 w-4 text-gray-400" />
+                    </button>
+                  )}
+                </div>
                 <Button
                   className="h-auto bg-odis-light hover:bg-active hover:!text-odis-dark text-white !rounded-l-none"
                   onClick={handleAnalyze}
