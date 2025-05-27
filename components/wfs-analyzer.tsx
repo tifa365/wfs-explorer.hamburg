@@ -657,7 +657,7 @@ export default function WfsAnalyzer() {
         {/* Main content area with white background */}
         <div className="bg-white rounded-xl p-8 md:p-12 mb-8 shadow-lg">
           {/* Description */}
-          <div className="mb-10 relative">
+          <div className="mb-8 relative">
             <div>
               <div className="w-full md:w-1/2">
                 <h1 className="text-3xl font-bold text-odis-dark mb-2">
@@ -716,152 +716,6 @@ export default function WfsAnalyzer() {
               </div> */}
             </div>
             {/* Feature overview with icons only by default */}
-            <div className="mb-4">
-              <div className="flex flex-col">
-                {/* <div className="flex  items-center">
-                  <button className="text-lg font-medium flex justify-center">
-                    {t("keyFeatures")}
-                  </button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-odis-light  hover:text-odis-dark  hover:bg-white p-2 h-auto flex items-center text-sm"
-                    onClick={() => setShowFeatures(!showFeatures)}
-                  >
-                    {showFeatures ? t("showLess") : t("showMore")}
-                  </Button>
-                </div> */}
-
-                {!showFeatures ? (
-                  <>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                      <div className="flex items-start px-3">
-                        <Info className="h-5 w-5  text-odis-light" />
-                        <span className="text-sm mt-1 pl-2">
-                          {t("metadataInfo")}
-                        </span>
-                      </div>
-                      <div className="flex items-start px-3">
-                        <Map className="h-5 w-5  text-odis-light" />
-                        <span className="text-sm mt-1 pl-2">
-                          {t("mapVisualization")}
-                        </span>
-                      </div>
-                      <div className="flex items-start px-3">
-                        <Filter className="h-5 w-5  text-odis-light" />
-                        <span className="text-sm mt-1 pl-2">
-                          {t("filtering")}
-                        </span>
-                      </div>
-
-                      <div className="flex items-start px-3">
-                        <BarChart3 className="h-5 w-5  text-odis-light" />
-                        <span className="text-sm mt-1 pl-2">
-                          {t("statisticsTitle")}
-                        </span>
-                      </div>
-                      <div className="flex items-start px-3">
-                        <Globe className="h-5 w-5  text-odis-light" />
-                        <span className="text-sm mt-1 pl-2">
-                          {t("wgs84Conversion")}
-                        </span>
-                      </div>
-                      <div className="flex items-start px-3">
-                        <Download className="h-5 w-5  text-odis-light" />
-                        <span className="text-sm mt-1 pl-2">
-                          {t("dataDownload")}
-                        </span>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="flex items-start gap-3">
-                      <div className="p-2">
-                        <Info className="h-5 w-5  text-odis-light" />
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-gray-800">
-                          {t("interactiveMetadataInfo")}
-                        </h4>
-                        <p className="text-sm text-gray-600 font-light">
-                          {t("interactiveMetadataInfoDescription")}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="p-2">
-                        <Map className="h-5 w-5  text-odis-light" />
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-gray-800">
-                          {t("interactiveMapVisualization")}
-                        </h4>
-                        <p className="text-sm text-gray-600 font-light">
-                          {t("interactiveMapDescription")}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="p-2">
-                        <Filter className="h-5 w-5  text-odis-light" />
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-gray-800">
-                          {t("advancedFiltering")}
-                        </h4>
-                        <p className="text-sm text-gray-600 font-light">
-                          {t("advancedFilteringDescription")}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="p-2">
-                        <BarChart3 className="h-5 w-5  text-odis-light" />
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-gray-800">
-                          {t("attributeStatistics")}
-                        </h4>
-                        <p className="text-sm text-gray-600 font-light">
-                          {t("attributeStatisticsDescription")}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="p-2">
-                        <Globe className="h-5 w-5  text-odis-light" />
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-gray-800">
-                          {t("projectionConversion")}
-                        </h4>
-                        <p className="text-sm text-gray-600 font-light">
-                          {t("projectionConversionDescription")}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="p-2">
-                        <Download className="h-5 w-5  text-odis-light" />
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-gray-800">
-                          {t("dataDownload")}
-                        </h4>
-                        <p className="text-sm text-gray-600 font-light">
-                          {t("dataDownloadDescription")}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
 
             {/* Search input */}
             <div className="relative">
@@ -947,20 +801,163 @@ export default function WfsAnalyzer() {
                   <p className="text-sm mb-2">
                     {t("exampleDatasetsDescription")}{" "}
                     <a
-                      href="https://gdi.berlin.de/"
+                      href="https://geoexplorer.odis-berlin.de/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-odis-light"
                     >
-                      Geoportal Berlin
-                    </a>{" "}
-                    {t("ausprobieren")}
+                      GeoExplorer
+                    </a>
+                    {"."}
                   </p>
                   <ExampleDatasets
                     onSelectDataset={handleSelectExampleDataset}
                   />
                 </div>
               )}
+            </div>
+
+            <div className="">
+              <div className="flex flex-col">
+                {/* <div className="flex  items-center">
+                  <button className="text-lg font-medium flex justify-center">
+                    {t("keyFeatures")}
+                  </button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-odis-light  hover:text-odis-dark  hover:bg-white p-2 h-auto flex items-center text-sm"
+                    onClick={() => setShowFeatures(!showFeatures)}
+                  >
+                    {showFeatures ? t("showLess") : t("showMore")}
+                  </Button>
+                </div> */}
+
+                {wfsUrl.trim() === analyzedUrl &&
+                analyzedUrl !== "" &&
+                !error ? (
+                  <></>
+                ) : (
+                  <>
+                    <div className="mt-8">
+                      <h3 className="text-xs font-semibold text-slate-500 tracking-wide uppercase mb-3">
+                        {t("features")}
+                      </h3>
+
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-3 sm:gap-y-2 gap-x-6 text-sm text-slate-600">
+                        <li className="flex items-start gap-2">
+                          <Info className="h-4 w-4 mt-[2px] text-slate-400" />
+                          <span>{t("metadataInfo")}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <Map className="h-4 w-4 mt-[2px] text-slate-400" />
+                          <span>{t("mapVisualization")}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <Filter className="h-4 w-4 mt-[2px] text-slate-400" />
+                          <span>{t("filtering")}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <BarChart3 className="h-4 w-4 mt-[2px] text-slate-400" />
+                          <span>{t("statisticsTitle")}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <Globe className="h-4 w-4 mt-[2px] text-slate-400" />
+                          <span>{t("wgs84Conversion")}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <Download className="h-4 w-4 mt-[2px] text-slate-400" />
+                          <span>{t("dataDownload")}</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </>
+                  // <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  //   <div className="flex items-start gap-3">
+                  //     <div className="p-2">
+                  //       <Info className="h-5 w-5  text-odis-light" />
+                  //     </div>
+                  //     <div>
+                  //       <h4 className="font-medium text-gray-800">
+                  //         {t("interactiveMetadataInfo")}
+                  //       </h4>
+                  //       <p className="text-sm text-gray-600 font-light">
+                  //         {t("interactiveMetadataInfoDescription")}
+                  //       </p>
+                  //     </div>
+                  //   </div>
+                  //   <div className="flex items-start gap-3">
+                  //     <div className="p-2">
+                  //       <Map className="h-5 w-5  text-odis-light" />
+                  //     </div>
+                  //     <div>
+                  //       <h4 className="font-medium text-gray-800">
+                  //         {t("interactiveMapVisualization")}
+                  //       </h4>
+                  //       <p className="text-sm text-gray-600 font-light">
+                  //         {t("interactiveMapDescription")}
+                  //       </p>
+                  //     </div>
+                  //   </div>
+
+                  //   <div className="flex items-start gap-3">
+                  //     <div className="p-2">
+                  //       <Filter className="h-5 w-5  text-odis-light" />
+                  //     </div>
+                  //     <div>
+                  //       <h4 className="font-medium text-gray-800">
+                  //         {t("advancedFiltering")}
+                  //       </h4>
+                  //       <p className="text-sm text-gray-600 font-light">
+                  //         {t("advancedFilteringDescription")}
+                  //       </p>
+                  //     </div>
+                  //   </div>
+
+                  //   <div className="flex items-start gap-3">
+                  //     <div className="p-2">
+                  //       <BarChart3 className="h-5 w-5  text-odis-light" />
+                  //     </div>
+                  //     <div>
+                  //       <h4 className="font-medium text-gray-800">
+                  //         {t("attributeStatistics")}
+                  //       </h4>
+                  //       <p className="text-sm text-gray-600 font-light">
+                  //         {t("attributeStatisticsDescription")}
+                  //       </p>
+                  //     </div>
+                  //   </div>
+
+                  //   <div className="flex items-start gap-3">
+                  //     <div className="p-2">
+                  //       <Globe className="h-5 w-5  text-odis-light" />
+                  //     </div>
+                  //     <div>
+                  //       <h4 className="font-medium text-gray-800">
+                  //         {t("projectionConversion")}
+                  //       </h4>
+                  //       <p className="text-sm text-gray-600 font-light">
+                  //         {t("projectionConversionDescription")}
+                  //       </p>
+                  //     </div>
+                  //   </div>
+
+                  //   <div className="flex items-start gap-3">
+                  //     <div className="p-2">
+                  //       <Download className="h-5 w-5  text-odis-light" />
+                  //     </div>
+                  //     <div>
+                  //       <h4 className="font-medium text-gray-800">
+                  //         {t("dataDownload")}
+                  //       </h4>
+                  //       <p className="text-sm text-gray-600 font-light">
+                  //         {t("dataDownloadDescription")}
+                  //       </p>
+                  //     </div>
+                  //   </div>
+                  // </div>
+                )}
+              </div>
             </div>
           </div>
 

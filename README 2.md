@@ -33,14 +33,18 @@ A comprehensive tool for analyzing, visualizing, and working with WFS (Web Featu
 2. Install dependencies:
    \`\`\`bash
    npm install
+
    # or
+
    yarn install
    \`\`\`
 
 3. Start the development server:
    \`\`\`bash
-   npm run dev
+   pnpm run dev
+
    # or
+
    yarn dev
    \`\`\`
 
@@ -50,21 +54,21 @@ A comprehensive tool for analyzing, visualizing, and working with WFS (Web Featu
 
 \`\`\`
 wfs-data-analyzer-tool/
-├── app/                  # Next.js app directory
-│   ├── layout.tsx        # Root layout component
-│   ├── page.tsx          # Home page component
-│   └── globals.css       # Global styles
-├── components/           # React components
-│   ├── wfs-analyzer.tsx  # Main WFS analyzer component
-│   ├── map-preview.tsx   # Map visualization component
-│   └── ...               # Other components
-├── lib/                  # Utility functions and services
-│   ├── wfs-service.ts    # WFS service API functions
-│   ├── projection-defs.ts # Projection definitions
-│   └── ...               # Other utilities
-├── public/               # Static assets
-├── types/                # TypeScript type definitions
-└── ...                   # Configuration files
+├── app/ # Next.js app directory
+│ ├── layout.tsx # Root layout component
+│ ├── page.tsx # Home page component
+│ └── globals.css # Global styles
+├── components/ # React components
+│ ├── wfs-analyzer.tsx # Main WFS analyzer component
+│ ├── map-preview.tsx # Map visualization component
+│ └── ... # Other components
+├── lib/ # Utility functions and services
+│ ├── wfs-service.ts # WFS service API functions
+│ ├── projection-defs.ts # Projection definitions
+│ └── ... # Other utilities
+├── public/ # Static assets
+├── types/ # TypeScript type definitions
+└── ... # Configuration files
 \`\`\`
 
 ## Usage
@@ -128,3 +132,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+```
