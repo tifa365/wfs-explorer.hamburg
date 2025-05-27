@@ -5,9 +5,9 @@ import { LanguageProvider } from "@/lib/language-context";
 import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "WFSExplorer",
+  title: "WFS-Explorer",
   description:
-    "Analyze, visualize, and download data from Web Feature Services",
+    "Visualize, analyze and export WFS Data directly in the browser.",
 };
 
 export default function RootLayout({
@@ -24,6 +24,15 @@ export default function RootLayout({
             <Footer />
           </div>
         </LanguageProvider>
+
+        {process.env.NODE_ENV === "production" && (
+          <img
+            referrerPolicy="no-referrer-when-downgrade"
+            src="https://piwik.technologiestiftung-berlin.de/matomo.php?idsite=57&amp;rec=1"
+            style={{ border: 0 }}
+            alt=""
+          />
+        )}
       </body>
     </html>
   );
