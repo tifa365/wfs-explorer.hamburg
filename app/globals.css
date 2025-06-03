@@ -320,3 +320,11 @@ body > div > main > main > div {
 .leaflet-control-attribution span {
   display: none;
 }
+
+.leaflet-popup {
+  height: 100px;
+}
+.leaflet-popup-content {
+  height: 100px;
+  overflow: scroll;
+}

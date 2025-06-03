@@ -777,6 +777,7 @@ export default function WfsAnalyzer() {
                         setError(null);
                         setErrorType(null);
                         setAnalyzedUrl("");
+                        updateUrlParameter("");
                       }}
                     >
                       <X className="h-4 w-4 text-gray-400" />

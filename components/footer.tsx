@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
           {/* Project information section - using flex instead of grid for more consistent rendering */}
           <div className="flex flex-wrap">
             {/* Technologiestiftung Berlin */}
-            <div className="w-1/2 sm:w-1/2 lg:w-1/4 px-2 mb-6">
+            <div className="sm:w-1/2 lg:w-1/4 px-2 mb-6">
               <p className="text-[var(--primary-color)] text-sm font-medium mb-2">
                 {t("projectBy") || "Ein Projekt der"}
               </p>
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* ODIS Berlin */}
-            <div className="w-1/2 sm:w-1/2 lg:w-1/4 px-2 mb-6">
+            <div className="sm:w-1/2 lg:w-1/4 px-2 mb-6">
               <p className="text-[var(--primary-color)] text-sm font-medium mb-2">
                 {t("conductedBy") || "Durchgeführt von der"}
               </p>
@@ -52,7 +52,7 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* CityLAB Berlin */}
-            <div className="w-1/2 sm:w-1/2 lg:w-1/4 px-2 mb-6">
+            <div className="sm:w-1/2 lg:w-1/4 px-2 mb-6">
               <p className="text-[var(--primary-color)] text-sm font-medium mb-2">
                 {t("inCollaborationWith") || "in Zusammenarbeit mit"}
               </p>
@@ -71,7 +71,7 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Berlin Senate */}
-            <div className="w-1/2 sm:w-1/2 lg:w-1/4 px-2 mb-6">
+            <div className="sm:w-1/2 lg:w-1/4 px-2 mb-6">
               <p className="text-[var(--primary-color)] text-sm font-medium mb-2">
                 {t("fundedBy") || "Gefördert von"}
               </p>
