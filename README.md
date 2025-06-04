@@ -30,6 +30,8 @@ With the WFS Explorer, users can interactively explore individual WFS datasets. 
 
 - GeoJSON Export: The dataset can be exported as a GeoJSON file using the widely supported WGS 84 projection (EPSG:4326), enabling seamless integration into other applications.
 
+- CSV Export: The dataset can be exported as a CSV file without the geometries. This can be helpful if you are only interested in the data attributes.
+
 - Direct URL Access: The WFS Explorer supports loading datasets via URL parameters. When a specific WFS URL is passed to the tool, the corresponding dataset is automatically loaded—ideal for embedding into other websites or workflows.
 
 ### About Web Feature Service (WFS)
