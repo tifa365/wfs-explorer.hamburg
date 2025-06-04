@@ -79,9 +79,7 @@ export function DownloadOptions({
       const isCsv = exportFormat === "csv";
 
       const blob = new Blob([data], {
-        type: isCsv
-          ? "text/csv;charset=utf-8;"
-          : `application/${exportFormat || "json"}`,
+        type: isCsv ? "text/csv;charset=utf-8;" : `application/json}`,
       });
 
       // Create a download link
@@ -90,7 +88,7 @@ export function DownloadOptions({
         ? layer.defaultProjection || "Native"
         : "WGS84";
       const filename = `${layer.id.replace(/:/g, "_")}_${projectionLabel}.${
-        exportFormat || "geojson"
+        isCsv ? "csv" : "geojson"
       }`;
       const link = document.createElement("a");
       link.href = downloadUrl;

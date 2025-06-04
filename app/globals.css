@@ -327,4 +327,5 @@ body > div > main > main > div {
 .leaflet-popup-content {
   height: 100px;
   overflow: scroll;
+  overflow-x: hidden;
 }

@@ -46,9 +46,7 @@ export function DownloadFilteredOptions({
       const blob = new Blob(
         [isCsv ? filteredData : JSON.stringify(filteredData, null, 2)],
         {
-          type: isCsv
-            ? "text/csv;charset=utf-8;"
-            : `application/${exportFormat || "json"}`,
+          type: isCsv ? "text/csv;charset=utf-8;" : `application/json}`,
         }
       );
 

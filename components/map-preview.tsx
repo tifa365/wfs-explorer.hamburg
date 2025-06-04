@@ -7,6 +7,9 @@ import { X, SquarePlus, SquareMinus } from "lucide-react";
 import { projectionDefs } from "@/lib/projection-defs";
 import { useLeafletWithProj4 } from "../hooks/projection-defs";
 import { normalizeProjectionCode, reprojectGeometry } from "@/lib/geo-utils";
+import L from "leaflet";
+
+// import proj4 from "proj4";
 
 interface MapPreviewProps {
   data: any;
@@ -72,14 +75,14 @@ export default function MapPreview({
   };
 
   const initializeMap = (geoJsonData: any) => {
-    if (!mapContainer.current || !window.L || !window.proj4) return;
+    if (!mapContainer.current || !L || !window.proj4) return;
 
     setIsLoading(true);
 
-    const map = window.L.map(mapContainer.current).setView([0, 0], 2);
+    const map = L.map(mapContainer.current).setView([0, 0], 2);
     mapInstance.current = map;
 
-    window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "&copy; OpenStreetMap contributors",
     }).addTo(map);
 
@@ -87,7 +90,7 @@ export default function MapPreview({
       handleClearSelection();
     });
 
-    window.L.control.scale().addTo(map);
+    L.control.scale().addTo(map);
 
     const validFeatures = geoJsonData.features?.filter(
       (f: any) => f.geometry?.coordinates?.length
@@ -111,16 +114,9 @@ export default function MapPreview({
       );
     }
 
-    const layer = window.L.geoJSON(processedGeoJson, {
+    const layer = L.geoJSON(processedGeoJson, {
       style: { color: "#4c68c7", weight: 2 },
-      pointToLayer: (f, latlng) =>
-        window.L.circleMarker(latlng, {
-          radius: 5,
-          fillColor: "#4c68c7",
-          color: "#4c68c7",
-          weight: 1,
-          fillOpacity: 0.8,
-        }),
+
       onEachFeature: (feature, layer) => {
         const popup = Object.entries(feature.properties || {})
           .map(([k, v]) => `<strong>${k}:</strong> ${v}`)
@@ -161,7 +157,7 @@ export default function MapPreview({
           map.removeLayer(focusedFeatureLayerRef.current);
         }
 
-        const highlighted = window.L.geoJSON(layer.feature, {
+        const highlighted = L.geoJSON(layer.feature, {
           style: {
             color: "#ffa39e",
             weight: 4,
@@ -183,7 +179,7 @@ export default function MapPreview({
           const center = bounds.getCenter?.();
 
           if (center) {
-            const popup = window.L.popup()
+            const popup = L.popup()
               .setLatLng(center)
               .setContent(popupContent)
               .openOn(map);
