@@ -8,6 +8,7 @@ import { projectionDefs } from "@/lib/projection-defs";
 import { useLeafletWithProj4 } from "../hooks/projection-defs";
 import { normalizeProjectionCode, reprojectGeometry } from "@/lib/geo-utils";
 import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 // import proj4 from "proj4";
 

@@ -14,21 +14,9 @@ export function useLeafletWithProj4({
       Object.entries(projectionDefs).forEach(([code, def]) => {
         window.proj4.defs(code, def);
       });
-      loadLeaflet();
+      onReady();
     };
     document.head.appendChild(proj4Script);
-
-    function loadLeaflet() {
-      const leafletCSS = document.createElement("link");
-      leafletCSS.rel = "stylesheet";
-      leafletCSS.href = "./libs/leaflet.css";
-      document.head.appendChild(leafletCSS);
-
-      const leafletScript = document.createElement("script");
-      leafletScript.src = "./libs/leaflet.js";
-      leafletScript.onload = onReady;
-      document.head.appendChild(leafletScript);
-    }
 
     return () => {
       // Optional: cleanup
