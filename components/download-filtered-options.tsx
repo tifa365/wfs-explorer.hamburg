@@ -1,17 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download, Loader2, Filter } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
-import { Badge } from "@/components/ui/badge";
+import { geojsonToCsv } from "@/lib/geojsonToCsv";
 
 interface DownloadFilteredOptionsProps {
   filteredData: any;
@@ -29,43 +23,57 @@ export function DownloadFilteredOptions({
   filterCount = 0,
 }: DownloadFilteredOptionsProps) {
   const { t } = useLanguage();
-  const [isDownloading, setIsDownloading] = useState(false);
+  const [isDownloadingGeoJSON, setIsDownloadingGeoJSON] = useState(false);
+  const [isDownloadingCSV, setIsDownloadingCSV] = useState(false);
 
   // Get the actual feature count from the filtered data
   const featureCount = filteredData?.features?.length || 0;
 
-  const handleDownload = async () => {
+  const handleDownload = async (exportFormat: string) => {
     try {
-      setIsDownloading(true);
+      if (exportFormat === "csv") {
+        setIsDownloadingCSV(true);
+      } else {
+        setIsDownloadingGeoJSON(true);
+      }
 
-      // Create a blob from the filtered data
-      const blob = new Blob([JSON.stringify(filteredData, null, 2)], {
-        type: "application/json",
-      });
+      if (exportFormat === "csv") {
+        filteredData = geojsonToCsv(filteredData);
+      }
 
-      // Create a download link
+      const isCsv = exportFormat === "csv";
+
+      const blob = new Blob(
+        [isCsv ? filteredData : JSON.stringify(filteredData, null, 2)],
+        {
+          type: isCsv
+            ? "text/csv;charset=utf-8;"
+            : `application/${exportFormat || "json"}`,
+        }
+      );
+
       const downloadUrl = URL.createObjectURL(blob);
       const projectionLabel = projectionIssue ? "Native" : "WGS84";
       const filename = `${layerId.replace(
         /:/g,
         "_"
-      )}_filtered_${projectionLabel}.geojson`;
+      )}_filtered_${projectionLabel}.${exportFormat || "geojson"}`;
+
       const link = document.createElement("a");
       link.href = downloadUrl;
       link.download = filename;
 
-      // Trigger the download
       document.body.appendChild(link);
       link.click();
 
-      // Clean up
       document.body.removeChild(link);
       URL.revokeObjectURL(downloadUrl);
     } catch (error) {
       console.error("Error downloading filtered data:", error);
       alert("Failed to download filtered data. Please try again.");
     } finally {
-      setIsDownloading(false);
+      setIsDownloadingGeoJSON(false);
+      setIsDownloadingCSV(false);
     }
   };
 
@@ -76,28 +84,16 @@ export function DownloadFilteredOptions({
           <Filter className="h-5 w-5" />
           {t("filteredData")}
         </h3>
-        {/* <CardDescription>
-          {isFiltered ? (
-            <div className="flex items-center gap-2">
-              <span>{t("currentFilters")}</span>
-              <Badge variant="secondary">
-                {filterCount} {filterCount === 1 ? t("filter") : t("filters")}
-              </Badge>
-            </div>
-          ) : (
-            t("noFiltersApplied")
-          )}
-        </CardDescription> */}
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           <Button
-            onClick={handleDownload}
+            onClick={() => handleDownload("")}
             className="w-full bg-odis-light hover:bg-active hover:!text-odis-dark text-white"
-            disabled={isDownloading || !isFiltered}
+            disabled={isDownloadingGeoJSON || isDownloadingCSV || !isFiltered}
             size="lg"
           >
-            {isDownloading ? (
+            {isDownloadingGeoJSON ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 {t("downloading")}
@@ -109,6 +105,26 @@ export function DownloadFilteredOptions({
               </>
             )}
           </Button>
+
+          <Button
+            onClick={() => handleDownload("csv")}
+            className="w-full bg-odis-light hover:bg-active hover:!text-odis-dark text-white"
+            disabled={isDownloadingCSV || isDownloadingGeoJSON || !isFiltered}
+            size="lg"
+          >
+            {isDownloadingCSV ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                {t("downloading")}
+              </>
+            ) : (
+              <>
+                <Download className="mr-2 h-4 w-4" />
+                {t("downloadCSV")}
+              </>
+            )}
+          </Button>
+
           <div className="text-sm">
             <p className="mb-2 font-light">
               {featureCount.toLocaleString()} {t("features")}{" "}

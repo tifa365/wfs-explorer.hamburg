@@ -13,9 +13,10 @@ import { Download, Loader2, Database } from "lucide-react";
 import type { LayerInfo } from "@/lib/wfs-service";
 import { fetchWfsDataForDownload } from "@/lib/wfs-service";
 import { useLanguage } from "@/lib/language-context";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { geojsonToCsv } from "@/lib/geojsonToCsv";
 
 interface DownloadOptionsProps {
   wfsUrl: string;
@@ -35,7 +36,9 @@ export function DownloadOptions({
   loadedFeatureCount = 0,
 }: DownloadOptionsProps) {
   const { t } = useLanguage();
-  const [isDownloading, setIsDownloading] = useState(false);
+  const [isDownloadingGeoJSON, setIsDownloadingGeoJSON] = useState(false);
+  const [isDownloadingCSV, setIsDownloadingCSV] = useState(false);
+
   const [downloadType, setDownloadType] = useState<"wgs84" | "native">("wgs84");
   const [downloadAll, setDownloadAll] = useState(true);
 
@@ -45,9 +48,13 @@ export function DownloadOptions({
     totalFeatureCount > 0 &&
     loadedFeatureCount < totalFeatureCount;
 
-  const handleDownload = async () => {
+  const handleDownload = async (exportFormat: string) => {
     try {
-      setIsDownloading(true);
+      if (exportFormat === "csv") {
+        setIsDownloadingCSV(true);
+      } else {
+        setIsDownloadingGeoJSON(true);
+      }
 
       // If there's a projection issue or user selected native, fetch in native projection
       const useNativeProjection = projectionIssue || downloadType === "native";
@@ -56,7 +63,7 @@ export function DownloadOptions({
       const effectiveMaxFeatures = downloadAll ? 0 : maxFeatures;
 
       // Fetch the data with client-side projection handling
-      const data = await fetchWfsDataForDownload(
+      let data = await fetchWfsDataForDownload(
         wfsUrl,
         layer.id,
         effectiveMaxFeatures,
@@ -64,18 +71,27 @@ export function DownloadOptions({
         useNativeProjection
       );
 
-      // Create a blob from the data
-      const blob = new Blob([data], { type: "application/json" });
+      if (exportFormat === "csv") {
+        const dataParsed = JSON.parse(data);
+        data = geojsonToCsv(dataParsed);
+      }
+
+      const isCsv = exportFormat === "csv";
+
+      const blob = new Blob([data], {
+        type: isCsv
+          ? "text/csv;charset=utf-8;"
+          : `application/${exportFormat || "json"}`,
+      });
 
       // Create a download link
       const downloadUrl = URL.createObjectURL(blob);
       const projectionLabel = useNativeProjection
         ? layer.defaultProjection || "Native"
         : "WGS84";
-      const filename = `${layer.id.replace(
-        /:/g,
-        "_"
-      )}_${projectionLabel}.geojson`;
+      const filename = `${layer.id.replace(/:/g, "_")}_${projectionLabel}.${
+        exportFormat || "geojson"
+      }`;
       const link = document.createElement("a");
       link.href = downloadUrl;
       link.download = filename;
@@ -91,7 +107,8 @@ export function DownloadOptions({
       console.error("Error downloading data:", error);
       alert("Failed to download data. Please try again.");
     } finally {
-      setIsDownloading(false);
+      setIsDownloadingGeoJSON(false);
+      setIsDownloadingCSV(false);
     }
   };
 
@@ -149,10 +166,10 @@ export function DownloadOptions({
           {/* <Button
             onClick={handleDownload}
             className="w-full bg-odis-light hover:bg-active hover:!text-odis-dark text-white"
-            disabled={isDownloading}
+            disabled={isDownloadingGeoJSON}
             size="lg"
           >
-            {isDownloading ? (
+            {isDownloadingGeoJSON ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 {t("downloading")}
@@ -170,10 +187,10 @@ export function DownloadOptions({
           <Button
             onClick={handleDownload}
             className="w-full bg-odis-light hover:bg-active hover:!text-odis-dark text-white"
-            disabled={isDownloading}
+            disabled={isDownloadingGeoJSON || isDownloadingCSV}
             size="lg"
           >
-            {isDownloading ? (
+            {isDownloadingGeoJSON ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 {t("downloading")}
@@ -182,6 +199,25 @@ export function DownloadOptions({
               <>
                 <Download className="mr-2 h-4 w-4" />
                 {t("downloadGeoJSON")}
+              </>
+            )}
+          </Button>
+
+          <Button
+            onClick={() => handleDownload("csv")}
+            className="w-full bg-odis-light hover:bg-active hover:!text-odis-dark text-white"
+            disabled={isDownloadingCSV || isDownloadingGeoJSON}
+            size="lg"
+          >
+            {isDownloadingCSV ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                {t("downloading")}
+              </>
+            ) : (
+              <>
+                <Download className="mr-2 h-4 w-4" />
+                {t("downloadCSV")}
               </>
             )}
           </Button>

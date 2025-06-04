@@ -45,6 +45,7 @@ export type TranslationKey =
   | "downloadDescription"
   | "downloading"
   | "downloadGeoJSON"
+  | "downloadCSV"
   | "downloadFilteredData"
   | "downloadFilteredDescription"
   | "downloadFilteredGeoJSON"
@@ -481,7 +482,7 @@ export const enTranslations: Record<TranslationKey, string> = {
   statisticsTitle: "Explore Attributes",
   filtering: "Filtering",
   wgs84Conversion: "WGS84 Conversion",
-  dataDownload: "GeoJSON Download",
+  dataDownload: "Download",
   interactiveMapVisualization: "Interactive Map Preview",
   interactiveMapDescription:
     "View WFS data spatially with interactive features",
@@ -496,7 +497,7 @@ export const enTranslations: Record<TranslationKey, string> = {
   formatConversionDescription:
     "GML to GeoJSON conversion for better compatibility",
   dataDownloadDescription:
-    "Download datasets as GeoJSON in the WGS84 (EPSG:4326) projection.",
+    "Download datasets as GeoJSON in the WGS84 (EPSG:4326) projection or as CSV (attributes only).",
   hideExampleDatasets: "Hide example datasets",
   showExampleDatasets: "Show example datasets",
   jsonFormatNotSupported: "JSON Format Not Supported",
@@ -534,6 +535,7 @@ export const enTranslations: Record<TranslationKey, string> = {
   projectionFormat: "Coordinate System",
   totalAvailable: "Total available",
   downloadGeoJSON: "Download GeoJSON",
+  downloadCSV: "Download CSV",
   filteredFeatureCount: "{count} feature(s) match your filters",
   projectionNote: "Filtered data is exported in the WGS84 projection",
   applyFiltersFirst: "Apply filters to enable filtered data download",
@@ -604,6 +606,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   downloadDescription: "Lade die WFS-Daten als GeoJSON herunter",
   downloading: "Wird heruntergeladen...",
   downloadGeoJSON: "GeoJSON herunterladen",
+  downloadCSV: "CSV herunterladen",
   downloadFilteredData: "Gefilterte Daten herunterladen",
   downloadFilteredDescription:
     "Lade die gefilterten WFS-Daten als GeoJSON herunter",
@@ -774,7 +777,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   statisticsTitle: "Attribute erkunden",
   filtering: "Filtern",
   wgs84Conversion: "WGS84-Konvertierung",
-  dataDownload: "GeoJSON-Download",
+  dataDownload: "Download",
   interactiveMapVisualization: "Kartenvorschau",
   interactiveMapDescription:
     "WFS-Daten räumlich mit interaktiven Funktionen anzeigen",
@@ -789,7 +792,7 @@ export const deTranslations: Record<TranslationKey, string> = {
   formatConversionDescription:
     "GML zu GeoJSON-Konvertierung für bessere Kompatibilität",
   dataDownloadDescription:
-    "Datensätze als GeoJSON in der Projektion WGS84 (EPSG:4326) herunterladen.",
+    "Datensätze als GeoJSON in der Projektion WGS84 (EPSG:4326) herunterladen oder als CSV (nur Attribute).",
   hideExampleDatasets: "Beispieldatensätze ausblenden",
   showExampleDatasets: "Beispieldatensätze anzeigen",
   jsonFormatNotSupported: "JSON-Format nicht unterstützt",
