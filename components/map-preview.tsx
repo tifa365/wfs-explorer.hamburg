@@ -139,6 +139,7 @@ export default function MapPreview({
     geoJsonLayerRef.current = layer;
 
     const bounds = layer.getBounds();
+
     if (bounds?.isValid?.()) {
       map.fitBounds(bounds, { padding: [20, 20], maxZoom: 16 });
     }
@@ -150,6 +151,10 @@ export default function MapPreview({
     const map = mapInstance.current;
     if (!map || !geoJsonLayerRef.current) return;
 
+    const isPoint =
+      feature.geometry?.type === "Point" ||
+      feature.geometry?.type === "MultiPoint";
+
     geoJsonLayerRef.current.eachLayer((layer: any) => {
       const match =
         layer.feature &&
@@ -157,14 +162,35 @@ export default function MapPreview({
           JSON.stringify(layer.feature.properties) ===
             JSON.stringify(feature.properties));
 
-      if (match) {
-        if (
-          focusedFeatureLayerRef.current &&
-          map.hasLayer(focusedFeatureLayerRef.current)
-        ) {
-          map.removeLayer(focusedFeatureLayerRef.current);
-        }
+      if (!match) return;
 
+      // Clear previous highlight
+      if (
+        focusedFeatureLayerRef.current &&
+        map.hasLayer(focusedFeatureLayerRef.current)
+      ) {
+        map.removeLayer(focusedFeatureLayerRef.current);
+      }
+
+      let center: L.LatLng | undefined;
+      let bounds: L.LatLngBounds | undefined;
+
+      if (isPoint && layer.getLatLng) {
+        center = layer.getLatLng();
+        bounds = L.latLngBounds([center]);
+
+        // Highlight point with custom circle
+        const highlightCircle = L.circleMarker(center, {
+          radius: 10,
+          color: "#ffa39e",
+          weight: 2,
+          fillColor: "#ffa39e",
+          fillOpacity: 0.6,
+        }).addTo(map);
+
+        focusedFeatureLayerRef.current = highlightCircle;
+      } else {
+        // Highlight polygon/line with geoJSON styling
         const highlighted = L.geoJSON(layer.feature, {
           style: {
             color: "#ffa39e",
@@ -176,36 +202,38 @@ export default function MapPreview({
 
         focusedFeatureLayerRef.current = highlighted;
 
-        const bounds = layer.getBounds?.();
-        if (bounds?.isValid?.()) {
-          map.fitBounds(bounds, { padding: [50, 50], maxZoom: 18 });
-
-          const popupContent = Object.entries(feature.properties || {})
-            .map(([k, v]) => `<strong>${k}:</strong> ${v}`)
-            .join("<br>");
-
-          const center = bounds.getCenter?.();
-
-          if (center) {
-            const popup = L.popup()
-              .setLatLng(center)
-              .setContent(popupContent)
-              .openOn(map);
-
-            // Wait for the popup DOM to be rendered
-            setTimeout(() => {
-              const closeBtn = document.querySelector(
-                ".leaflet-popup-close-button"
-              ) as HTMLElement | null;
-
-              if (closeBtn) {
-                closeBtn.addEventListener("click", () => {
-                  handleClearSelection(); // Only runs when user manually closes
-                });
-              }
-            }, 1000);
-          }
+        if (layer.getBounds && layer.getBounds().isValid()) {
+          bounds = layer.getBounds();
+          center = bounds.getCenter();
         }
+      }
+
+      if (bounds && bounds.isValid && bounds.isValid() && center) {
+        map.fitBounds(bounds, { padding: [50, 50], maxZoom: 18 });
+
+        const popupContent = Object.entries(feature.properties || {})
+          .map(([k, v]) => `<strong>${k}:</strong> ${v}`)
+          .join("<br>");
+
+        const popup = L.popup({
+          offset: L.point(0, isPoint ? -30 : 0),
+        })
+          .setLatLng(center)
+          .setContent(popupContent)
+          .openOn(map);
+
+        // Attach close button logic
+        setTimeout(() => {
+          const closeBtn = document.querySelector(
+            ".leaflet-popup-close-button"
+          ) as HTMLElement | null;
+
+          if (closeBtn) {
+            closeBtn.addEventListener("click", () => {
+              handleClearSelection();
+            });
+          }
+        }, 1000);
       }
     });
   };
