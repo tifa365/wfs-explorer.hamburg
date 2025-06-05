@@ -329,3 +329,11 @@ body > div > main > main > div {
   overflow: scroll;
   overflow-x: hidden;
 }
+
+.leaflet-marker-icon {
+  display: none !important;
+}
+
+.leaflet-shadow-pane {
+  display: none !important;
+}

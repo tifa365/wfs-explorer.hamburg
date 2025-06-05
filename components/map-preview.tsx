@@ -117,7 +117,14 @@ export default function MapPreview({
 
     const layer = L.geoJSON(processedGeoJson, {
       style: { color: "#4c68c7", weight: 2 },
-
+      pointToLayer: (f, latlng) =>
+        L.circleMarker(latlng, {
+          radius: 5,
+          fillColor: "#4c68c7",
+          color: "#4c68c7",
+          weight: 1,
+          fillOpacity: 0.8,
+        }),
       onEachFeature: (feature, layer) => {
         const popup = Object.entries(feature.properties || {})
           .map(([k, v]) => `<strong>${k}:</strong> ${v}`)
