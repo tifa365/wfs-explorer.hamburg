@@ -637,6 +637,112 @@ function parseCapabilitiesXml(xmlText: string): LayerInfo[] {
   return layers;
 }
 
+export async function fetchDescribeFeatureType(
+  baseUrl: string,
+  typeName: string
+): Promise<{ name: string; type: string }[]> {
+  let cleanUrl = baseUrl.trim();
+  const urlObj = new URL(cleanUrl);
+  cleanUrl = `${urlObj.origin}${urlObj.pathname}`;
+
+  try {
+    const url = new URL(cleanUrl);
+    const originalParams = new URLSearchParams(url.search);
+    const searchParams = new URLSearchParams();
+
+    // Preserve important query parameters (e.g., tokens)
+    for (const [key, value] of originalParams.entries()) {
+      if (
+        !["service", "version", "request", "typeName"].includes(
+          key.toLowerCase()
+        )
+      ) {
+        searchParams.set(key, value);
+      }
+    }
+
+    // Set required WFS DescribeFeatureType parameters
+    searchParams.set("service", "WFS");
+    searchParams.set("version", "2.0.0");
+    searchParams.set("request", "DescribeFeatureType");
+    searchParams.set("typeName", typeName);
+
+    const describeUrl = `${url.origin}${
+      url.pathname
+    }?${searchParams.toString()}`;
+    console.log("Fetching DescribeFeatureType from:", describeUrl);
+
+    const response = await fetch(describeUrl, {
+      method: "GET",
+      headers: {
+        Accept: "application/xml,text/xml",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch DescribeFeatureType: ${response.status} ${response.statusText}`
+      );
+    }
+
+    const xmlText = await response.text();
+
+    return parseDescribeFeatureTypeXml(xmlText);
+  } catch (error) {
+    console.error("Error fetching DescribeFeatureType:", error);
+    throw error instanceof Error ? error : new Error("Unknown error");
+  }
+}
+
+type SchemaInfo = {
+  attributes: {
+    name: string;
+    type: string;
+    nillable?: boolean;
+    minOccurs?: number;
+    maxOccurs?: number | "unbounded";
+  }[];
+};
+
+export function parseDescribeFeatureTypeXml(xmlText: string): SchemaInfo {
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+
+  const schemaEl = xmlDoc.querySelector("schema, xsd\\:schema, *|schema");
+  if (!schemaEl) {
+    throw new Error(
+      "Invalid DescribeFeatureType response: No <schema> element found."
+    );
+  }
+
+  const elements = Array.from(
+    schemaEl.querySelectorAll("element, xsd\\:element, *|element")
+  );
+
+  const attributes = elements
+    .map((el) => {
+      const name = el.getAttribute("name");
+      const type = el.getAttribute("type");
+      const nillable = el.getAttribute("nillable") === "true";
+      const minOccurs = el.getAttribute("minOccurs")
+        ? parseInt(el.getAttribute("minOccurs")!, 10)
+        : undefined;
+      const maxOccurs =
+        el.getAttribute("maxOccurs") === "unbounded"
+          ? "unbounded"
+          : el.getAttribute("maxOccurs")
+          ? parseInt(el.getAttribute("maxOccurs")!, 10)
+          : undefined;
+
+      if (!name || !type) return null;
+
+      return { name, type, nillable, minOccurs, maxOccurs };
+    })
+    .filter((field): field is NonNullable<typeof field> => !!field);
+
+  return { attributes };
+}
+
 // Helper function to extract geometry from GML
 function extractGeometryFromGml(geometryNode: Element): any {
   // This is a simplified implementation - a full implementation would need to handle all GML geometry types

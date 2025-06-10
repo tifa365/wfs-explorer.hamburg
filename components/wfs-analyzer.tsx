@@ -681,7 +681,7 @@ export default function WfsAnalyzer() {
               <div className="w-full md:w-1/2">
                 <h1 className="text-3xl font-bold text-odis-dark mb-2">
                   WFS<span className="text-odis-light">Explorer</span>
-                  <p className="text-sm pb-2 italic">aka WFS-Zard</p>
+                  <p className="text-sm pb-2 italic">aka WFS-Wizard</p>
                 </h1>
 
                 <img
