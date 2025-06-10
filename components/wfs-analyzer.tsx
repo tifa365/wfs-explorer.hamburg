@@ -509,6 +509,24 @@ export default function WfsAnalyzer() {
     }
   }, [wfsUrl]);
 
+  // Clear previous data when switching between layers
+  useEffect(() => {
+    if (selectedLayer === null) {
+      // Reset all data states when URL changes
+      setWfsData(null);
+      setFilteredData(null);
+      setAttributes([]);
+      setTotalFeatureCount(null);
+      setHasGeometry(false);
+      setSourceProjection("EPSG:4326");
+      setIsFiltered(false);
+      setHasProjectionIssue(false);
+      setFocusedFeature(null);
+      setError(null);
+      setErrorType(null);
+    }
+  }, [selectedLayer]);
+
   // Move conditional logic inside the useEffect hook
   useEffect(() => {
     if (hasProjectionIssue) {
@@ -869,20 +887,6 @@ export default function WfsAnalyzer() {
 
             <div className="">
               <div className="flex flex-col">
-                {/* <div className="flex  items-center">
-                  <button className="text-lg font-medium flex justify-center">
-                    {t("keyFeatures")}
-                  </button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-odis-light  hover:text-odis-dark  hover:bg-white p-2 h-auto flex items-center text-sm"
-                    onClick={() => setShowFeatures(!showFeatures)}
-                  >
-                    {showFeatures ? t("showLess") : t("showMore")}
-                  </Button>
-                </div> */}
-
                 {wfsUrl.trim() === analyzedUrl &&
                 analyzedUrl !== "" &&
                 !error ? (
@@ -922,90 +926,6 @@ export default function WfsAnalyzer() {
                       </ul>
                     </div>
                   </>
-                  // <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  //   <div className="flex items-start gap-3">
-                  //     <div className="p-2">
-                  //       <Info className="h-5 w-5  text-odis-light" />
-                  //     </div>
-                  //     <div>
-                  //       <h4 className="font-medium text-gray-800">
-                  //         {t("interactiveMetadataInfo")}
-                  //       </h4>
-                  //       <p className="text-sm text-gray-600 font-light">
-                  //         {t("interactiveMetadataInfoDescription")}
-                  //       </p>
-                  //     </div>
-                  //   </div>
-                  //   <div className="flex items-start gap-3">
-                  //     <div className="p-2">
-                  //       <Map className="h-5 w-5  text-odis-light" />
-                  //     </div>
-                  //     <div>
-                  //       <h4 className="font-medium text-gray-800">
-                  //         {t("interactiveMapVisualization")}
-                  //       </h4>
-                  //       <p className="text-sm text-gray-600 font-light">
-                  //         {t("interactiveMapDescription")}
-                  //       </p>
-                  //     </div>
-                  //   </div>
-
-                  //   <div className="flex items-start gap-3">
-                  //     <div className="p-2">
-                  //       <Filter className="h-5 w-5  text-odis-light" />
-                  //     </div>
-                  //     <div>
-                  //       <h4 className="font-medium text-gray-800">
-                  //         {t("advancedFiltering")}
-                  //       </h4>
-                  //       <p className="text-sm text-gray-600 font-light">
-                  //         {t("advancedFilteringDescription")}
-                  //       </p>
-                  //     </div>
-                  //   </div>
-
-                  //   <div className="flex items-start gap-3">
-                  //     <div className="p-2">
-                  //       <BarChart3 className="h-5 w-5  text-odis-light" />
-                  //     </div>
-                  //     <div>
-                  //       <h4 className="font-medium text-gray-800">
-                  //         {t("attributeStatistics")}
-                  //       </h4>
-                  //       <p className="text-sm text-gray-600 font-light">
-                  //         {t("attributeStatisticsDescription")}
-                  //       </p>
-                  //     </div>
-                  //   </div>
-
-                  //   <div className="flex items-start gap-3">
-                  //     <div className="p-2">
-                  //       <Globe className="h-5 w-5  text-odis-light" />
-                  //     </div>
-                  //     <div>
-                  //       <h4 className="font-medium text-gray-800">
-                  //         {t("projectionConversion")}
-                  //       </h4>
-                  //       <p className="text-sm text-gray-600 font-light">
-                  //         {t("projectionConversionDescription")}
-                  //       </p>
-                  //     </div>
-                  //   </div>
-
-                  //   <div className="flex items-start gap-3">
-                  //     <div className="p-2">
-                  //       <Download className="h-5 w-5  text-odis-light" />
-                  //     </div>
-                  //     <div>
-                  //       <h4 className="font-medium text-gray-800">
-                  //         {t("dataDownload")}
-                  //       </h4>
-                  //       <p className="text-sm text-gray-600 font-light">
-                  //         {t("dataDownloadDescription")}
-                  //       </p>
-                  //     </div>
-                  //   </div>
-                  // </div>
                 )}
               </div>
             </div>
