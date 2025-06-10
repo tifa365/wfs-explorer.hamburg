@@ -1,4 +1,7 @@
 // geo-utils.ts
+import proj4 from "proj4";
+import defs from "proj4js-definitions";
+proj4.defs(defs);
 
 // Normalize a projection code string to standard EPSG:xxxx format
 export function normalizeProjectionCode(projCode: string): string {
@@ -29,20 +32,19 @@ export function reprojectGeometry(
   fromProj: string,
   toProj: string
 ) {
-  if (!geometry?.coordinates || typeof window === "undefined" || !window.proj4)
-    return;
+  if (!geometry?.coordinates || typeof window === "undefined") return;
 
   const from = normalizeProjectionCode(fromProj);
   const to = normalizeProjectionCode(toProj);
 
-  if (!window.proj4.defs[from] || !window.proj4.defs[to]) {
+  if (!proj4.defs[from] || !proj4.defs[to]) {
     console.error(`Missing projection defs for ${from} or ${to}`);
     return;
   }
 
   const reprojectCoord = (coord: number[]) => {
     if (!Array.isArray(coord) || coord.length < 2) return coord;
-    const result = window.proj4(from, to, [coord[0], coord[1]]);
+    const result = proj4(from, to, [coord[0], coord[1]]);
     if (coord.length > 2) result.push(coord[2]);
     return result;
   };

@@ -2,10 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/lib/language-context";
-import { Button } from "@/components/ui/button";
 import { X, SquarePlus, SquareMinus } from "lucide-react";
-import { projectionDefs } from "@/lib/projection-defs";
-import { useLeafletWithProj4 } from "../hooks/projection-defs";
 import { normalizeProjectionCode, reprojectGeometry } from "@/lib/geo-utils";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -39,22 +36,11 @@ export default function MapPreview({
   const mapInstance = useRef<any>(null);
   const geoJsonLayerRef = useRef<any>(null);
   const focusedFeatureLayerRef = useRef<any>(null);
-  const mapInitialized = useRef(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useLeafletWithProj4({
-    onReady: () => {
-      if (data && !mapInitialized.current) {
-        initializeMap(data);
-        mapInitialized.current = true;
-      }
-    },
-    projectionDefs,
-  });
-
   useEffect(() => {
-    if (data && mapInitialized.current) {
+    if (data) {
       destroyMap();
       initializeMap(data);
     }
@@ -76,7 +62,7 @@ export default function MapPreview({
   };
 
   const initializeMap = (geoJsonData: any) => {
-    if (!mapContainer.current || !L || !window.proj4) return;
+    if (!mapContainer.current) return;
 
     setIsLoading(true);
 
