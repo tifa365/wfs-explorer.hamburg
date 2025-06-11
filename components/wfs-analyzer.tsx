@@ -129,6 +129,30 @@ export default function WfsAnalyzer() {
     }
   }, []);
 
+  let firstLoad = false;
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (firstLoad) return;
+      const params = new URLSearchParams(window.location.search);
+      const wfsLayer = params.get("layer");
+
+      const layerFound = availableLayers.filter((l) => {
+        if (l.id === wfsLayer) {
+          return l;
+        }
+      });
+
+      if (layerFound && layerFound[0]?.id) {
+        setTimeout(() => {
+          setSelectedLayer(layerFound[0]);
+          fetchLayerData(layerFound[0]);
+        }, 0);
+      }
+
+      firstLoad = true;
+    }
+  }, [availableLayers]);
+
   useEffect(() => {
     const handleProjectionError = (event: any) => {
       console.log("Projection error detected:", event.detail);
@@ -176,6 +200,8 @@ export default function WfsAnalyzer() {
     if (url === "") {
       const newUrl = new URL(window.location.href);
       newUrl.searchParams.delete("wfs");
+      newUrl.searchParams.delete("layer");
+
       window.history.pushState(
         { path: newUrl.toString() },
         "",
@@ -334,6 +360,14 @@ export default function WfsAnalyzer() {
   const handleLayerSelect = async (layer: LayerInfo) => {
     console.log("Layer selected:", layer);
     setSelectedLayer(layer);
+    const newUrl = new URL(window.location.href);
+    newUrl.searchParams.set("layer", layer.id);
+    window.history.pushState(
+      { path: newUrl.toString() },
+      "",
+      newUrl.toString()
+    );
+
     await fetchLayerData(layer);
   };
 
@@ -976,7 +1010,16 @@ export default function WfsAnalyzer() {
                     {availableLayers.length > 1 && (
                       <button
                         className="p-0 h-auto ml-2 text-odis-light text-sm line-base"
-                        onClick={() => setSelectedLayer(null)}
+                        onClick={() => {
+                          setSelectedLayer(null);
+                          const newUrl = new URL(window.location.href);
+                          newUrl.searchParams.delete("layer");
+                          window.history.pushState(
+                            { path: newUrl.toString() },
+                            "",
+                            newUrl.toString()
+                          );
+                        }}
                       >
                         {t("changeLayer")}
                       </button>
