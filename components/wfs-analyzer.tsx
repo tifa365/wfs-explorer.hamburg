@@ -117,7 +117,7 @@ export default function WfsAnalyzer() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
-      const wfsParam = params.get("loadwfs");
+      const wfsParam = params.get("wfs");
 
       if (wfsParam) {
         console.log("Loading WFS from URL parameter:", wfsParam);
@@ -165,7 +165,7 @@ export default function WfsAnalyzer() {
   const updateUrlParameter = (url: string) => {
     if (typeof window !== "undefined") {
       const newUrl = new URL(window.location.href);
-      newUrl.searchParams.set("loadwfs", url);
+      newUrl.searchParams.set("wfs", url);
       window.history.pushState(
         { path: newUrl.toString() },
         "",
@@ -175,7 +175,7 @@ export default function WfsAnalyzer() {
 
     if (url === "") {
       const newUrl = new URL(window.location.href);
-      newUrl.searchParams.delete("loadwfs");
+      newUrl.searchParams.delete("wfs");
       window.history.pushState(
         { path: newUrl.toString() },
         "",
