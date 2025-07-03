@@ -1,3 +1,5 @@
+import { normalizeProjectionCode, reprojectGeometry } from "@/lib/geo-utils";
+
 // Default maximum number of features to fetch
 const DEFAULT_MAX_FEATURES = 500;
 
@@ -1193,6 +1195,10 @@ export async function fetchWfsData(
   try {
     // Use the layer's default projection if available, otherwise use WGS84
     const sourceProjection = layer?.defaultProjection || "EPSG:4326";
+    // const sourceProjection =
+    //   (layer?.projections?.includes("EPSG:4326")
+    //     ? "EPSG:4326"
+    //     : layer?.defaultProjection) || "EPSG:4326";
     console.log(`Using source projection: ${sourceProjection}`);
 
     // Ensure the URL is valid
@@ -1268,9 +1274,7 @@ export async function fetchWfsData(
     // Use the source projection
     searchParams.set("srsName", sourceProjection);
 
-    const requestUrl = `${url.origin}${
-      url.pathname
-    }?${searchParams.toString()}`;
+    let requestUrl = `${url.origin}${url.pathname}?${searchParams.toString()}`;
 
     console.log("Fetching WFS data from:", requestUrl);
 
@@ -1286,11 +1290,16 @@ export async function fetchWfsData(
         },
       });
 
-      if (!response.ok) {
-        throw new Error(`Failed with status: ${response.status}`);
+      const result = await processResponse(response, useGmlFallback);
+      const normalizedProj = normalizeProjectionCode(sourceProjection);
+      if (normalizedProj !== "EPSG:4326") {
+        console.log("reprojecting geom....");
+
+        result.data.features.forEach((f) =>
+          reprojectGeometry(f.geometry, normalizedProj, "EPSG:4326")
+        );
       }
 
-      const result = await processResponse(response, useGmlFallback);
       return {
         ...result,
         sourceProjection,
