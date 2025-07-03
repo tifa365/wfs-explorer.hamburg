@@ -1190,7 +1190,8 @@ export async function fetchWfsData(
   baseUrl: string,
   layerId: string,
   maxFeatures: number = DEFAULT_MAX_FEATURES,
-  layer?: LayerInfo
+  layer?: LayerInfo,
+  isDowload?: boolean
 ) {
   try {
     // Use the layer's default projection if available, otherwise use WGS84
@@ -1290,14 +1291,21 @@ export async function fetchWfsData(
         },
       });
 
-      const result = await processResponse(response, useGmlFallback);
-      const normalizedProj = normalizeProjectionCode(sourceProjection);
-      if (normalizedProj !== "EPSG:4326") {
-        console.log("reprojecting geom....");
+      let result;
+      console.log("isDowload?: boolean = false", isDowload);
 
-        result.data.features.forEach((f) =>
-          reprojectGeometry(f.geometry, normalizedProj, "EPSG:4326")
-        );
+      if (isDowload) {
+        result = await processResponse(response, useGmlFallback);
+        const normalizedProj = normalizeProjectionCode(sourceProjection);
+        if (normalizedProj !== "EPSG:4326") {
+          console.log("reprojecting geom....");
+
+          result.data.features.forEach((f) =>
+            reprojectGeometry(f.geometry, normalizedProj, "EPSG:4326")
+          );
+        }
+      } else {
+        result = await processResponse(response, useGmlFallback);
       }
 
       return {
@@ -1469,7 +1477,8 @@ export async function fetchWfsDataForDownload(
   layerId: string,
   maxFeatures: number = DEFAULT_MAX_FEATURES,
   layer?: LayerInfo,
-  useNativeProjection = false
+  useNativeProjection = false,
+  isDownload?: boolean
 ) {
   // Declare fetchWfsNativeData here to avoid the "variable is undeclared" error
   async function fetchWfsNativeData(
@@ -1738,7 +1747,8 @@ export async function fetchWfsDataForDownload(
         baseUrl,
         layerId,
         effectiveMaxFeatures,
-        layer
+        layer,
+        isDownload
       );
       return JSON.stringify(data, null, 2);
     }

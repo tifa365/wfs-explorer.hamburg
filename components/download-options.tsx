@@ -68,7 +68,8 @@ export function DownloadOptions({
         layer.id,
         effectiveMaxFeatures,
         layer,
-        useNativeProjection
+        useNativeProjection,
+        true
       );
 
       if (exportFormat === "csv") {
