@@ -8,6 +8,22 @@ export const metadata: Metadata = {
   title: "WFS-Explorer",
   description:
     "Visualize, analyze and export WFS Data directly in the browser.",
+  openGraph: {
+    title: "WFS-Explorer",
+    description:
+      "Visualize, analyze and export WFS Data directly in the browser.",
+    url: "https://wfsexplorer.odis-berlin.de",
+    siteName: "WFS-Explorer",
+    images: [
+      {
+        url: "https://wfsexplorer.odis-berlin.de/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "WFS Explorer preview",
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
