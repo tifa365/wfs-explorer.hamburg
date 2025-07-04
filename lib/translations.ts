@@ -104,14 +104,14 @@ export type TranslationKey =
   | "exampleDatasets"
   | "exampleDatasetsDescription"
   | "ausprobieren"
-  | "berlinCemeteries"
-  | "berlinCemeteriesDesc"
-  | "berlinBlocks"
-  | "berlinBlocksDesc"
-  | "berlinHikingTrails"
-  | "berlinHikingTrailsDesc"
-  | "berlinEnergy"
-  | "berlinEnergyDesc"
+  | "hamburgBikeRoutes"
+  | "hamburgBikeRoutesDesc"
+  | "hamburgBikeRide"
+  | "hamburgBikeRideDesc"
+  | "hamburgTrees"
+  | "hamburgTreesDesc"
+  | "hamburgCycling"
+  | "hamburgCyclingDesc"
   | "filter"
   | "features"
   | "of"
@@ -119,7 +119,6 @@ export type TranslationKey =
   | "english"
   | "german"
   | "total"
-  | "loadingMap"
   | "projectionError"
   | "projectionErrorDesc"
   | "projectionWarning"
@@ -369,17 +368,16 @@ export const enTranslations: Record<TranslationKey, string> = {
   false: "False",
   missingValues: "Missing Values",
   exampleDatasets: "Example services",
-  exampleDatasetsDescription: "Find more WFS services from Berlin using the ",
+  exampleDatasetsDescription: "Find more WFS services from Hamburg using the ",
   ausprobieren: ".",
-  berlinCemeteries: "Berlin Cemeteries",
-  berlinCemeteriesDesc: "Cemetery locations and information in Berlin",
-  berlinBlocks: "Berlin Blocks",
-  berlinBlocksDesc: "Urban blocks and statistical areas in Berlin",
-  berlinHikingTrails: "Berlin Hiking Trails",
-  berlinHikingTrailsDesc: "Hiking and walking trails in Berlin",
-  berlinEnergyDesc:
-    "Energy consumption data at postcode, block and district level",
-  berlinEnergy: "Energy consumption in Berlin",
+  hamburgBikeRoutes: "Hamburg Cycling Network",
+  hamburgBikeRoutesDesc: "City-wide network for everyday cycling in Hamburg",
+  hamburgBikeRide: "Bike + Ride Facilities",
+  hamburgBikeRideDesc: "Bicycle parking facilities at transit stations",
+  hamburgTrees: "Street Trees Hamburg",
+  hamburgTreesDesc: "Street tree cadastre and green infrastructure",
+  hamburgCycling: "Cycling Infrastructure",
+  hamburgCyclingDesc: "Cycling lanes and infrastructure in Hamburg",
   filter: "Filter",
   features: "features",
   of: "of",
@@ -387,7 +385,6 @@ export const enTranslations: Record<TranslationKey, string> = {
   english: "English",
   german: "German",
   total: "total",
-  loadingMap: "Loading map...",
 
   // Projection related translations
   projectionError: "Projection Error",
@@ -534,7 +531,6 @@ export const enTranslations: Record<TranslationKey, string> = {
   downloadFullDataset: "Download the complete dataset in GeoJSON format",
   projectionFormat: "Coordinate System",
   totalAvailable: "Total available",
-  downloadGeoJSON: "Download GeoJSON",
   downloadCSV: "Download CSV",
   filteredFeatureCount: "{count} feature(s) match your filters",
   projectionNote: "Filtered data is exported in the WGS84 projection",
@@ -664,16 +660,16 @@ export const deTranslations: Record<TranslationKey, string> = {
   false: "Falsch",
   missingValues: "Fehlende Werte",
   exampleDatasets: "Beispiel Dienste",
-  exampleDatasetsDescription: "Finde weitere Berliner WFS-Dienste mit dem ",
+  exampleDatasetsDescription: "Finde weitere Hamburger WFS-Dienste mit dem ",
   ausprobieren: "ausprobieren.",
-  berlinCemeteries: "Berliner Friedhöfe",
-  berlinCemeteriesDesc: "Friedhofsstandorte und -informationen in Berlin",
-  berlinBlocks: "Berliner Blöcke",
-  berlinBlocksDesc: "Stadtblöcke und statistische Gebiete in Berlin",
-  berlinHikingTrails: "Berliner Wanderwege",
-  berlinHikingTrailsDesc: "Wander- und Spazierwege in Berlin",
-  berlinEnergyDesc: "Energieverbrauchsdaten auf PLZ, Block und Bezirksebene",
-  berlinEnergy: "Energieverbrauch in Berlin",
+  hamburgBikeRoutes: "Hamburger Radnetz",
+  hamburgBikeRoutesDesc: "Gesamtstädtisches Netz für den Alltagsradverkehr in Hamburg",
+  hamburgBikeRide: "Bike + Ride Anlagen",
+  hamburgBikeRideDesc: "Fahrradabstellanlagen an Schnellbahnhaltestellen",
+  hamburgTrees: "Straßenbäume Hamburg",
+  hamburgTreesDesc: "Straßenbaumkataster und grüne Infrastruktur",
+  hamburgCycling: "Radverkehrsinfrastruktur",
+  hamburgCyclingDesc: "Radwege und Radverkehrsanlagen in Hamburg",
   filter: "Filter",
   features: "Funktionen",
   of: "von",
@@ -681,7 +677,6 @@ export const deTranslations: Record<TranslationKey, string> = {
   english: "Englisch",
   german: "Deutsch",
   total: "gesamt",
-  loadingMap: "Lade Karte...",
 
   // Projection related translations
   projectionError: "Projektionsfehler",
@@ -835,13 +830,11 @@ export const deTranslations: Record<TranslationKey, string> = {
     "Lade den vollständigen Datensatz im GeoJSON-Format herunter",
   projectionFormat: "Koordinatensystem",
   totalAvailable: "Insgesamt verfügbar",
-  downloadGeoJSON: "GeoJSON herunterladen",
   filteredFeatureCount: "{count} Features entsprechen Ihrer Filterung",
   projectionNote: "Gefilterte Daten werden in der WGS84 Projektion exportiert",
   applyFiltersFirst:
     "Wende einen Filter an, um den Download gefilterter Daten zu aktivieren",
   filters: "Filter",
-  downloadFilteredGeoJSON: "Gefiltertes GeoJSON herunterladen",
   matchYourFilters: "entsprechen Ihrer Filterung",
   // Footer translations
   projectBy: "Ein Projekt der",

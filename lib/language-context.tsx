@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useState, type ReactNode } from "react"
+import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
 import { type TranslationKey, enTranslations, deTranslations } from "@/lib/translations"
 
 type Language = "en" | "de"
@@ -14,21 +14,17 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>(() => {
-    // Only run on client side
-    if (typeof window !== "undefined") {
-      // Get browser language (e.g., 'en-US', 'de-DE', etc.)
-      const browserLang = navigator.language.toLowerCase()
+  const [language, setLanguage] = useState<Language>("en") // Always start with English on server
+  const [mounted, setMounted] = useState(false)
 
-      // Check if the browser language starts with 'de' for German
-      if (browserLang.startsWith("de")) {
-        return "de"
-      }
+  // Detect browser language only after hydration
+  useEffect(() => {
+    setMounted(true)
+    const browserLang = navigator.language.toLowerCase()
+    if (browserLang.startsWith("de")) {
+      setLanguage("de")
     }
-
-    // Default to English
-    return "en"
-  })
+  }, [])
 
   const t = (key: TranslationKey): string => {
     const translations = language === "en" ? enTranslations : deTranslations
