@@ -517,8 +517,6 @@ export default function WfsAnalyzer() {
     setWfsUrl(url);
     // Then analyze the URL
     analyzeWfsUrl(url);
-    // Hide examples after selection
-    setShowExamples(false);
   };
 
   // Clear previous data when switching between example datasets

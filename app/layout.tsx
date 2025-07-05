@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { LanguageProvider } from "@/lib/language-context";
 import Footer from "@/components/footer";
+import { SuppressHydrationWarnings } from "@/components/suppress-hydration-warnings";
 
 export const metadata: Metadata = {
   title: "WFS-Explorer",
@@ -34,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <SuppressHydrationWarnings />
         <LanguageProvider>
           <div className="flex flex-col min-h-screen">
             <main className="flex-grow">{children}</main>
