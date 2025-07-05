@@ -14,17 +14,17 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en") // Always start with English on server
+  const [language, setLanguage] = useState<Language>("de") // Always start with German for Hamburg
   const [mounted, setMounted] = useState(false)
 
   // Detect browser language only after hydration
   useEffect(() => {
     setMounted(true)
-    // Only change language if browser is German AND we haven't explicitly set a language
+    // Only change language if browser is NOT German
     if (typeof window !== "undefined") {
       const browserLang = navigator.language.toLowerCase()
-      if (browserLang.startsWith("de")) {
-        setLanguage("de")
+      if (!browserLang.startsWith("de")) {
+        setLanguage("en")
       }
     }
   }, [])
