@@ -677,28 +677,8 @@ export default function WfsAnalyzer() {
   return (
     <div className="min-h-screen bg-odis-light-2">
       <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full max-w-7xl">
-        {/* Header with logo and language switcher */}
-        <div className="flex justify-between items-center mb-8">
-          <div className="flex items-center">
-            {/* <div className="w-12 h-12 rounded-full bg-[#1a3a8f] flex items-center justify-center mr-3">
-              <WandSparkles className="h-6 w-6 text-white" />
-            </div>
-            <div>
-              <h1 className="text-xl font-semibold text-[var(--primary-color)]">
-                {t("appTitle")}
-              </h1>
-              <p className="text-sm text-gray-600 font-light">{t("appSubtitle")}</p>
-            </div> */}
-
-            <a href="https://odis-berlin.de/" target="_blank">
-              <img
-                src={"/logo-odis.svg"}
-                width="200"
-                height="100"
-                alt="Odis logo"
-              />
-            </a>
-          </div>
+        {/* Header with language switcher */}
+        <div className="flex justify-end items-center mb-8">
           <LanguageSwitcher />
         </div>
 
