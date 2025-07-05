@@ -35,22 +35,33 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
   const [pasteUrl, setPasteUrl] = useState("");
   const [selectedService, setSelectedService] = useState<WfsService | null>(null);
 
-  // Debounce search query to improve performance
-  const debouncedSearchQuery = useDebounce(searchQuery, 300);
+  // Reduce debounce time for faster response
+  const debouncedSearchQuery = useDebounce(searchQuery, 150);
 
-  // Filter services based on debounced search query
+  // Pre-process catalog with lowercase text for faster searching
+  const processedCatalog = useMemo(() => 
+    wfsCatalog.map(service => ({
+      ...service,
+      searchText: `${service.title} ${service.description} ${service.organization} ${service.keywords.join(' ')}`.toLowerCase()
+    })), []
+  );
+
+  // Filter services with optimized search
   const filteredServices = useMemo(() => {
     if (!debouncedSearchQuery.trim()) return [];
     
     const query = debouncedSearchQuery.toLowerCase();
-    const results = wfsCatalog.filter(service => 
-      service.title.toLowerCase().includes(query) ||
-      service.description.toLowerCase().includes(query) ||
-      service.organization.toLowerCase().includes(query) ||
-      service.keywords.some(k => k.includes(query))
-    );
+    const results = [];
+    
+    // Fast search with early exit at 15 results
+    for (const service of processedCatalog) {
+      if (service.searchText.includes(query)) {
+        results.push(service);
+        if (results.length >= 15) break; // Stop early for performance
+      }
+    }
 
-    // Sort by relevance (title matches first)
+    // Sort by relevance (title matches first) - only for found results
     results.sort((a, b) => {
       const aInTitle = a.title.toLowerCase().includes(query);
       const bInTitle = b.title.toLowerCase().includes(query);
@@ -59,8 +70,8 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
       return 0;
     });
 
-    return results.slice(0, 20); // Limit to 20 results
-  }, [debouncedSearchQuery]);
+    return results;
+  }, [debouncedSearchQuery, processedCatalog]);
 
   const handleSelectService = (service: WfsService) => {
     setSelectedService(service);
