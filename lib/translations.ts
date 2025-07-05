@@ -261,7 +261,16 @@ export type TranslationKey =
   | "contact"
   | "imprint"
   | "previous"
-  | "next";
+  | "next"
+  // WFS Service Selector translations
+  | "wfsService"
+  | "searchServices"
+  | "pasteUrl"
+  | "openDataPortal"
+  | "pasteWfsUrlHere"
+  | "enterValidWfsUrl"
+  | "loadService"
+  | "searchWfsServices";
 
 // English translations
 export const enTranslations: Record<TranslationKey, string> = {
@@ -548,6 +557,15 @@ export const enTranslations: Record<TranslationKey, string> = {
   imprint: "Imprint",
   previous: "Previous",
   next: "Next",
+  // WFS Service Selector translations
+  wfsService: "WFS Service",
+  searchServices: "Search Services",
+  pasteUrl: "Paste URL",
+  openDataPortal: "Open Data Portal →",
+  pasteWfsUrlHere: "Paste WFS URL here",
+  enterValidWfsUrl: "Enter a valid WFS GetCapabilities URL",
+  loadService: "Load Service",
+  searchWfsServices: "Search 468 Hamburg WFS services...",
 };
 
 // German translations
@@ -847,4 +865,13 @@ export const deTranslations: Record<TranslationKey, string> = {
   imprint: "Impressum",
   previous: "Zurück",
   next: "Nächstes",
+  // WFS Service Selector translations
+  wfsService: "WFS-Dienst",
+  searchServices: "Dienste suchen",
+  pasteUrl: "URL einfügen",
+  openDataPortal: "Open Data Portal →",
+  pasteWfsUrlHere: "WFS-URL hier einfügen",
+  enterValidWfsUrl: "Gültige WFS GetCapabilities-URL eingeben",
+  loadService: "Dienst laden",
+  searchWfsServices: "468 Hamburg WFS-Dienste durchsuchen...",
 };

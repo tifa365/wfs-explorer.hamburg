@@ -94,7 +94,7 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6">
       <label className="block text-sm font-medium text-gray-700 mb-3">
-        WFS Service
+        {t("wfsService")}
       </label>
       
       {/* Tab Navigation */}
@@ -107,7 +107,7 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
           }`}
           onClick={() => setActiveTab("search")}
         >
-          Search Services
+          {t("searchServices")}
         </button>
         <button
           className={`text-sm font-medium pb-2 border-b-2 transition-colors ${
@@ -117,7 +117,7 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
           }`}
           onClick={() => setActiveTab("paste")}
         >
-          Paste URL
+          {t("pasteUrl")}
         </button>
         <div className="ml-auto">
           <a
@@ -126,7 +126,7 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
             rel="noopener noreferrer"
             className="text-xs text-blue-600 hover:underline"
           >
-            Open Data Portal →
+            {t("openDataPortal")}
           </a>
         </div>
       </div>
@@ -138,7 +138,7 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
           <div className="relative mb-3">
             <Input
               type="text"
-              placeholder="Search 468 Hamburg WFS services..."
+              placeholder={t("searchWfsServices")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10"
@@ -195,13 +195,13 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
         <div>
           <Input
             type="text"
-            placeholder="Paste WFS URL here"
+            placeholder={t("pasteWfsUrlHere")}
             value={pasteUrl}
             onChange={(e) => setPasteUrl(e.target.value)}
             className="mb-2"
           />
           <p className="text-xs text-gray-500">
-            Enter a valid WFS GetCapabilities URL
+            {t("enterValidWfsUrl")}
           </p>
         </div>
       )}
@@ -213,7 +213,7 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
           disabled={!pasteUrl.trim()}
           className="w-full mt-4"
         >
-          Load Service
+          {t("loadService")}
         </Button>
       )}
     </div>
