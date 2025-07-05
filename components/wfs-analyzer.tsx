@@ -688,35 +688,28 @@ export default function WfsAnalyzer() {
           <div className="mb-8 relative">
             <div>
               <div className="w-full md:w-1/2">
-                <div className="flex items-center gap-4">
-                  <div>
-                    <h1 className="text-4xl font-bold mb-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-                      <span className="text-white px-2 py-1 rounded" style={{ backgroundColor: '#5586C5' }}>WFS</span>
-                      <span className="ml-2" style={{ color: '#5586C5' }}>Explorer</span>
-                    </h1>
-                    <div className="mt-2">
-                      <span className="text-2xl font-semibold" style={{ color: '#dc143c', fontFamily: 'system-ui, -apple-system, sans-serif' }}>Hamburg</span>
-                    </div>
-                  </div>
-                  <img 
-                    src="/Hamburg-logo.svg.png" 
-                    alt="Hamburg Logo" 
-                    className="h-16 w-auto"
-                  />
-                </div>
+                <h1 className="text-4xl font-bold mb-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+                  <span className="text-white px-2 py-1 rounded" style={{ backgroundColor: '#5586C5' }}>WFS</span>
+                  <span className="ml-2" style={{ color: '#5586C5' }}>Explorer</span>
+                  <span className="ml-2" style={{ color: '#E40007' }}>Hamburg</span>
+                </h1>
 
-                <img
-                  className="w-8 sm:w-12 md:w-20"
+                <a
+                  href="https://www.hamburg.de/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     position: "absolute",
                     right: "0px",
                     top: "-5px",
-                    // width: "85px",
-                    // transform: "rotateY(180deg)",
                   }}
-                  src="./magicglobe3.svg"
-                  alt=""
-                />
+                >
+                  <img
+                    className="w-24 sm:w-28 md:w-32 hover:opacity-80 transition-opacity"
+                    src="/Hamburg-logo.svg.png"
+                    alt="Hamburg Logo"
+                  />
+                </a>
 
                 {/* </h2> */}
                 <p className="mb-4 mt-8">
