@@ -563,7 +563,7 @@ export const enTranslations: Record<TranslationKey, string> = {
   pasteWfsUrlHere: "Paste WFS URL here",
   enterValidWfsUrl: "Enter a valid WFS GetCapabilities URL",
   loadService: "Load Service",
-  searchWfsServices: "Search 468 Hamburg WFS services...",
+  searchWfsServices: "Search WFS services...",
 };
 
 // German translations
@@ -870,5 +870,5 @@ export const deTranslations: Record<TranslationKey, string> = {
   pasteWfsUrlHere: "WFS-URL hier einfügen",
   enterValidWfsUrl: "Gültige WFS GetCapabilities-URL eingeben",
   loadService: "Dienst laden",
-  searchWfsServices: "468 Hamburg WFS-Dienste durchsuchen...",
+  searchWfsServices: "WFS-Dienste durchsuchen...",
 };
