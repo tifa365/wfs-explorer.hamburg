@@ -119,16 +119,18 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
         >
           {t("pasteUrl")}
         </button>
-        <div className="ml-auto">
-          <a
-            href="https://transparenz.hamburg.de/open-data/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs text-blue-600 hover:underline"
-          >
-            {t("openDataPortal")}
-          </a>
-        </div>
+        {activeTab === "paste" && (
+          <div className="ml-auto">
+            <a
+              href="https://suche.transparenz.hamburg.de/dataset?q=&sort=score+desc&limit=20&esq_not_all_versions=true&res_format=wfs&forceWeb=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-blue-600 hover:underline"
+            >
+              {t("openDataPortal")}
+            </a>
+          </div>
+        )}
       </div>
 
       {/* Search Tab Content */}
