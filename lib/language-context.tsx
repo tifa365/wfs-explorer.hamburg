@@ -20,9 +20,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   // Detect browser language only after hydration
   useEffect(() => {
     setMounted(true)
-    const browserLang = navigator.language.toLowerCase()
-    if (browserLang.startsWith("de")) {
-      setLanguage("de")
+    // Only change language if browser is German AND we haven't explicitly set a language
+    if (typeof window !== "undefined") {
+      const browserLang = navigator.language.toLowerCase()
+      if (browserLang.startsWith("de")) {
+        setLanguage("de")
+      }
     }
   }, [])
 
