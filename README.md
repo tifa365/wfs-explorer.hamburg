@@ -6,33 +6,45 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-# WFS-Explorer
+# WFS-Explorer Hamburg
+
+This is a specialized adaptation of the original WFS-Explorer, redesigned specifically for Hamburg's geospatial data. Building on the foundation of the original tool, this version features a search-focused interface that provides direct access to Hamburg's extensive collection of WFS services.
 
 One of the most important sources for (open) geospatial data is the Web Feature Service (WFS). WFS provides geographic features—such as points, lines, or polygons — along with associated attribute data in a standardized way over the internet. It enables precise, up-to-date, and machine-readable information to be retrieved.
 
 Despite its technical capabilities, WFS is often underutilized. The reason: without specialized knowledge or appropriate software—such as Geographic Information Systems (GIS)—many potential users find it difficult to access and process the data for their own needs.
 
-This is where the WFS Explorer comes in. The tool acts as a clear and user-friendly web interface that allows even non-experts to explore and filter WFS data according to their needs. It builds a bridge between the complexity of geospatial services and practical applications by people with varying levels of experience. The tool is also available in German.
+This Hamburg-specific version of the WFS Explorer features a redesigned interface that prioritizes search functionality over manual URL entry. The tool acts as a clear and user-friendly web interface that allows even non-experts to discover and explore Hamburg's WFS data according to their needs. It builds a bridge between the complexity of geospatial services and practical applications by people with varying levels of experience. The tool is available in German by default, optimized for Hamburg users.
 
 ### Geospatial Data at a Glance
 
-With the WFS Explorer, users can interactively explore individual WFS datasets. This can be done either by entering any WFS URL manually or by selecting a sample dataset provided by the Geoportal Berlin.
+With the WFS Explorer, users can interactively explore individual WFS datasets. This can be done either by entering any WFS URL manually or by searching through 468 pre-indexed WFS services from Hamburg's Open Data Portal.
 
 ### Features
 
-- Metadata Display: Access to additional information such as dataset descriptions, contact information, projection details, and licensing terms.
+- **Hamburg WFS Catalog**: Search through 468 pre-indexed WFS services from Hamburg's Open Data Portal with instant search functionality and auto-loading.
 
-- Map Preview: An interactive map view offers a quick overview of the spatial extent and geometry structure of the dataset.
+- **Search-First Interface**: Toggle between searching the Hamburg catalog or pasting custom WFS URLs, with search as the primary interaction method.
 
-- Attribute Filtering: A user-friendly filter allows datasets to be narrowed down based on specific attribute values.
+- **Automated Data Discovery**: Services are automatically discovered from Hamburg's CKAN API and regularly updated.
 
-- Tabular Attribute View: A clean tabular overview of all attributes and an automatic summary of their contents help users explore and analyze the data—making it easy to understand what information is contained in the dataset.
+- **Optimized Performance**: Debounced search with early result limiting for fast response times.
 
-- GeoJSON Export: The dataset can be exported as a GeoJSON file using the widely supported WGS 84 projection (EPSG:4326), enabling seamless integration into other applications.
+- **German-First Experience**: Defaults to German language for Hamburg users, eliminating language switching delays.
 
-- CSV Export: The dataset can be exported as a CSV file without the geometries. This can be helpful if you are only interested in the data attributes.
+- **Metadata Display**: Access to additional information such as dataset descriptions, contact information, projection details, and licensing terms.
 
-- Direct URL Access: The WFS Explorer supports loading datasets via URL parameters. When a specific WFS URL is passed to the tool, the corresponding dataset is automatically loaded—ideal for embedding into other websites or workflows.
+- **Map Preview**: An interactive map view offers a quick overview of the spatial extent and geometry structure of the dataset.
+
+- **Attribute Filtering**: A user-friendly filter allows datasets to be narrowed down based on specific attribute values.
+
+- **Tabular Attribute View**: A clean tabular overview of all attributes and an automatic summary of their contents help users explore and analyze the data—making it easy to understand what information is contained in the dataset.
+
+- **GeoJSON Export**: The dataset can be exported as a GeoJSON file using the widely supported WGS 84 projection (EPSG:4326), enabling seamless integration into other applications.
+
+- **CSV Export**: The dataset can be exported as a CSV file without the geometries. This can be helpful if you are only interested in the data attributes.
+
+- **Direct URL Access**: The WFS Explorer supports loading datasets via URL parameters. When a specific WFS URL is passed to the tool, the corresponding dataset is automatically loaded—ideal for embedding into other websites or workflows.
 
 ### About Web Feature Service (WFS)
 
@@ -54,8 +66,8 @@ Please notes that this project first draft was originally written by AI and then
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/wfs-data-analyzer-tool.git
-   cd odis-wfsexplorer
+   git clone https://github.com/yourusername/hamburg-wfsexplorer.git
+   cd hamburg-wfsexplorer
    ```
 
 2. Install dependencies:
@@ -109,32 +121,11 @@ Texts and content available as [CC BY](https://creativecommons.org/licenses/by/3
 
 <table>
   <tr>
-      <td>
-      Made by: <a href="https://odis-berlin.de">
+    <td>
+      Original tool by: <a href="https://odis-berlin.de">
         <br />
         <br />
         <img width="200" src="https://logos.citylab-berlin.org/logo-odis-berlin.svg" />
-      </a>
-    </td>
-    <td>
-       Together with: <a href="https://citylab-berlin.org/de/start/">
-        <br />
-        <br />
-        <img width="200" src="https://logos.citylab-berlin.org/logo-citylab-berlin.svg" />
-      </a>
-    </td>
-    <td>
-      A project by <a href="https://www.technologiestiftung-berlin.de/">
-        <br />
-        <br />
-        <img width="150" src="https://logos.citylab-berlin.org/logo-technologiestiftung-berlin-de.svg" />
-      </a>
-    </td>
-    <td>
-      Supported by <a href="https://www.berlin.de/rbmskzl/">
-        <br />
-        <br />
-        <img width="80" src="https://logos.citylab-berlin.org/logo-berlin-senatskanzelei-de.svg" />
       </a>
     </td>
   </tr>
