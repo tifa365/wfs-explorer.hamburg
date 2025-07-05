@@ -53,7 +53,7 @@
     --foreground-rgb: 0, 0, 0;
     --background-start-rgb: 245, 248, 252;
     --background-end-rgb: 245, 248, 252;
-    --primary-color: #1a3a8f;
+    --primary-color: #5586C5;
     --primary-light: #f0f4ff;
     --primary-border: #d0d8ff;
   }
@@ -90,7 +90,7 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 10, 15, 25;
     --background-end-rgb: 10, 15, 25;
-    --primary-color: #4a6baf;
+    --primary-color: #5586C5;
     --primary-light: #1a2a4f;
     --primary-border: #2a3a6f;
   }
@@ -148,7 +148,7 @@
 .feature-icon {
   width: 2rem;
   height: 2rem;
-  color: #1a3a8f;
+  color: #5586C5;
 }
 
 /* Loading spinner */
@@ -156,7 +156,7 @@
   animation: spin 1s linear infinite;
   height: 1.25rem;
   width: 1.25rem;
-  color: #1a3a8f;
+  color: #5586C5;
 }
 
 @keyframes spin {

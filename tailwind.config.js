@@ -24,8 +24,9 @@ module.exports = {
         "robot-light": ["IBMPlexMono-Light", "Arial"],
       },
       colors: {
-        "odis-dark": "#1d2c5d",
-        "odis-light": "#4c68c7", // #263C89
+        "odis-dark": "#5586C5",
+        "odis-light": "#5586C5", // #263C89
+        "hamburg-blue": "#5586C5",
         "odis-light-2": "#e8ebf8",
         "odis-extra-light": "#f7f8fd",
         active: "#B3F2E0",

@@ -102,7 +102,7 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
         <button
           className={`text-sm font-medium pb-2 border-b-2 transition-colors ${
             activeTab === "search"
-              ? "text-blue-600 border-blue-600"
+              ? "text-hamburg-blue border-hamburg-blue"
               : "text-gray-500 border-transparent hover:text-gray-700"
           }`}
           onClick={() => setActiveTab("search")}
@@ -112,7 +112,7 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
         <button
           className={`text-sm font-medium pb-2 border-b-2 transition-colors ${
             activeTab === "paste"
-              ? "text-blue-600 border-blue-600"
+              ? "text-hamburg-blue border-hamburg-blue"
               : "text-gray-500 border-transparent hover:text-gray-700"
           }`}
           onClick={() => setActiveTab("paste")}
@@ -125,7 +125,7 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
               href="https://suche.transparenz.hamburg.de/dataset?q=&sort=score+desc&limit=20&esq_not_all_versions=true&res_format=wfs&forceWeb=true"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-blue-600 hover:underline"
+              className="text-xs text-hamburg-blue hover:underline"
             >
               {t("openDataPortal")}
             </a>
@@ -178,7 +178,7 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
                         </div>
                       </div>
                       {selectedService?.id === service.id && (
-                        <span className="text-xs text-blue-600 ml-2">
+                        <span className="text-xs text-hamburg-blue ml-2">
                           Selected
                         </span>
                       )}

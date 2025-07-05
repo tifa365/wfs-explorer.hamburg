@@ -688,10 +688,22 @@ export default function WfsAnalyzer() {
           <div className="mb-8 relative">
             <div>
               <div className="w-full md:w-1/2">
-                <h1 className="text-3xl font-bold text-odis-dark mb-2">
-                  WFS<span className="text-odis-light">Explorer</span>
-                  <p className="text-sm pb-2 italic">aka WFS-Wizard</p>
-                </h1>
+                <div className="flex items-center gap-4">
+                  <div>
+                    <h1 className="text-4xl font-bold mb-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+                      <span className="text-white px-2 py-1 rounded" style={{ backgroundColor: '#5586C5' }}>WFS</span>
+                      <span className="ml-2" style={{ color: '#5586C5' }}>Explorer</span>
+                    </h1>
+                    <div className="mt-2">
+                      <span className="text-2xl font-semibold" style={{ color: '#dc143c', fontFamily: 'system-ui, -apple-system, sans-serif' }}>Hamburg</span>
+                    </div>
+                  </div>
+                  <img 
+                    src="/Hamburg-logo.svg.png" 
+                    alt="Hamburg Logo" 
+                    className="h-16 w-auto"
+                  />
+                </div>
 
                 <img
                   className="w-8 sm:w-12 md:w-20"
@@ -707,7 +719,7 @@ export default function WfsAnalyzer() {
                 />
 
                 {/* </h2> */}
-                <p className="mb-4">
+                <p className="mb-4 mt-8">
                   {t("toolDescription1")}{" "}
                   <span
                     data-tooltip-id="url-tooltip"
@@ -722,7 +734,7 @@ export default function WfsAnalyzer() {
                   id="url-tooltip"
                   style={{
                     maxWidth: "250px",
-                    backgroundColor: "#4c68c7",
+                    backgroundColor: "#5586C5",
                     color: "white",
                     zIndex: 30,
                   }}
