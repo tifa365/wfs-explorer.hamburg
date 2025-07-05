@@ -26,8 +26,6 @@ import {
   Globe,
   FileJson,
   Download,
-  ChevronDown,
-  ChevronUp,
   ExternalLink,
   AlertTriangle,
   WandSparkles,
@@ -105,7 +103,6 @@ export default function WfsAnalyzer() {
   const [downloadType, setDownloadType] = useState("wgs84");
   const [supportsJsonFormat, setSupportsJsonFormat] = useState(true);
   const [showAllFeatures, setShowAllFeatures] = useState(false);
-  const [showExamples, setShowExamples] = useState(false);
   const [showFeatures, setShowFeatures] = useState(false);
   const [showLayerDetails, setShowLayerDetails] = useState(false);
   const [errorType, setErrorType] = useState<
@@ -770,154 +767,30 @@ export default function WfsAnalyzer() {
             </div>
             {/* Feature overview with icons only by default */}
 
-            {/* Search input */}
-            <div className="relative">
-              <div className="flex border rounded-lg overflow-hidden">
-                <div className="relative flex-grow">
-                  <Input
-                    id="wfs-url"
-                    placeholder={t("wfsUrlPlaceholder")}
-                    value={wfsUrl}
-                    onChange={(e) => {
-                      setWfsUrl(e.target.value);
-                      updateUrlParameter("");
+            {/* WFS Service Selector - Search/Paste Interface */}
+            <WfsServiceSelector
+              onSelectService={handleSelectExampleDataset}
+            />
 
-                      // If URL changes significantly, clear all previous data
-                      if (e.target.value.trim() !== analyzedUrl) {
-                        // Clear all data states when URL changes
-                        setSelectedLayer(null);
-                        setAvailableLayers([]);
-                        setWfsData(null);
-                        setFilteredData(null);
-                        setAttributes([]);
-                        setTotalFeatureCount(null);
-                        setHasGeometry(false);
-                        setSourceProjection("EPSG:4326");
-                        setIsFiltered(false);
-                        setHasProjectionIssue(false);
-                        setFocusedFeature(null);
-                        setError(null);
-                        setErrorType(null);
-                      }
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        handleAnalyze();
-                      }
-                    }}
-                    className="py-6 px-4 pr-10 text-lg border-0 focus-visible:ring-1 focus-visible:ring-[#1a3a8f] focus-visible:ring-offset-0 rounded-l-md !rounded-r-none"
-                  />
-                  {wfsUrl && (
-                    <button
-                      variant="ghost"
-                      size="sm"
-                      className="absolute right-2 top-1/2 transform -translate-y-1/2 h-6 w-6 p-0"
-                      onClick={() => {
-                        setWfsUrl("");
-                        // Clear all data when input is cleared
-                        setSelectedLayer(null);
-                        setAvailableLayers([]);
-                        setWfsData(null);
-                        setFilteredData(null);
-                        setAttributes([]);
-                        setTotalFeatureCount(null);
-                        setHasGeometry(false);
-                        setSourceProjection("EPSG:4326");
-                        setIsFiltered(false);
-                        setHasProjectionIssue(false);
-                        setFocusedFeature(null);
-                        setError(null);
-                        setErrorType(null);
-                        setAnalyzedUrl("");
-                        updateUrlParameter("");
-                      }}
-                    >
-                      <X className="h-4 w-4 text-gray-400" />
-                    </button>
-                  )}
-                </div>
+            {wfsData && wfsUrl && !error && (
+              <div className="mt-2 flex justify-end">
                 <Button
-                  className="h-auto bg-odis-light hover:bg-active hover:!text-odis-dark text-white !rounded-l-none"
-                  onClick={handleAnalyze}
-                  disabled={
-                    isLoadingLayers ||
-                    isLoading ||
-                    (wfsUrl.trim() === analyzedUrl && analyzedUrl !== "")
-                  }
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-1 hover:bg-active-light"
+                  onClick={copyUrlToClipboard}
+                  title={t("shareWfs")}
                 >
-                  {isLoadingLayers ? (
-                    <Loader2 className="h-5 w-5 animate-spin" />
-                  ) : wfsUrl.trim() === analyzedUrl &&
-                    analyzedUrl !== "" &&
-                    !error ? (
-                    <>
-                      <Check className="h-5 w-5 mr-2" />
-                      {t("loaded")}
-                    </>
+                  {isCopied ? (
+                    <Check className="h-4 w-4" />
                   ) : (
-                    <>
-                      <Search className="h-5 w-5 mr-2" />
-                      {t("analyzeButton")}
-                    </>
+                    <Share2 className="h-4 w-4" />
                   )}
+                  {/* {isCopied ? t("copied") : t("shareWfs")} */}
                 </Button>
               </div>
+            )}
 
-              {wfsData && wfsUrl && !error && (
-                <div className="absolute right-0 top-full mt-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="flex items-center gap-1 hover:bg-active-light"
-                    onClick={copyUrlToClipboard}
-                    title={t("shareWfs")}
-                  >
-                    {isCopied ? (
-                      <Check className="h-4 w-4" />
-                    ) : (
-                      <Share2 className="h-4 w-4" />
-                    )}
-                    {/* {isCopied ? t("copied") : t("shareWfs")} */}
-                  </Button>
-                </div>
-              )}
-            </div>
-
-            {/* Example datasets - collapsible */}
-            <div className="mt-1">
-              <button
-                className="text-odis-light  hover:text-odis-dark  hover:bg-white p-2 h-auto flex items-center text-sm"
-                onClick={() => setShowExamples(!showExamples)}
-              >
-                {showExamples ? (
-                  <ChevronUp className="h-4 w-4 mr-1" />
-                ) : (
-                  <ChevronDown className="h-4 w-4 mr-1" />
-                )}
-                {showExamples
-                  ? t("hideExampleDatasets")
-                  : t("showExampleDatasets")}
-              </button>
-              {showExamples && (
-                <div className="mt-2 p-3 bg-odis-extra-light rounded-md">
-                  <p className="text-sm mb-2">
-                    {t("exampleDatasetsDescription")}{" "}
-                    <a
-                      href="https://geoexplorer.odis-berlin.de/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-odis-light"
-                    >
-                      GeoExplorer
-                    </a>
-                    {"."}
-                  </p>
-                  <WfsServiceSelector
-                    onSelectService={handleSelectExampleDataset}
-                  />
-                </div>
-              )}
-            </div>
 
             <div className="">
               <div className="flex flex-col">

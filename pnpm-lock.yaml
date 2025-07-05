@@ -190,7 +190,7 @@ importers:
         version: 3.24.4
     devDependencies:
       '@types/node':
-        specifier: ^22
+        specifier: ^22.15.17
         version: 22.15.17
       '@types/react':
         specifier: ^19

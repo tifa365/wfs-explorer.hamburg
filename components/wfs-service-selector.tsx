@@ -44,6 +44,10 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
 
   const handleSelectService = (service: WfsService) => {
     setSelectedService(service);
+    // Auto-load the selected service
+    onSelectService(service.url);
+    // Clear search to close dropdown
+    setSearchQuery("");
   };
 
   const handleLoadService = () => {
@@ -148,21 +152,6 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
             </div>
           )}
 
-          {/* Selected Service Display */}
-          {selectedService && (
-            <div className="p-3 bg-blue-50 rounded-md">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-blue-900">
-                    Selected: {selectedService.title}
-                  </p>
-                  <p className="text-xs text-blue-700 mt-1 font-mono truncate">
-                    {selectedService.url}
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       )}
 
@@ -182,14 +171,16 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
         </div>
       )}
 
-      {/* Load Button */}
-      <Button
-        onClick={handleLoadService}
-        disabled={isLoadDisabled}
-        className="w-full mt-4"
-      >
-        Load Service
-      </Button>
+      {/* Load Button - only for paste tab */}
+      {activeTab === "paste" && (
+        <Button
+          onClick={handleLoadService}
+          disabled={!pasteUrl.trim()}
+          className="w-full mt-4"
+        >
+          Load Service
+        </Button>
+      )}
     </div>
   );
 }

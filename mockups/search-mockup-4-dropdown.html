@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup 4: Searchable Dropdown</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-xl font-bold mb-4">Mockup 4: Integrated Searchable Dropdown</h2>
+        
+        <!-- Combined Search and URL Input -->
+        <div class="bg-white rounded-lg border border-gray-200 p-6">
+            <label class="block text-sm font-medium text-gray-700 mb-2">WFS Service URL</label>
+            
+            <!-- Search Toggle -->
+            <div class="mb-3">
+                <button class="text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    Search from 468 Hamburg WFS services
+                </button>
+            </div>
+            
+            <!-- Dropdown Search (shown when clicked) -->
+            <div class="relative mb-3">
+                <div class="absolute w-full z-10 bg-white border border-gray-300 rounded-md shadow-lg">
+                    <div class="p-2 border-b">
+                        <input 
+                            type="text" 
+                            placeholder="Search services..."
+                            class="w-full px-3 py-2 text-sm border border-gray-200 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                            value="bike"
+                            autofocus
+                        >
+                    </div>
+                    <div class="max-h-64 overflow-y-auto">
+                        <button class="w-full text-left px-3 py-2 hover:bg-gray-50 flex justify-between items-center group">
+                            <div class="flex-1 min-w-0">
+                                <div class="text-sm font-medium text-gray-900">Hamburg Cycling Network</div>
+                                <div class="text-xs text-gray-500 truncate">City-wide network for everyday cycling • BVM</div>
+                            </div>
+                            <span class="text-xs text-gray-400 group-hover:text-gray-600">Click to use</span>
+                        </button>
+                        
+                        <button class="w-full text-left px-3 py-2 hover:bg-gray-50 flex justify-between items-center group">
+                            <div class="flex-1 min-w-0">
+                                <div class="text-sm font-medium text-gray-900">Bike + Ride Facilities</div>
+                                <div class="text-xs text-gray-500 truncate">Bicycle parking at stations • HVV</div>
+                            </div>
+                            <span class="text-xs text-gray-400 group-hover:text-gray-600">Click to use</span>
+                        </button>
+                        
+                        <button class="w-full text-left px-3 py-2 bg-blue-50 flex justify-between items-center">
+                            <div class="flex-1 min-w-0">
+                                <div class="text-sm font-medium text-blue-900">Cycling Infrastructure</div>
+                                <div class="text-xs text-blue-700 truncate">Cycling lanes and paths • BVM</div>
+                            </div>
+                            <span class="text-xs text-blue-600">Selected</span>
+                        </button>
+                        
+                        <button class="w-full text-left px-3 py-2 hover:bg-gray-50 flex justify-between items-center group">
+                            <div class="flex-1 min-w-0">
+                                <div class="text-sm font-medium text-gray-900">StadtRAD Stations</div>
+                                <div class="text-xs text-gray-500 truncate">Bike sharing locations • DB</div>
+                            </div>
+                            <span class="text-xs text-gray-400 group-hover:text-gray-600">Click to use</span>
+                        </button>
+                    </div>
+                    <div class="p-2 border-t bg-gray-50">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-gray-500">12 results found</span>
+                            <a href="#" class="text-xs text-blue-600 hover:underline">Open Data Portal →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- URL Input -->
+            <div class="flex gap-2">
+                <input 
+                    type="text" 
+                    placeholder="Enter or paste WFS URL"
+                    class="flex-1 px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    value="https://geodienste.hamburg.de/HH_WFS_Radverkehrsnetz?service=WFS"
+                >
+                <button class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                    Load
+                </button>
+            </div>
+            
+            <!-- Quick Examples -->
+            <div class="mt-3 flex items-center gap-2">
+                <span class="text-xs text-gray-500">Quick access:</span>
+                <button class="text-xs px-2 py-1 bg-gray-100 rounded hover:bg-gray-200">Schools</button>
+                <button class="text-xs px-2 py-1 bg-gray-100 rounded hover:bg-gray-200">Parks</button>
+                <button class="text-xs px-2 py-1 bg-gray-100 rounded hover:bg-gray-200">Transport</button>
+                <button class="text-xs px-2 py-1 bg-gray-100 rounded hover:bg-gray-200">Environment</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
