@@ -252,6 +252,8 @@ export type TranslationKey =
   | "downloadFilteredGeoJSON"
   | "matchYourFilters"
   | "basedOnProject"
+  | "wfsExplorerProject"
+  | "projectBy"
   | "privacyPolicy"
   | "feedback"
   | "github"
@@ -544,7 +546,9 @@ export const enTranslations: Record<TranslationKey, string> = {
   filters: "filters",
   matchYourFilters: "match your filters",
   // Footer translations
-  basedOnProject: "Based on the WFSExplorer project by",
+  basedOnProject: "Based on the",
+  wfsExplorerProject: "WFSExplorer",
+  projectBy: "project by",
   privacyPolicy: "Privacy Policy",
   feedback: "Feedback",
   github: "GitHub",
@@ -849,7 +853,9 @@ export const deTranslations: Record<TranslationKey, string> = {
   filters: "Filter",
   matchYourFilters: "entsprechen Ihrer Filterung",
   // Footer translations
-  basedOnProject: "Aufbauend auf dem Projekt WFSExplorer von",
+  basedOnProject: "Aufbauend auf dem Projekt",
+  wfsExplorerProject: "WFSExplorer",
+  projectBy: "von",
   privacyPolicy: "Datenschutz",
   feedback: "Feedback",
   github: "GitHub",

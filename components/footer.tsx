@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
             {/* ODIS Berlin */}
             <div className="text-center">
               <p className="text-[var(--primary-color)] text-sm font-medium mb-3">
-                {t("basedOnProject") || "Aufbauend auf einem Projekt von"}
+                {t("basedOnProject")} <a href="https://wfsexplorer.odis-berlin.de" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline">{t("wfsExplorerProject")}</a> {t("projectBy")}
               </p>
               <a
                 href="https://github.com/technologiestiftung/odis-geoexplorer"
