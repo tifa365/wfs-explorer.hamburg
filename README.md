@@ -18,11 +18,11 @@ This Hamburg-specific version of the WFS Explorer features a redesigned interfac
 
 ### Geospatial Data at a Glance
 
-With the WFS Explorer, users can interactively explore individual WFS datasets. This can be done either by entering any WFS URL manually or by searching through 468 pre-indexed WFS services from Hamburg's Open Data Portal.
+With the WFS Explorer, users can interactively explore individual WFS datasets. This can be done either by entering any WFS URL manually or by searching through around 400 pre-indexed WFS services from Hamburg's Open Data Portal.
 
 ### Features
 
-- **Hamburg WFS Catalog**: Search through 468 pre-indexed WFS services from Hamburg's Open Data Portal with instant search functionality and auto-loading.
+- **Hamburg WFS Catalog**: Search through around 400 pre-indexed WFS services from Hamburg's Open Data Portal with instant search functionality and auto-loading.
 
 - **Search-First Interface**: Toggle between searching the Hamburg catalog or pasting custom WFS URLs, with search as the primary interaction method.
 
