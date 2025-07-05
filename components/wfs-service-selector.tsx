@@ -1,11 +1,28 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { useLanguage } from "@/lib/language-context";
 import { wfsCatalog, type WfsService } from "@/lib/wfs-catalog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+
+// Debounce hook
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
+
+  useMemo(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
 
 interface WfsServiceSelectorProps {
   onSelectService: (url: string) => void;
@@ -18,11 +35,14 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
   const [pasteUrl, setPasteUrl] = useState("");
   const [selectedService, setSelectedService] = useState<WfsService | null>(null);
 
-  // Filter services based on search query
+  // Debounce search query to improve performance
+  const debouncedSearchQuery = useDebounce(searchQuery, 300);
+
+  // Filter services based on debounced search query
   const filteredServices = useMemo(() => {
-    if (!searchQuery.trim()) return [];
+    if (!debouncedSearchQuery.trim()) return [];
     
-    const query = searchQuery.toLowerCase();
+    const query = debouncedSearchQuery.toLowerCase();
     const results = wfsCatalog.filter(service => 
       service.title.toLowerCase().includes(query) ||
       service.description.toLowerCase().includes(query) ||
@@ -40,7 +60,7 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
     });
 
     return results.slice(0, 20); // Limit to 20 results
-  }, [searchQuery]);
+  }, [debouncedSearchQuery]);
 
   const handleSelectService = (service: WfsService) => {
     setSelectedService(service);
@@ -118,7 +138,11 @@ export function WfsServiceSelector({ onSelectService }: WfsServiceSelectorProps)
           {/* Search Results */}
           {searchQuery && (
             <div className="mb-4 max-h-64 overflow-y-auto border border-gray-200 rounded-md">
-              {filteredServices.length === 0 ? (
+              {searchQuery && !debouncedSearchQuery ? (
+                <div className="p-4 text-sm text-gray-500 text-center">
+                  Searching...
+                </div>
+              ) : filteredServices.length === 0 ? (
                 <div className="p-4 text-sm text-gray-500 text-center">
                   No results found
                 </div>
