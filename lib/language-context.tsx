@@ -16,6 +16,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("de") // Always start with German for Hamburg
   const [mounted, setMounted] = useState(false)
+  const [isChanging, setIsChanging] = useState(false)
 
   // Detect browser language only after hydration
   useEffect(() => {
@@ -29,12 +30,21 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
+  const handleLanguageChange = (newLanguage: Language) => {
+    if (newLanguage === language) return
+    setLanguage(newLanguage)
+  }
+
   const t = (key: TranslationKey): string => {
     const translations = language === "en" ? enTranslations : deTranslations
     return translations[key] || key // Fallback to key if translation is missing
   }
 
-  return <LanguageContext.Provider value={{ language, setLanguage, t }}>{children}</LanguageContext.Provider>
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage: handleLanguageChange, t }}>
+      {children}
+    </LanguageContext.Provider>
+  )
 }
 
 export function useLanguage() {

@@ -97,22 +97,43 @@
 }
 
 @layer base {
-  * {
-    @apply border-border;
+  *, *::before, *::after { 
+    box-sizing: border-box; 
   }
+
+  html {
+    height: 100%;
+    overflow-x: hidden;           /* html never scrolls */
+    overflow-y: hidden;
+  }
+
   body {
+    /*— NEW —*/
+    scrollbar-gutter: stable;     /* reserve gutter on the real scroller */
+    overflow-y: auto;             /* body is the only scrollable element */
+    overflow-x: hidden;
+
+    /* remove the line that re-introduces the jump */
+    /* max-width: 100vw;   ←  DELETED THIS */
+    width: 100%;                  /* 100% adapts to the gutter correctly */
+
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
     @apply bg-background text-foreground;
     color: #1d2c5d;
     background: linear-gradient(
         to bottom,
         transparent,
-        rgb(var(--background-end-rgb))
-      )
-      rgb(var(--background-start-rgb));
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-normal);
-    line-height: 1.5;
-    font-family: "Nunito Sans", sans-serif;
+        rgb(var(--background-end-rgb)))
+        rgb(var(--background-start-rgb));
+    font: var(--font-weight-normal) var(--font-size-base)/1.5 "Nunito Sans", sans-serif;
+  }
+
+  /* Safari ≤ 15 & very old Chromium: show a disabled scrollbar instead of jumping */
+  @supports not (scrollbar-gutter: stable) {
+    body { overflow-y: scroll; }
   }
 }
 
