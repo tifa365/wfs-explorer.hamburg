@@ -49,7 +49,7 @@ import { AttributeFilter } from "@/components/attribute-filter";
 import { DownloadOptions } from "@/components/download-options";
 import { DownloadFilteredOptions } from "@/components/download-filtered-options";
 import dynamic from "next/dynamic";
-import { ExampleDatasets } from "@/components/example-datasets";
+import { WfsServiceSelector } from "@/components/wfs-service-selector";
 import { LanguageSwitcher } from "@/components/language-switcher";
 // import {
 //   Tooltip,
@@ -912,8 +912,8 @@ export default function WfsAnalyzer() {
                     </a>
                     {"."}
                   </p>
-                  <ExampleDatasets
-                    onSelectDataset={handleSelectExampleDataset}
+                  <WfsServiceSelector
+                    onSelectService={handleSelectExampleDataset}
                   />
                 </div>
               )}
