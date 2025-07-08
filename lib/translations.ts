@@ -475,9 +475,9 @@ export const enTranslations: Record<TranslationKey, string> = {
   wfsData: "WFS Data",
   wfsDataInfo:
     "A WFS (Web Feature Service) is an online service that makes it possible to retrieve geographical data via the Internet.",
-  toolDescription1: "Visualize, analyze and export",
+  toolDescription1: "Visualize, analyze and export ",
   toolDescription2:
-    "directly in the browser. Insert a WFS URL or select a sample data set.",
+    "WFS data directly in the browser. Insert a WFS URL or select a sample data set.",
   keyFeatures: "Key Features",
   metadataInfo: "View Metadata",
   interactiveMetadataInfo: "Explore Metadata",
