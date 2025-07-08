@@ -19,6 +19,8 @@ const nextConfig = {
     ],
     unoptimized: true,
   },
+  output: 'export',
+  basePath: '/wfs-explorer.hamburg',
   webpack: (config) => {
     // Handle node modules that need special treatment
     config.resolve.fallback = {
