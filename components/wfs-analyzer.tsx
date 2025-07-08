@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/lib/language-context";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -704,10 +705,13 @@ export default function WfsAnalyzer() {
                     top: "-5px",
                   }}
                 >
-                  <img
-                    className="w-24 sm:w-28 md:w-32 hover:opacity-80 transition-opacity"
+                  <Image
+                    className="hover:opacity-80 transition-opacity"
                     src="/Hamburg-logo.svg.png"
                     alt="Hamburg Logo"
+                    width={128}
+                    height={128}
+                    style={{ width: 'auto', height: 'auto' }}
                   />
                 </a>
 
