@@ -706,7 +706,7 @@ export default function WfsAnalyzer() {
                 >
                   <img
                     className="w-24 sm:w-28 md:w-32 hover:opacity-80 transition-opacity"
-                    src="/wfs-explorer.hamburg/Hamburg-logo.svg.png"
+                    src="/wfs-explorer.hamburg/Hamburg-logo.png"
                     alt="Hamburg Logo"
                   />
                 </a>
